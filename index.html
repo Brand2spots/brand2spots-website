@@ -1,0 +1,3602 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f7f2ed" />
+  <meta name="color-scheme" content="light" />
+
+  <title>B2S — Brand to Spots</title>
+
+  <meta
+    name="description"
+    content="B2S — Brand to Spots. Ein neuer Vertriebsweg für Consumer Brands: passende Produkte in passende reale Spots und Communities bringen."
+  />
+
+  <meta property="og:title" content="B2S — Brand to Spots" />
+  <meta
+    property="og:description"
+    content="Bringe deine Brand ins echte Leben. B2S verbindet Consumer Brands mit passenden realen Spots und Communities."
+  />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/hero-1440.webp" />
+
+  <style>
+    :root {
+      --bg: #f7f2ed;
+      --bg-2: #fbf8f5;
+
+      --surface: rgba(255, 255, 255, 0.74);
+      --surface-solid: #fffdfa;
+
+      --ink: #272321;
+      --muted: #706862;
+      --muted-2: #968c84;
+
+      --line: rgba(39, 35, 33, 0.10);
+      --line-warm: rgba(161, 105, 61, 0.22);
+
+      --accent: #a1683d;
+      --accent-soft: #ead7c5;
+      --accent-pale: #f4e9df;
+
+      --dark: #272321;
+
+      --shadow:
+        0 20px 60px rgba(59, 42, 30, 0.08);
+
+      --shadow-lg:
+        0 38px 100px rgba(59, 42, 30, 0.12);
+
+      --radius: 28px;
+      --radius-lg: 42px;
+
+      --max: 1240px;
+      --nav-h: 76px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+
+      background:
+        radial-gradient(
+          circle at 10% 8%,
+          rgba(234, 215, 197, 0.42),
+          transparent 24%
+        ),
+        linear-gradient(
+          180deg,
+          #fbf8f5 0%,
+          var(--bg) 40%,
+          #f5eee8 100%
+        );
+
+      color: var(--ink);
+
+      font-family:
+        Inter,
+        ui-sans-serif,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Helvetica,
+        Arial,
+        sans-serif;
+
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+
+      overflow-x: hidden;
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    ::selection {
+      background: var(--ink);
+      color: #fff;
+    }
+
+    .container {
+      width: min(calc(100% - 40px), var(--max));
+      margin-inline: auto;
+    }
+
+    .skip-link {
+      position: fixed;
+      z-index: 999;
+
+      top: 12px;
+      left: 12px;
+
+      padding: 12px 16px;
+
+      border-radius: 999px;
+
+      background: #111;
+      color: #fff;
+
+      transform: translateY(-170%);
+      transition: transform 0.2s ease;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    .section-line {
+      position: relative;
+    }
+
+    .section-line::before {
+      content: "";
+
+      position: absolute;
+
+      top: 0;
+      left: 50%;
+
+      width: min(calc(100% - 40px), var(--max));
+      height: 1px;
+
+      transform: translateX(-50%);
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          var(--line-warm) 18%,
+          var(--line) 72%,
+          transparent
+        );
+    }
+
+    .page-noise {
+      position: fixed;
+      inset: 0;
+
+      z-index: -1;
+
+      pointer-events: none;
+
+      opacity: 0.10;
+
+      background-image:
+        linear-gradient(
+          rgba(255, 255, 255, 0.16) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0.16) 1px,
+          transparent 1px
+        );
+
+      background-size: 28px 28px;
+
+      mask-image:
+        linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0.65),
+          transparent 70%
+        );
+
+      -webkit-mask-image:
+        linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0.65),
+          transparent 70%
+        );
+    }
+
+    /* ========================================
+       NAVIGATION
+    ======================================== */
+
+    .nav-wrap {
+      position: fixed;
+
+      inset: 12px 0 auto;
+
+      z-index: 50;
+
+      padding-inline: 12px;
+    }
+
+    .nav {
+      width:
+        min(
+          calc(100% - 24px),
+          calc(var(--max) + 16px)
+        );
+
+      margin: 0 auto;
+
+      border:
+        1px solid rgba(39, 35, 33, 0.07);
+
+      border-radius: 20px;
+
+      background:
+        rgba(255, 255, 255, 0.84);
+
+      backdrop-filter:
+        blur(16px) saturate(135%);
+
+      -webkit-backdrop-filter:
+        blur(16px) saturate(135%);
+
+      box-shadow:
+        0 8px 24px rgba(59, 42, 30, 0.045);
+
+      transition:
+        background 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
+    }
+
+    .nav.is-scrolled,
+    .nav.is-open {
+      background:
+        rgba(255, 255, 255, 0.95);
+
+      border-color:
+        rgba(39, 35, 33, 0.09);
+
+      box-shadow:
+        0 12px 30px rgba(59, 42, 30, 0.07);
+    }
+
+    .nav-inner {
+      min-height: var(--nav-h);
+
+      display: flex;
+      align-items: center;
+
+      gap: 28px;
+
+      padding: 0 18px;
+    }
+
+    .brand-logo {
+      display: inline-flex;
+      align-items: center;
+
+      gap: 14px;
+
+      min-width: 0;
+    }
+
+    .brand-symbol {
+      width: 46px;
+      height: 46px;
+
+      border-radius: 50%;
+
+      display: grid;
+      place-items: center;
+
+      flex: 0 0 auto;
+
+      background:
+        rgba(255, 255, 255, 0.88);
+
+      border:
+        1px solid rgba(39, 35, 33, 0.11);
+
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+
+      color: #5e5650;
+
+      font-size: 11px;
+      font-weight: 760;
+      letter-spacing: 0.08em;
+    }
+
+    .brand-copy {
+      display: grid;
+      gap: 0;
+    }
+
+    .brand-copy strong {
+      font-size: 18px;
+
+      line-height: 1;
+
+      letter-spacing: 0.18em;
+
+      text-transform: uppercase;
+
+      font-weight: 700;
+
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+
+      gap: 24px;
+
+      margin-left: auto;
+
+      color: #5d5550;
+
+      font-size: 13px;
+    }
+
+    .nav-links a {
+      position: relative;
+
+      padding: 10px 0;
+    }
+
+    .nav-links a::after {
+      content: "";
+
+      position: absolute;
+
+      left: 0;
+      bottom: 5px;
+
+      width: 100%;
+      height: 1px;
+
+      background: var(--accent);
+
+      transform: scaleX(0);
+      transform-origin: left;
+
+      transition:
+        transform 0.2s ease;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a:focus-visible::after {
+      transform: scaleX(1);
+    }
+
+    /* ========================================
+       BUTTONS
+    ======================================== */
+
+    .btn {
+      display: inline-flex;
+
+      align-items: center;
+      justify-content: center;
+
+      gap: 10px;
+
+      min-height: 48px;
+
+      padding: 0 18px;
+
+      border-radius: 999px;
+
+      border:
+        1px solid transparent;
+
+      background: transparent;
+
+      color: inherit;
+
+      font-size: 14px;
+      font-weight: 650;
+
+      letter-spacing: -0.01em;
+
+      cursor: pointer;
+
+      transition:
+        transform 0.18s ease,
+        background 0.18s ease,
+        box-shadow 0.18s ease,
+        border-color 0.18s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn:focus-visible {
+      outline:
+        3px solid rgba(161, 105, 61, 0.22);
+
+      outline-offset: 3px;
+    }
+
+    .btn-primary {
+      background: var(--dark);
+
+      color: #fff;
+
+      box-shadow:
+        0 12px 28px rgba(39, 35, 33, 0.14);
+    }
+
+    .btn-primary:hover {
+      box-shadow:
+        0 16px 34px rgba(39, 35, 33, 0.20);
+    }
+
+    .btn-accent {
+      background: var(--accent);
+
+      color: #fff;
+
+      border-color: var(--accent);
+
+      box-shadow:
+        0 12px 28px rgba(161, 105, 61, 0.20);
+    }
+
+    .btn-accent:hover {
+      background: #8f5c35;
+
+      border-color: #8f5c35;
+
+      box-shadow:
+        0 16px 34px rgba(161, 105, 61, 0.28);
+    }
+
+    .btn-ghost {
+      border-color: var(--line);
+
+      background:
+        rgba(255, 255, 255, 0.52);
+    }
+
+    .btn-arrow::after {
+      content: "↗";
+
+      font-size: 1.05em;
+    }
+
+    /* ========================================
+       MOBILE MENU
+    ======================================== */
+
+    .menu-toggle {
+      display: none;
+
+      width: 46px;
+      height: 46px;
+
+      border-radius: 50%;
+
+      border:
+        1px solid var(--line);
+
+      background:
+        rgba(255, 255, 255, 0.82);
+
+      align-items: center;
+      justify-content: center;
+
+      cursor: pointer;
+
+      margin-left: auto;
+    }
+
+    .menu-toggle span,
+    .menu-toggle span::before,
+    .menu-toggle span::after {
+      content: "";
+
+      display: block;
+
+      width: 18px;
+      height: 1.5px;
+
+      background: var(--ink);
+
+      transition:
+        transform 0.2s ease,
+        opacity 0.2s ease;
+    }
+
+    .menu-toggle span {
+      position: relative;
+    }
+
+    .menu-toggle span::before {
+      position: absolute;
+      top: -6px;
+    }
+
+    .menu-toggle span::after {
+      position: absolute;
+      top: 6px;
+    }
+
+    .nav.is-open .menu-toggle span {
+      background: transparent;
+    }
+
+    .nav.is-open .menu-toggle span::before {
+      top: 0;
+
+      transform: rotate(45deg);
+    }
+
+    .nav.is-open .menu-toggle span::after {
+      top: 0;
+
+      transform: rotate(-45deg);
+    }
+
+    .mobile-menu {
+      display: none;
+
+      padding:
+        0 18px 18px;
+    }
+
+    .mobile-menu-inner {
+      border-top:
+        1px solid var(--line);
+
+      padding-top: 12px;
+    }
+
+    .mobile-menu a.mobile-link {
+      display: flex;
+
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 16px 2px;
+
+      border-bottom:
+        1px solid var(--line);
+
+      font-size: 22px;
+
+      letter-spacing: -0.025em;
+    }
+
+    .mobile-menu .btn {
+      width: 100%;
+
+      margin-top: 14px;
+    }
+
+    /* ========================================
+       HERO
+    ======================================== */
+
+    .hero {
+      position: relative;
+
+      overflow: clip;
+
+      padding-top:
+        calc(var(--nav-h) + 28px);
+    }
+
+    .hero::before {
+      content: "B2S";
+
+      position: absolute;
+
+      z-index: -1;
+
+      right: -2vw;
+      top: 110px;
+
+      font-size:
+        clamp(
+          180px,
+          29vw,
+          470px
+        );
+
+      line-height: 0.8;
+
+      letter-spacing: -0.10em;
+
+      font-weight: 800;
+
+      color:
+        rgba(161, 105, 61, 0.045);
+
+      user-select: none;
+
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      min-height:
+        min(690px, 74svh);
+
+      display: flex;
+
+      align-items: flex-start;
+
+      padding:
+        28px 0 58px;
+    }
+
+    .hero-copy {
+      max-width: 930px;
+
+      position: relative;
+
+      z-index: 2;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 12px;
+
+      margin-bottom: 24px;
+
+      color: #6f665f;
+
+      font-size: 11px;
+
+      font-weight: 730;
+
+      text-transform: uppercase;
+
+      letter-spacing: 0.20em;
+    }
+
+    .eyebrow::before {
+      content: "";
+
+      width: 32px;
+      height: 1px;
+
+      background:
+        linear-gradient(
+          90deg,
+          var(--accent),
+          transparent
+        );
+    }
+
+    .hero h1 {
+      margin: 0;
+
+      max-width: 11.8ch;
+
+      font-size:
+        clamp(
+          52px,
+          6.2vw,
+          94px
+        );
+
+      line-height: 0.90;
+
+      letter-spacing: -0.058em;
+
+      font-weight: 430;
+    }
+
+    .hero h1 .accent-word {
+      color: var(--accent);
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-style: italic;
+
+      font-weight: 400;
+    }
+
+    .hero-sub {
+      max-width: 760px;
+
+      margin:
+        24px 0 0;
+
+      color: var(--muted);
+
+      font-size:
+        clamp(
+          18px,
+          1.55vw,
+          23px
+        );
+
+      line-height: 1.58;
+
+      letter-spacing: -0.018em;
+    }
+
+    .hero-sub strong {
+      color: var(--ink);
+
+      font-weight: 650;
+    }
+
+    .hero-actions {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 12px;
+
+      margin-top: 24px;
+    }
+
+    .hero-note {
+      display: flex;
+
+      align-items: center;
+
+      gap: 12px;
+
+      margin-top: 30px;
+
+      color: var(--muted-2);
+
+      font-size: 12px;
+    }
+
+    .hero-note::before {
+      content: "";
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+
+      background: var(--accent);
+
+      box-shadow:
+        0 0 0 6px rgba(161, 105, 61, 0.10);
+    }
+
+    /* ========================================
+       CONCEPT
+    ======================================== */
+
+    .concept {
+      padding:
+        clamp(
+          96px,
+          10vw,
+          150px
+        ) 0;
+    }
+
+    .section-kicker {
+      margin:
+        0 0 16px;
+
+      color: #786f68;
+
+      font-size: 11px;
+
+      font-weight: 730;
+
+      letter-spacing: 0.20em;
+
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      margin: 0;
+
+      max-width: 14ch;
+
+      font-size:
+        clamp(
+          36px,
+          4.6vw,
+          64px
+        );
+
+      line-height: 0.98;
+
+      letter-spacing: -0.052em;
+
+      font-weight: 430;
+    }
+
+    .section-lead {
+      max-width: 740px;
+
+      margin:
+        24px 0 0;
+
+      color: var(--muted);
+
+      font-size:
+        clamp(
+          15px,
+          1.15vw,
+          17px
+        );
+
+      line-height: 1.65;
+    }
+
+    .route-card {
+      margin-top: 56px;
+
+      padding:
+        clamp(
+          28px,
+          4vw,
+          52px
+        );
+
+      border:
+        1px solid rgba(39, 35, 33, 0.08);
+
+      border-radius: 38px;
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.82),
+          rgba(255, 255, 255, 0.60)
+        );
+
+      box-shadow: var(--shadow);
+
+      overflow: hidden;
+
+      position: relative;
+    }
+
+    .route-card::before {
+      content: "";
+
+      position: absolute;
+
+      inset:
+        auto -120px -140px auto;
+
+      width: 380px;
+
+      aspect-ratio: 1;
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(234, 215, 197, 0.40),
+          transparent 70%
+        );
+
+      pointer-events: none;
+    }
+
+    .route-diagram {
+      display: grid;
+
+      grid-template-columns:
+        1fr 120px 1fr 120px 1fr;
+
+      gap: 12px;
+
+      align-items: center;
+
+      position: relative;
+
+      z-index: 1;
+    }
+
+    .route-node {
+      min-height: 250px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: space-between;
+
+      padding: 28px;
+
+      border-radius: 28px;
+
+      border:
+        1px solid var(--line);
+
+      background:
+        rgba(255, 255, 255, 0.70);
+
+      transition:
+        transform 0.22s ease,
+        border-color 0.22s ease,
+        box-shadow 0.22s ease;
+    }
+
+    .route-node:hover {
+      transform:
+        translateY(-4px);
+
+      border-color:
+        var(--line-warm);
+
+      box-shadow:
+        0 20px 44px rgba(59, 42, 30, 0.08);
+    }
+
+    .route-node.is-core {
+      background:
+        linear-gradient(
+          155deg,
+          #2d2825,
+          #201c1a
+        );
+
+      color: #fff;
+
+      border-color: transparent;
+
+      box-shadow:
+        0 24px 54px rgba(39, 35, 33, 0.18);
+    }
+
+    .route-label {
+      display: flex;
+
+      justify-content: space-between;
+
+      gap: 14px;
+
+      align-items: center;
+
+      font-size: 10px;
+
+      letter-spacing: 0.18em;
+
+      text-transform: uppercase;
+
+      color: var(--muted-2);
+
+      font-weight: 700;
+    }
+
+    .route-node.is-core .route-label {
+      color:
+        rgba(255, 255, 255, 0.52);
+    }
+
+    .route-node h3 {
+      margin:
+        38px 0 0;
+
+      font-size:
+        clamp(
+          27px,
+          2.6vw,
+          38px
+        );
+
+      line-height: 1;
+
+      letter-spacing: -0.045em;
+
+      font-weight: 520;
+    }
+
+    .route-node p {
+      margin:
+        14px 0 0;
+
+      color: var(--muted);
+
+      line-height: 1.55;
+
+      font-size: 13px;
+
+      max-width: 27ch;
+    }
+
+    .route-node.is-core p {
+      color:
+        rgba(255, 255, 255, 0.67);
+    }
+
+    .route-arrow {
+      display: flex;
+
+      align-items: center;
+
+      gap: 8px;
+
+      color: var(--accent);
+    }
+
+    .route-arrow::before {
+      content: "";
+
+      flex: 1;
+
+      height: 1px;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(161, 105, 61, 0.18),
+          rgba(161, 105, 61, 0.72)
+        );
+    }
+
+    .route-arrow::after {
+      content: "→";
+
+      font-size: 22px;
+
+      transform:
+        translateY(-1px);
+    }
+
+    .concept-note {
+      display: grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap: 18px;
+
+      margin-top: 18px;
+    }
+
+    .concept-note article {
+      padding:
+        24px 26px;
+
+      border-radius: 24px;
+
+      border:
+        1px solid var(--line);
+
+      background:
+        rgba(255, 255, 255, 0.48);
+    }
+
+    .concept-note strong {
+      display: block;
+
+      margin-bottom: 7px;
+
+      font-size: 16px;
+
+      letter-spacing: -0.02em;
+    }
+
+    .concept-note p {
+      margin: 0;
+
+      color: var(--muted);
+
+      line-height: 1.6;
+
+      font-size: 14px;
+    }
+
+    /* ========================================
+       IMAGE
+    ======================================== */
+
+    .visual-section {
+      padding:
+        0 0 clamp(
+          96px,
+          10vw,
+          150px
+        );
+    }
+
+    .visual-frame {
+      position: relative;
+
+      height:
+        clamp(
+          420px,
+          52vw,
+          700px
+        );
+
+      border-radius: 42px;
+
+      overflow: hidden;
+
+      border:
+        1px solid rgba(39, 35, 33, 0.08);
+
+      background: #efe6df;
+
+      box-shadow: var(--shadow-lg);
+    }
+
+    .visual-frame picture,
+    .visual-frame img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .visual-frame img {
+      object-fit: cover;
+
+      object-position:
+        77% center;
+
+      transform:
+        scale(1.02);
+    }
+
+    .visual-frame::after {
+      content: "";
+
+      position: absolute;
+
+      inset: 0;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(247, 242, 237, 0.36) 0%,
+          rgba(247, 242, 237, 0.04) 34%,
+          rgba(247, 242, 237, 0) 100%
+        ),
+        linear-gradient(
+          0deg,
+          rgba(39, 35, 33, 0.10),
+          transparent 35%
+        );
+
+      pointer-events: none;
+    }
+
+    .visual-caption {
+      position: absolute;
+
+      z-index: 2;
+
+      left:
+        clamp(
+          22px,
+          4vw,
+          48px
+        );
+
+      bottom:
+        clamp(
+          22px,
+          4vw,
+          48px
+        );
+
+      max-width: 430px;
+
+      padding:
+        20px 22px;
+
+      border-radius: 24px;
+
+      border:
+        1px solid rgba(255, 255, 255, 0.34);
+
+      background:
+        rgba(255, 255, 255, 0.76);
+
+      backdrop-filter: blur(18px);
+
+      -webkit-backdrop-filter: blur(18px);
+
+      box-shadow:
+        0 18px 40px rgba(39, 35, 33, 0.10);
+    }
+
+    .visual-caption small {
+      display: block;
+
+      margin-bottom: 8px;
+
+      color: var(--accent);
+
+      font-size: 10px;
+
+      font-weight: 750;
+
+      letter-spacing: 0.18em;
+
+      text-transform: uppercase;
+    }
+
+    .visual-caption strong {
+      display: block;
+
+      font-size:
+        clamp(
+          22px,
+          2.2vw,
+          32px
+        );
+
+      line-height: 1.08;
+
+      letter-spacing: -0.035em;
+
+      font-weight: 580;
+    }
+
+    /* ========================================
+       SEARCH ORDER
+    ======================================== */
+
+    .search-section {
+      padding:
+        clamp(
+          96px,
+          10vw,
+          150px
+        ) 0;
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(242, 232, 224, 0.34),
+          rgba(247, 242, 237, 0)
+        );
+    }
+
+    .search-header {
+      display: grid;
+
+      grid-template-columns:
+        1.02fr 0.98fr;
+
+      gap:
+        clamp(
+          34px,
+          7vw,
+          92px
+        );
+
+      align-items: end;
+    }
+
+    .search-copy {
+      color: var(--muted);
+
+      font-size: 15px;
+
+      line-height: 1.65;
+
+      max-width: 580px;
+
+      justify-self: end;
+    }
+
+    .search-copy strong {
+      color: var(--ink);
+    }
+
+    .steps {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 16px;
+
+      margin-top: 54px;
+    }
+
+    .step-card {
+      min-height: 290px;
+
+      padding: 28px;
+
+      border-radius: 28px;
+
+      border:
+        1px solid var(--line);
+
+      background:
+        rgba(255, 255, 255, 0.66);
+
+      box-shadow:
+        0 14px 34px rgba(59, 42, 30, 0.05);
+
+      display: flex;
+
+      flex-direction: column;
+
+      transition:
+        transform 0.22s ease,
+        border-color 0.22s ease,
+        box-shadow 0.22s ease;
+    }
+
+    .step-card:hover {
+      transform:
+        translateY(-4px);
+
+      border-color:
+        var(--line-warm);
+
+      box-shadow: var(--shadow);
+    }
+
+    .step-num {
+      width: 38px;
+      height: 38px;
+
+      display: grid;
+
+      place-items: center;
+
+      border-radius: 50%;
+
+      border:
+        1px solid var(--line-warm);
+
+      color: var(--accent);
+
+      font-size: 12px;
+
+      font-weight: 740;
+
+      background:
+        rgba(255, 255, 255, 0.70);
+    }
+
+    .step-card h3 {
+      margin:
+        auto 0 0;
+
+      font-size: 22px;
+
+      line-height: 1.08;
+
+      letter-spacing: -0.035em;
+
+      font-weight: 560;
+    }
+
+    .step-card p {
+      margin:
+        12px 0 0;
+
+      color: var(--muted);
+
+      font-size: 13.5px;
+
+      line-height: 1.6;
+    }
+
+    /* ========================================
+       SEARCH FORM
+    ======================================== */
+
+    .search-form-shell {
+      margin-top: 22px;
+
+      display: grid;
+
+      grid-template-columns:
+        0.72fr 1.28fr;
+
+      gap:
+        clamp(
+          28px,
+          5vw,
+          60px
+        );
+
+      padding:
+        clamp(
+          28px,
+          4vw,
+          48px
+        );
+
+      border-radius: 32px;
+
+      border:
+        1px solid rgba(39, 35, 33, 0.08);
+
+      background:
+        rgba(255, 255, 255, 0.72);
+
+      box-shadow: var(--shadow);
+    }
+
+    .search-form-intro h3 {
+      margin: 0;
+
+      max-width: 12ch;
+
+      font-size:
+        clamp(
+          30px,
+          3.3vw,
+          46px
+        );
+
+      line-height: 1.02;
+
+      letter-spacing: -0.045em;
+
+      font-weight: 500;
+    }
+
+    .search-form-intro > p:not(.section-kicker) {
+      margin:
+        18px 0 0;
+
+      max-width: 42ch;
+
+      color: var(--muted);
+
+      font-size: 14px;
+
+      line-height: 1.62;
+    }
+
+    .form-mail-note {
+      margin-top: 24px;
+
+      padding-top: 18px;
+
+      border-top:
+        1px solid var(--line-warm);
+
+      color: var(--muted);
+
+      font-size: 12px;
+
+      line-height: 1.5;
+    }
+
+    .form-mail-note strong {
+      color: var(--ink);
+    }
+
+    .search-form {
+      display: grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap: 14px;
+    }
+
+    .field {
+      display: grid;
+
+      gap: 7px;
+    }
+
+    .field.full {
+      grid-column:
+        1 / -1;
+    }
+
+    .field label {
+      font-size: 11px;
+
+      font-weight: 700;
+
+      color: #625a54;
+
+      letter-spacing: 0.01em;
+    }
+
+    .field input,
+    .field textarea,
+    .field select {
+      width: 100%;
+
+      border:
+        1px solid rgba(39, 35, 33, 0.11);
+
+      border-radius: 14px;
+
+      background:
+        rgba(255, 255, 255, 0.88);
+
+      color: var(--ink);
+
+      padding:
+        13px 14px;
+
+      font-size: 13px;
+
+      line-height: 1.4;
+
+      outline: none;
+
+      transition:
+        border-color 0.18s ease,
+        box-shadow 0.18s ease,
+        background 0.18s ease;
+    }
+
+    .field textarea {
+      min-height: 112px;
+
+      resize: vertical;
+    }
+
+    .field input::placeholder,
+    .field textarea::placeholder {
+      color: #a39a93;
+    }
+
+    .field input:focus,
+    .field textarea:focus,
+    .field select:focus {
+      border-color:
+        rgba(161, 105, 61, 0.52);
+
+      box-shadow:
+        0 0 0 4px rgba(161, 105, 61, 0.07);
+
+      background: #fff;
+    }
+
+    .privacy-row {
+      grid-column:
+        1 / -1;
+
+      display: flex;
+
+      align-items: flex-start;
+
+      gap: 10px;
+
+      margin-top: 2px;
+
+      color: var(--muted);
+
+      font-size: 11px;
+
+      line-height: 1.45;
+    }
+
+    .privacy-row input {
+      margin-top: 2px;
+    }
+
+    .privacy-row a {
+      text-decoration: underline;
+
+      text-underline-offset: 2px;
+    }
+
+    .contact-submit {
+      grid-column:
+        1 / -1;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 16px;
+
+      margin-top: 4px;
+    }
+
+    .contact-submit small {
+      color: var(--muted-2);
+
+      font-size: 11px;
+    }
+
+    /* ========================================
+       FOCUS
+    ======================================== */
+
+    .focus-strip {
+      padding: 26px 0;
+    }
+
+    .focus-inner {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 24px;
+
+      padding: 22px 0;
+
+      border-top:
+        1px solid var(--line-warm);
+
+      border-bottom:
+        1px solid var(--line);
+    }
+
+    .focus-copy {
+      max-width: 640px;
+    }
+
+    .focus-copy strong {
+      display: block;
+
+      font-size: 16px;
+
+      letter-spacing: -0.02em;
+
+      margin-bottom: 5px;
+    }
+
+    .focus-copy span {
+      color: var(--muted);
+
+      font-size: 14px;
+
+      line-height: 1.55;
+    }
+
+    .focus-tags {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      justify-content: flex-end;
+
+      gap: 8px;
+    }
+
+    .focus-tags span {
+      padding:
+        9px 12px;
+
+      border-radius: 999px;
+
+      border:
+        1px solid var(--line);
+
+      background:
+        rgba(255, 255, 255, 0.54);
+
+      font-size: 12px;
+
+      color: #514a45;
+    }
+
+    /* ========================================
+       BLOG
+    ======================================== */
+
+    .blog-section {
+      padding:
+        clamp(
+          86px,
+          9vw,
+          130px
+        ) 0;
+    }
+
+    .blog-header {
+      display: grid;
+
+      grid-template-columns:
+        1fr 0.78fr;
+
+      gap: 48px;
+
+      align-items: end;
+    }
+
+    .blog-header > p {
+      margin: 0;
+
+      max-width: 48ch;
+
+      justify-self: end;
+
+      color: var(--muted);
+
+      font-size: 14px;
+
+      line-height: 1.62;
+    }
+
+    .blog-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+      gap: 14px;
+
+      margin-top: 42px;
+    }
+
+    .blog-card {
+      border:
+        1px solid var(--line);
+
+      border-radius: 26px;
+
+      background:
+        rgba(255, 255, 255, 0.62);
+
+      overflow: hidden;
+
+      transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+    }
+
+    .blog-card:hover {
+      border-color:
+        var(--line-warm);
+
+      box-shadow:
+        0 16px 36px rgba(59, 42, 30, 0.06);
+
+      transform:
+        translateY(-2px);
+    }
+
+    .blog-card summary {
+      list-style: none;
+
+      cursor: pointer;
+
+      padding: 24px;
+    }
+
+    .blog-card summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .blog-meta {
+      display: block;
+
+      margin-bottom: 28px;
+
+      color: var(--muted-2);
+
+      font-size: 10px;
+
+      font-weight: 700;
+
+      letter-spacing: 0.14em;
+
+      text-transform: uppercase;
+    }
+
+    .blog-card h3 {
+      margin: 0;
+
+      font-size: 22px;
+
+      line-height: 1.08;
+
+      letter-spacing: -0.035em;
+
+      font-weight: 560;
+    }
+
+    .blog-card summary p {
+      margin:
+        12px 0 22px;
+
+      color: var(--muted);
+
+      font-size: 13.5px;
+
+      line-height: 1.58;
+    }
+
+    .blog-link {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 12px;
+
+      padding-top: 16px;
+
+      border-top:
+        1px solid var(--line);
+
+      color: var(--accent);
+
+      font-size: 12px;
+
+      font-weight: 700;
+    }
+
+    .blog-link span {
+      font-size: 18px;
+
+      font-weight: 400;
+
+      transition:
+        transform 0.2s ease;
+    }
+
+    .blog-card[open] .blog-link span {
+      transform:
+        rotate(45deg);
+    }
+
+    .blog-body {
+      padding:
+        0 24px 24px;
+
+      border-top:
+        1px solid rgba(39, 35, 33, 0.06);
+    }
+
+    .blog-body p {
+      margin:
+        16px 0 0;
+
+      color: var(--muted);
+
+      font-size: 13px;
+
+      line-height: 1.65;
+    }
+
+    /* ========================================
+       FINAL CTA
+    ======================================== */
+
+    .final-cta {
+      padding:
+        clamp(
+          90px,
+          10vw,
+          150px
+        ) 0;
+    }
+
+    .final-card {
+      position: relative;
+
+      overflow: hidden;
+
+      min-height: 430px;
+
+      padding:
+        clamp(
+          38px,
+          7vw,
+          88px
+        );
+
+      border-radius: 40px;
+
+      background:
+        linear-gradient(
+          150deg,
+          #2a2522,
+          #1d1a18
+        );
+
+      color: #fff;
+
+      box-shadow: var(--shadow-lg);
+
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: space-between;
+    }
+
+    .final-card::before {
+      content: "B2S";
+
+      position: absolute;
+
+      right: -22px;
+      bottom: -32px;
+
+      font-size:
+        clamp(
+          150px,
+          23vw,
+          320px
+        );
+
+      line-height: 0.8;
+
+      letter-spacing: -0.09em;
+
+      font-weight: 800;
+
+      color:
+        rgba(255, 255, 255, 0.035);
+
+      pointer-events: none;
+    }
+
+    .final-card h2 {
+      position: relative;
+
+      z-index: 1;
+
+      margin: 0;
+
+      max-width: 9.7ch;
+
+      font-size:
+        clamp(
+          40px,
+          5.4vw,
+          72px
+        );
+
+      line-height: 0.95;
+
+      letter-spacing: -0.055em;
+
+      font-weight: 420;
+    }
+
+    .final-bottom {
+      position: relative;
+
+      z-index: 1;
+
+      display: flex;
+
+      align-items: end;
+
+      justify-content: space-between;
+
+      gap: 28px;
+
+      margin-top: 64px;
+    }
+
+    .final-bottom p {
+      margin: 0;
+
+      max-width: 560px;
+
+      color:
+        rgba(255, 255, 255, 0.66);
+
+      font-size: 13px;
+
+      line-height: 1.6;
+    }
+
+    .final-card .btn-primary {
+      background: #fff;
+
+      color: var(--ink);
+    }
+
+    /* ========================================
+       FOOTER
+    ======================================== */
+
+    footer {
+      padding:
+        0 0 34px;
+
+      color: #7b726c;
+
+      font-size: 12px;
+    }
+
+    .footer-inner {
+      border-top:
+        1px solid var(--line-warm);
+
+      padding-top: 22px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 22px;
+    }
+
+    .footer-links {
+      display: flex;
+
+      gap: 18px;
+
+      flex-wrap: wrap;
+    }
+
+    .footer-links a:hover {
+      color: var(--ink);
+    }
+
+    /* ========================================
+       REVEAL ANIMATIONS
+    ======================================== */
+
+    .reveal {
+      opacity: 0;
+
+      transform:
+        translateY(20px);
+
+      transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+    }
+
+    .reveal.in {
+      opacity: 1;
+
+      transform: none;
+    }
+
+    /* ========================================
+       TABLET
+    ======================================== */
+
+    @media (max-width: 980px) {
+      .nav-links,
+      .desktop-cta {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: inline-flex;
+      }
+
+      .nav.is-open .mobile-menu {
+        display: block;
+      }
+
+      .route-diagram {
+        grid-template-columns: 1fr;
+      }
+
+      .route-arrow {
+        width: 1px;
+        height: 58px;
+
+        margin: 0 auto;
+
+        flex-direction: column;
+      }
+
+      .route-arrow::before {
+        width: 1px;
+
+        flex: 1;
+
+        background:
+          linear-gradient(
+            180deg,
+            rgba(161, 105, 61, 0.18),
+            rgba(161, 105, 61, 0.72)
+          );
+      }
+
+      .route-arrow::after {
+        content: "↓";
+      }
+
+      .route-node {
+        min-height: 220px;
+      }
+
+      .search-header {
+        grid-template-columns: 1fr;
+
+        align-items: start;
+      }
+
+      .search-copy {
+        justify-self: start;
+      }
+
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .search-form-shell,
+      .blog-header {
+        grid-template-columns: 1fr;
+      }
+
+      .blog-header > p {
+        justify-self: start;
+      }
+
+      .blog-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ========================================
+       MOBILE
+    ======================================== */
+
+    @media (max-width: 760px) {
+      :root {
+        --nav-h: 68px;
+      }
+
+      .container {
+        width:
+          min(
+            calc(100% - 28px),
+            var(--max)
+          );
+      }
+
+      .nav-wrap {
+        top: 8px;
+
+        padding-inline: 8px;
+      }
+
+      .nav {
+        width:
+          min(
+            calc(100% - 16px),
+            calc(var(--max) + 16px)
+          );
+
+        border-radius: 20px;
+      }
+
+      .nav-inner {
+        min-height: var(--nav-h);
+
+        padding:
+          0 12px;
+      }
+
+      .brand-symbol {
+        width: 40px;
+        height: 40px;
+
+        font-size: 10px;
+      }
+
+      .brand-copy strong {
+        font-size: 13px;
+
+        letter-spacing: 0.14em;
+      }
+
+      .mobile-menu {
+        padding-inline: 12px;
+      }
+
+      .hero {
+        padding-top:
+          calc(var(--nav-h) + 30px);
+      }
+
+      .hero-inner {
+        min-height: auto;
+
+        padding:
+          22px 0 54px;
+      }
+
+      .hero::before {
+        top: 130px;
+        right: -28px;
+      }
+
+      .hero h1 {
+        font-size:
+          clamp(
+            44px,
+            12.5vw,
+            64px
+          );
+
+        line-height: 0.92;
+
+        max-width: 10.8ch;
+      }
+
+      .hero-sub {
+        margin-top: 24px;
+
+        font-size: 17px;
+      }
+
+      .hero-actions .btn {
+        width: 100%;
+      }
+
+      .hero-note {
+        align-items: flex-start;
+      }
+
+      .concept,
+      .search-section,
+      .final-cta {
+        padding:
+          82px 0;
+      }
+
+      .section-title {
+        font-size:
+          clamp(
+            40px,
+            12vw,
+            62px
+          );
+      }
+
+      .route-card {
+        margin-top: 40px;
+
+        padding: 18px;
+
+        border-radius: 30px;
+      }
+
+      .route-node {
+        padding: 24px;
+
+        border-radius: 24px;
+      }
+
+      .concept-note {
+        grid-template-columns: 1fr;
+      }
+
+      .visual-section {
+        padding-bottom: 82px;
+      }
+
+      .visual-frame {
+        height: 470px;
+
+        border-radius: 30px;
+      }
+
+      .visual-frame img {
+        object-position:
+          79% center;
+      }
+
+      .visual-caption {
+        left: 16px;
+        right: 16px;
+        bottom: 16px;
+
+        max-width: none;
+      }
+
+      .search-form-shell {
+        padding:
+          24px 18px;
+
+        border-radius: 26px;
+      }
+
+      .search-form {
+        grid-template-columns: 1fr;
+      }
+
+      .search-form .field.full,
+      .search-form .privacy-row,
+      .search-form .contact-submit {
+        grid-column: 1;
+      }
+
+      .search-form .contact-submit {
+        flex-direction: column;
+
+        align-items: stretch;
+      }
+
+      .search-form .contact-submit .btn {
+        width: 100%;
+      }
+
+      .focus-inner {
+        flex-direction: column;
+
+        align-items: flex-start;
+      }
+
+      .focus-tags {
+        justify-content: flex-start;
+      }
+
+      .final-card {
+        min-height: 520px;
+
+        padding:
+          34px 24px;
+
+        border-radius: 30px;
+      }
+
+      .final-bottom {
+        flex-direction: column;
+
+        align-items: flex-start;
+      }
+
+      .final-bottom .btn {
+        width: 100%;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .hero h1 {
+        font-size: 42px;
+      }
+
+      .visual-frame {
+        height: 420px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration:
+          0.01ms !important;
+
+        animation-iteration-count:
+          1 !important;
+
+        transition-duration:
+          0.01ms !important;
+
+        scroll-behavior:
+          auto !important;
+      }
+
+      .reveal {
+        opacity: 1;
+
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page-noise" aria-hidden="true"></div>
+
+  <a class="skip-link" href="#main">
+    Zum Inhalt
+  </a>
+
+  <!-- ========================================
+       NAVIGATION
+  ========================================= -->
+
+  <div class="nav-wrap">
+    <header class="nav" id="nav">
+      <div class="nav-inner">
+
+        <a
+          class="brand-logo"
+          href="#top"
+          aria-label="Brand 2 Spots Startseite"
+        >
+          <span
+            class="brand-symbol"
+            aria-hidden="true"
+          >
+            B2S
+          </span>
+
+          <span class="brand-copy">
+            <strong>
+              Brand 2 Spots
+            </strong>
+          </span>
+        </a>
+
+        <nav
+          class="nav-links"
+          aria-label="Hauptnavigation"
+        >
+          <a href="#konzept">
+            Konzept
+          </a>
+
+          <a href="#suchauftrag">
+            Suchauftrag
+          </a>
+
+          <a href="#blog">
+            Blog
+          </a>
+        </nav>
+
+        <a
+          class="btn btn-accent desktop-cta"
+          href="#suchauftrag-formular"
+        >
+          Kontakt aufnehmen
+        </a>
+
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-label="Menü öffnen"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <span aria-hidden="true"></span>
+        </button>
+
+      </div>
+
+      <nav
+        class="mobile-menu"
+        id="mobile-menu"
+        aria-label="Mobile Navigation"
+      >
+        <div class="mobile-menu-inner">
+
+          <a
+            class="mobile-link"
+            href="#konzept"
+          >
+            Konzept
+            <span>↘</span>
+          </a>
+
+          <a
+            class="mobile-link"
+            href="#suchauftrag"
+          >
+            Suchauftrag
+            <span>↘</span>
+          </a>
+
+          <a
+            class="mobile-link"
+            href="#blog"
+          >
+            Blog
+            <span>↘</span>
+          </a>
+
+          <a
+            class="btn btn-accent"
+            href="#suchauftrag-formular"
+          >
+            Kontakt aufnehmen
+          </a>
+
+        </div>
+      </nav>
+    </header>
+  </div>
+
+  <main id="main">
+
+    <!-- ========================================
+         HERO
+    ========================================= -->
+
+    <section
+      class="hero"
+      id="top"
+      aria-labelledby="hero-title"
+    >
+      <div class="container hero-inner">
+
+        <div class="hero-copy reveal in">
+
+          <div class="eyebrow">
+            B2S · Brand to Spots
+          </div>
+
+          <h1 id="hero-title">
+            Bringe deine
+            <span class="accent-word">
+              Brand
+            </span>
+            ins echte Leben.
+          </h1>
+
+          <p class="hero-sub">
+            <strong>B2S</strong>
+            verbindet Consumer Brands mit passenden
+            realen Spots – dort, wo ihre Zielgruppe
+            bereits Teil einer echten Community ist.
+          </p>
+
+          <div class="hero-actions">
+
+            <a
+              class="btn btn-accent btn-arrow"
+              href="#suchauftrag-formular"
+            >
+              Kontakt aufnehmen
+            </a>
+
+            <a
+              class="btn btn-ghost"
+              href="#konzept"
+            >
+              B2S entdecken
+            </a>
+
+          </div>
+
+          <div class="hero-note">
+            Zum Start übernehmen wir die Suche nach
+            passenden Spots persönlich für deine Brand.
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================
+         KONZEPT
+    ========================================= -->
+
+    <section
+      class="concept section-line"
+      id="konzept"
+    >
+      <div class="container">
+
+        <p class="section-kicker reveal">
+          Das Konzept
+        </p>
+
+        <h2 class="section-title reveal">
+          Brand → Spot → Community.
+        </h2>
+
+        <p class="section-lead reveal">
+          Online ist Zielgruppenzugang längst planbar.
+          Offline ist er noch fragmentiert. B2S überträgt
+          diese Logik in die reale Welt: Eine Brand wird
+          gezielt mit Orten verbunden, an denen ihre
+          Zielgruppe bereits regelmäßig ist.
+        </p>
+
+        <div class="route-card reveal">
+
+          <div
+            class="route-diagram"
+            aria-label="B2S Vertriebsweg"
+          >
+
+            <article class="route-node">
+
+              <div class="route-label">
+                <span>01</span>
+                <span>Brand</span>
+              </div>
+
+              <div>
+                <h3>
+                  Dein Produkt.
+                </h3>
+
+                <p>
+                  Eine Consumer Brand mit Produkt,
+                  Zielgruppe und dem Wunsch nach
+                  echter Offline-Präsenz.
+                </p>
+              </div>
+
+            </article>
+
+            <div
+              class="route-arrow"
+              aria-hidden="true"
+            ></div>
+
+            <article class="route-node is-core">
+
+              <div class="route-label">
+                <span>02</span>
+                <span>B2S</span>
+              </div>
+
+              <div>
+                <h3>
+                  Der neue Weg.
+                </h3>
+
+                <p>
+                  Brand to Spots: Wir matchen Produkt,
+                  Zielgruppe und realen Ort zu einem
+                  passenden Touchpoint.
+                </p>
+              </div>
+
+            </article>
+
+            <div
+              class="route-arrow"
+              aria-hidden="true"
+            ></div>
+
+            <article class="route-node">
+
+              <div class="route-label">
+                <span>03</span>
+                <span>Spot</span>
+              </div>
+
+              <div>
+                <h3>
+                  Echte Community.
+                </h3>
+
+                <p>
+                  Gyms, Studios und andere relevante Orte
+                  werden zu physischen Vertriebspunkten
+                  und Marken-Touchpoints.
+                </p>
+              </div>
+
+            </article>
+
+          </div>
+
+          <div class="concept-note">
+
+            <article>
+              <strong>
+                Nicht einfach Fläche mieten.
+              </strong>
+
+              <p>
+                Der Spot ist nicht das Produkt.
+                Entscheidend ist der Zugang zu einer
+                passenden realen Zielgruppe und Community.
+              </p>
+            </article>
+
+            <article>
+              <strong>
+                Offline wie einen Kanal denken.
+              </strong>
+
+              <p>
+                B2S macht reale Touchpoints auffindbarer,
+                strukturierter und perspektivisch
+                messbarer – statt jede Location einzeln
+                neu zu suchen.
+              </p>
+            </article>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================
+         VISUAL
+    ========================================= -->
+
+    <section class="visual-section">
+      <div class="container">
+
+        <div class="visual-frame reveal">
+
+          <picture>
+
+            <source
+              type="image/webp"
+              srcset="
+                assets/hero-640.webp 640w,
+                assets/hero-960.webp 960w,
+                assets/hero-1440.webp 1440w,
+                assets/hero-2048.webp 2048w
+              "
+              sizes="
+                (max-width: 760px) 100vw,
+                1240px
+              "
+            />
+
+            <img
+              src="assets/hero-original.png"
+              alt="Visualisierung verschiedener Markenprodukte, die mit passenden realen Spots verbunden werden."
+              loading="lazy"
+              decoding="async"
+            />
+
+          </picture>
+
+          <div class="visual-caption">
+
+            <small>
+              B2S in einem Bild
+            </small>
+
+            <strong>
+              Die richtige Brand am richtigen Spot.
+            </strong>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================
+         SUCHAUFTRAG
+    ========================================= -->
+
+    <section
+      class="search-section section-line"
+      id="suchauftrag"
+    >
+      <div class="container">
+
+        <div class="search-header">
+
+          <div>
+
+            <p class="section-kicker reveal">
+              Unser Angebot zum Start
+            </p>
+
+            <h2 class="section-title reveal">
+              Du suchst einen Spot.
+              Wir finden ihn.
+            </h2>
+
+          </div>
+
+          <div class="search-copy reveal">
+            <strong>
+              Noch kein komplizierter Marktplatz.
+            </strong>
+
+            Du sagst uns, welches Produkt du hast,
+            wen du erreichen willst und in welcher
+            Region. Wir übernehmen die Suche nach
+            passenden Spots und kommen mit einer
+            kuratierten Auswahl zurück.
+          </div>
+
+        </div>
+
+        <div class="steps">
+
+          <article class="step-card reveal">
+
+            <div class="step-num">
+              01
+            </div>
+
+            <div>
+              <h3>
+                Briefing senden
+              </h3>
+
+              <p>
+                Produkt, Zielgruppe, Region und grobe
+                Vorstellung reichen für den ersten Schritt.
+              </p>
+            </div>
+
+          </article>
+
+          <article class="step-card reveal">
+
+            <div class="step-num">
+              02
+            </div>
+
+            <div>
+              <h3>
+                Wir suchen
+              </h3>
+
+              <p>
+                Wir identifizieren passende reale Spots,
+                prüfen den Fit und sprechen geeignete
+                Locations an.
+              </p>
+            </div>
+
+          </article>
+
+          <article class="step-card reveal">
+
+            <div class="step-num">
+              03
+            </div>
+
+            <div>
+              <h3>
+                Du bekommst Matches
+              </h3>
+
+              <p>
+                Du erhältst eine kleine, relevante Auswahl
+                statt einer langen Liste beliebiger Flächen.
+              </p>
+            </div>
+
+          </article>
+
+        </div>
+
+        <!-- ========================================
+             SUCHAUFTRAG FORMULAR
+        ========================================= -->
+
+        <div
+          class="search-form-shell reveal"
+          id="suchauftrag-formular"
+        >
+
+          <div class="search-form-intro">
+
+            <p class="section-kicker">
+              Suchauftrag senden
+            </p>
+
+            <h3>
+              Erzähl uns von deiner Brand und dem Spot,
+              den du suchst.
+            </h3>
+
+            <p>
+              Je konkreter dein Briefing, desto gezielter
+              können wir suchen. Wir prüfen die Anfrage
+              persönlich und melden uns direkt bei dir.
+            </p>
+
+            <div class="form-mail-note">
+              Anfrage geht direkt an
+              <strong>
+                info@brand2spots.de
+              </strong>
+            </div>
+
+          </div>
+
+          <form
+            class="search-form"
+            action="https://formsubmit.co/info@brand2spots.de"
+            method="POST"
+          >
+
+            <input
+              type="hidden"
+              name="_subject"
+              value="Neuer B2S Suchauftrag über brand2spots.de"
+            />
+
+            <input
+              type="hidden"
+              name="_template"
+              value="table"
+            />
+
+            <input
+              type="hidden"
+              name="_captcha"
+              value="false"
+            />
+
+            <input
+              type="text"
+              name="_honey"
+              tabindex="-1"
+              autocomplete="off"
+              style="display:none"
+            />
+
+            <div class="field">
+
+              <label for="request-name">
+                Ansprechpartner *
+              </label>
+
+              <input
+                id="request-name"
+                name="Ansprechpartner"
+                type="text"
+                autocomplete="name"
+                required
+              />
+
+            </div>
+
+            <div class="field">
+
+              <label for="request-email">
+                E-Mail *
+              </label>
+
+              <input
+                id="request-email"
+                name="E-Mail"
+                type="email"
+                autocomplete="email"
+                required
+              />
+
+            </div>
+
+            <div class="field">
+
+              <label for="request-brand">
+                Brand / Unternehmen *
+              </label>
+
+              <input
+                id="request-brand"
+                name="Brand / Unternehmen"
+                type="text"
+                autocomplete="organization"
+                required
+              />
+
+            </div>
+
+            <div class="field">
+
+              <label for="request-web">
+                Website / Shop *
+              </label>
+
+              <input
+                id="request-web"
+                name="Website / Shop"
+                type="url"
+                placeholder="https://"
+                required
+              />
+
+            </div>
+
+            <div class="field full">
+
+              <label for="request-about">
+                Über deine Brand *
+              </label>
+
+              <textarea
+                id="request-about"
+                name="Über die Brand"
+                placeholder="Was macht ihr, welches Produkt bietet ihr an und was macht eure Brand besonders?"
+                required
+              ></textarea>
+
+            </div>
+
+            <div class="field">
+
+              <label for="request-product">
+                Produkt / Kategorie *
+              </label>
+
+              <input
+                id="request-product"
+                name="Produkt / Kategorie"
+                type="text"
+                placeholder="z. B. Drink, Skincare, Nutrition"
+                required
+              />
+
+            </div>
+
+            <div class="field">
+
+              <label for="request-audience">
+                Zielgruppe *
+              </label>
+
+              <input
+                id="request-audience"
+                name="Zielgruppe"
+                type="text"
+                placeholder="Wen möchtest du erreichen?"
+                required
+              />
+
+            </div>
+
+            <div class="field">
+
+              <label for="request-region">
+                Region / Stadt *
+              </label>
+
+              <input
+                id="request-region"
+                name="Region / Stadt"
+                type="text"
+                placeholder="z. B. Berlin"
+                required
+              />
+
+            </div>
+
+            <div class="field">
+
+              <label for="request-timing">
+                Gewünschter Zeitraum *
+              </label>
+
+              <input
+                id="request-timing"
+                name="Gewünschter Zeitraum"
+                type="text"
+                placeholder="z. B. November, 4 Wochen"
+                required
+              />
+
+            </div>
+
+            <div class="field full">
+
+              <label for="request-looking">
+                Was genau suchst du? *
+              </label>
+
+              <textarea
+                id="request-looking"
+                name="Gesuchter Spot / Aktivierung"
+                placeholder="Welche Art von Spot, Community oder Aktivierung suchst du? Was soll vor Ort passieren?"
+                required
+              ></textarea>
+
+            </div>
+
+            <div class="field full">
+
+              <label for="request-goal">
+                Ziel des Suchauftrags *
+              </label>
+
+              <input
+                id="request-goal"
+                name="Ziel des Suchauftrags"
+                type="text"
+                placeholder="z. B. Sampling, Testing, Sichtbarkeit, Produktplatzierung"
+                required
+              />
+
+            </div>
+
+            <label class="privacy-row">
+
+              <input
+                type="checkbox"
+                name="Datenschutz bestätigt"
+                required
+              />
+
+              <span>
+                Ich habe die
+                <a href="#">
+                  Datenschutzhinweise
+                </a>
+                zur Kenntnis genommen.
+              </span>
+
+            </label>
+
+            <div class="contact-submit">
+
+              <small>
+                Alle Felder sind Pflichtfelder.
+              </small>
+
+              <button
+                class="btn btn-accent btn-arrow"
+                type="submit"
+              >
+                Nachricht absenden
+              </button>
+
+            </div>
+
+          </form>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================
+         STARTFOKUS
+    ========================================= -->
+
+    <section
+      class="focus-strip"
+      aria-label="Startfokus"
+    >
+      <div class="container focus-inner">
+
+        <div class="focus-copy reveal">
+
+          <strong>
+            Zum Start: Fitness & Wellness.
+          </strong>
+
+          <span>
+            Wir fokussieren uns bewusst auf Orte mit
+            klaren, wiederkehrenden Communities und
+            natürlichem Produktkontext.
+          </span>
+
+        </div>
+
+        <div
+          class="focus-tags reveal"
+          aria-label="Spot Kategorien"
+        >
+          <span>Gyms</span>
+          <span>Boutique Fitness</span>
+          <span>Pilates</span>
+          <span>Yoga</span>
+          <span>Padel</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================
+         BLOG
+    ========================================= -->
+
+    <section
+      class="blog-section section-line"
+      id="blog"
+    >
+      <div class="container">
+
+        <div class="blog-header reveal">
+
+          <div>
+
+            <p class="section-kicker">
+              B2S Journal
+            </p>
+
+            <h2 class="section-title">
+              Gedanken zu B2S.
+            </h2>
+
+          </div>
+
+          <p>
+            Kurze Artikel darüber, warum reale
+            Touchpoints für Consumer Brands wieder
+            wichtiger werden – und wie B2S diesen
+            Zugang neu strukturiert.
+          </p>
+
+        </div>
+
+        <div class="blog-grid">
+
+          <details class="blog-card reveal">
+
+            <summary>
+
+              <span class="blog-meta">
+                Grundlagen · 4 Min.
+              </span>
+
+              <h3>
+                Was ist B2S?
+              </h3>
+
+              <p>
+                Warum wir Brand to Spots als eigenen Weg
+                zwischen digitalem Marketing, Sampling
+                und realen Communities denken.
+              </p>
+
+              <span class="blog-link">
+                Artikel lesen
+                <span>+</span>
+              </span>
+
+            </summary>
+
+            <div class="blog-body">
+
+              <p>
+                B2S steht für Brand to Spots.
+                Die Grundidee: Eine Consumer Brand
+                sucht nicht einfach irgendeine Fläche,
+                sondern einen realen Ort, an dem ihre
+                Zielgruppe bereits regelmäßig
+                zusammenkommt.
+              </p>
+
+              <p>
+                Dadurch wird der Spot zum physischen
+                Touchpoint: Produktplatzierung, Sampling
+                oder Testing passieren in einem Kontext,
+                der zur Brand und zur Community passt.
+              </p>
+
+            </div>
+
+          </details>
+
+          <details class="blog-card reveal">
+
+            <summary>
+
+              <span class="blog-meta">
+                Strategie · 5 Min.
+              </span>
+
+              <h3>
+                Warum der Spot mehr als Fläche ist.
+              </h3>
+
+              <p>
+                Die entscheidende Ressource eines guten
+                Spots ist nicht der Quadratmeter, sondern
+                die Community, die dort bereits existiert.
+              </p>
+
+              <span class="blog-link">
+                Artikel lesen
+                <span>+</span>
+              </span>
+
+            </summary>
+
+            <div class="blog-body">
+
+              <p>
+                Ein Gym, Pilates-Studio oder Padel-Club
+                ist für eine Brand dann interessant, wenn
+                Produkt, Umfeld und Zielgruppe
+                zusammenpassen. B2S bewertet deshalb
+                nicht nur freie Fläche, sondern den
+                gesamten Touchpoint.
+              </p>
+
+              <p>
+                Das Ziel ist ein sinnvoller Markenmoment
+                im echten Leben – nicht bloß ein weiteres
+                Werbeformat.
+              </p>
+
+            </div>
+
+          </details>
+
+          <details class="blog-card reveal">
+
+            <summary>
+
+              <span class="blog-meta">
+                Praxis · 3 Min.
+              </span>
+
+              <h3>
+                Vom Suchauftrag zum passenden Spot.
+              </h3>
+
+              <p>
+                Wie wir zum Start Brands persönlich dabei
+                helfen, geeignete reale Touchpoints zu
+                finden.
+              </p>
+
+              <span class="blog-link">
+                Artikel lesen
+                <span>+</span>
+              </span>
+
+            </summary>
+
+            <div class="blog-body">
+
+              <p>
+                Die Brand beschreibt Produkt, Zielgruppe,
+                Region und gewünschte Aktivierung.
+                Anschließend suchen wir gezielt nach
+                Spots, prüfen den Fit und sprechen
+                passende Locations an.
+              </p>
+
+              <p>
+                So entsteht zunächst bewusst kein
+                unübersichtlicher Marktplatz, sondern
+                eine kleine kuratierte Auswahl relevanter
+                Matches.
+              </p>
+
+            </div>
+
+          </details>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================
+         FINAL CTA
+    ========================================= -->
+
+    <section
+      class="final-cta section-line"
+      id="kontakt"
+    >
+      <div class="container">
+
+        <div class="final-card reveal">
+
+          <h2>
+            Bring deine Brand ins echte Leben.
+          </h2>
+
+          <div class="final-bottom">
+
+            <p>
+              Du willst wissen, welche realen Spots zu
+              deiner Brand passen? Schick uns dein
+              Briefing. Wir übernehmen die Suche.
+            </p>
+
+            <a
+              class="btn btn-primary btn-arrow"
+              href="#suchauftrag-formular"
+            >
+              Kontakt aufnehmen
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================
+       FOOTER
+  ========================================= -->
+
+  <footer>
+    <div class="container footer-inner">
+
+      <div>
+        ©
+        <span id="year"></span>
+        B2S · Brand to Spots
+      </div>
+
+      <div class="footer-links">
+
+        <a href="#">
+          Impressum
+        </a>
+
+        <a href="#">
+          Datenschutz
+        </a>
+
+        <a href="mailto:info@brand2spots.de">
+          info@brand2spots.de
+        </a>
+
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ========================================
+       JAVASCRIPT
+  ========================================= -->
+
+  <script>
+    const nav =
+      document.getElementById("nav");
+
+    const toggle =
+      document.querySelector(".menu-toggle");
+
+    const mobileMenu =
+      document.getElementById("mobile-menu");
+
+    const setNavState = () => {
+      nav.classList.toggle(
+        "is-scrolled",
+        window.scrollY > 8
+      );
+    };
+
+    setNavState();
+
+    window.addEventListener(
+      "scroll",
+      setNavState,
+      {
+        passive: true
+      }
+    );
+
+    const closeMenu = () => {
+      nav.classList.remove("is-open");
+
+      document.body.classList.remove(
+        "menu-open"
+      );
+
+      toggle.setAttribute(
+        "aria-expanded",
+        "false"
+      );
+
+      toggle.setAttribute(
+        "aria-label",
+        "Menü öffnen"
+      );
+    };
+
+    toggle.addEventListener(
+      "click",
+      () => {
+        const open =
+          nav.classList.toggle("is-open");
+
+        document.body.classList.toggle(
+          "menu-open",
+          open
+        );
+
+        toggle.setAttribute(
+          "aria-expanded",
+          String(open)
+        );
+
+        toggle.setAttribute(
+          "aria-label",
+          open
+            ? "Menü schließen"
+            : "Menü öffnen"
+        );
+      }
+    );
+
+    document
+      .querySelectorAll(".mobile-link")
+      .forEach((link) => {
+        link.addEventListener(
+          "click",
+          closeMenu
+        );
+      });
+
+    window.addEventListener(
+      "keydown",
+      (event) => {
+        if (event.key === "Escape") {
+          closeMenu();
+        }
+      }
+    );
+
+    const reduceMotion =
+      window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+
+    if (
+      !reduceMotion &&
+      "IntersectionObserver" in window
+    ) {
+      const observer =
+        new IntersectionObserver(
+          (entries) => {
+            entries.forEach(
+              (entry) => {
+                if (
+                  entry.isIntersecting
+                ) {
+                  entry.target.classList.add(
+                    "in"
+                  );
+
+                  observer.unobserve(
+                    entry.target
+                  );
+                }
+              }
+            );
+          },
+          {
+            threshold: 0.12,
+            rootMargin:
+              "0px 0px -4% 0px"
+          }
+        );
+
+      document
+        .querySelectorAll(
+          ".reveal:not(.in)"
+        )
+        .forEach((el) => {
+          observer.observe(el);
+        });
+
+    } else {
+
+      document
+        .querySelectorAll(".reveal")
+        .forEach((el) => {
+          el.classList.add("in");
+        });
+
+    }
+
+    document.getElementById(
+      "year"
+    ).textContent =
+      new Date().getFullYear();
+  </script>
+
+</body>
+</html>
