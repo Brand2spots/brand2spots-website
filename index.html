@@ -1,4827 +1,727 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#f7f2ed" />
-  <meta name="color-scheme" content="light" />
-
-  <title>Brand 2 Spots — B2S</title>
-
-  <meta
-    name="description"
-    content="Brand 2 Spots verbindet Brands mit passenden realen Spots und Communities – als neuer, direkter Weg von der Brand in die reale Welt."
-  />
-
-  <meta property="og:title" content="Brand 2 Spots" />
-
-  <meta
-    property="og:description"
-    content="Bringe deine Brand ins echte Leben. B2S verbindet Brands mit passenden realen Spots und Communities."
-  />
-
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="assets/hero-1440.webp" />
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b211d">
+  <meta name="description" content="UPGRADEWISE unterstützt Unternehmen mit KI-Potenzialanalysen, KI-Einführungen und ganzheitlicher Unternehmensverbesserung – von internen Abläufen über Kosten und Produkte bis zu Marketing und Außenwirkung.">
+  <title>UPGRADEWISE — KI einführen. Besser arbeiten.</title>
   <style>
     :root {
-      --bg: #f7f2ed;
-      --bg-2: #fbf8f5;
-
-      --surface: rgba(255, 255, 255, 0.74);
-      --surface-solid: #fffdfa;
-
-      --ink: #272321;
-      --muted: #706862;
-      --muted-2: #968c84;
-
-      --line: rgba(39, 35, 33, 0.10);
-      --line-warm: rgba(161, 105, 61, 0.22);
-
-      --accent: #a1683d;
-      --accent-soft: #ead7c5;
-      --accent-pale: #f4e9df;
-
-      --dark: #272321;
-
-      --shadow:
-        0 20px 60px rgba(59, 42, 30, 0.08);
-
-      --shadow-lg:
-        0 38px 100px rgba(59, 42, 30, 0.12);
-
-      --radius: 28px;
-      --radius-lg: 42px;
-
-      --max: 1240px;
-      --nav-h: 76px;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-
-      background:
-        radial-gradient(
-          circle at 10% 8%,
-          rgba(234, 215, 197, 0.42),
-          transparent 24%
-        ),
-        linear-gradient(
-          180deg,
-          #fbf8f5 0%,
-          var(--bg) 40%,
-          #f5eee8 100%
-        );
-
-      color: var(--ink);
-
-      font-family:
-        Inter,
-        ui-sans-serif,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Helvetica,
-        Arial,
-        sans-serif;
-
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-
-      overflow-x: hidden;
-    }
-
-    body.menu-open {
-      overflow: hidden;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button,
-    input,
-    textarea,
-    select {
-      font: inherit;
-    }
-
-    img {
-      display: block;
-      max-width: 100%;
-    }
-
-    ::selection {
-      background: var(--ink);
-      color: #fff;
-    }
-
-    .skip-link {
-      position: fixed;
-
-      z-index: 999;
-
-      top: 12px;
-      left: 12px;
-
-      padding: 12px 16px;
-
-      border-radius: 999px;
-
-      background: #111;
-      color: #fff;
-
-      transform: translateY(-170%);
-
-      transition:
-        transform 0.2s ease;
-    }
-
-    .skip-link:focus {
-      transform: translateY(0);
-    }
-
-    .container {
-      width:
-        min(
-          calc(100% - 40px),
-          var(--max)
-        );
-
-      margin-inline: auto;
-    }
-
-    .section-line {
-      position: relative;
-    }
-
-    .section-line::before {
-      content: "";
-
-      position: absolute;
-
-      top: 0;
-      left: 50%;
-
-      width:
-        min(
-          calc(100% - 40px),
-          var(--max)
-        );
-
-      height: 1px;
-
-      transform:
-        translateX(-50%);
-
-      background:
-        linear-gradient(
-          90deg,
-          transparent,
-          var(--line-warm) 18%,
-          var(--line) 72%,
-          transparent
-        );
-    }
-
-    .page-noise {
-      position: fixed;
-
-      inset: 0;
-
-      z-index: -1;
-
-      pointer-events: none;
-
-      opacity: 0.10;
-
-      background-image:
-        linear-gradient(
-          rgba(255, 255, 255, 0.16) 1px,
-          transparent 1px
-        ),
-        linear-gradient(
-          90deg,
-          rgba(255, 255, 255, 0.16) 1px,
-          transparent 1px
-        );
-
-      background-size:
-        28px 28px;
-
-      mask-image:
-        linear-gradient(
-          180deg,
-          rgba(0, 0, 0, 0.65),
-          transparent 70%
-        );
-
-      -webkit-mask-image:
-        linear-gradient(
-          180deg,
-          rgba(0, 0, 0, 0.65),
-          transparent 70%
-        );
-    }
-
-    /* ========================================
-       NAVIGATION
-    ======================================== */
-
-    .nav-wrap {
-      position: fixed;
-
-      inset:
-        12px 0 auto;
-
-      z-index: 50;
-
-      padding-inline: 12px;
-    }
-
-    .nav {
-      width:
-        min(
-          calc(100% - 24px),
-          calc(var(--max) + 16px)
-        );
-
-      margin:
-        0 auto;
-
-      border:
-        1px solid rgba(39, 35, 33, 0.07);
-
-      border-radius:
-        20px;
-
-      background:
-        rgba(255, 255, 255, 0.84);
-
-      backdrop-filter:
-        blur(16px)
-        saturate(135%);
-
-      -webkit-backdrop-filter:
-        blur(16px)
-        saturate(135%);
-
-      box-shadow:
-        0 8px 24px
-        rgba(59, 42, 30, 0.045);
-
-      transition:
-        background 0.2s ease,
-        box-shadow 0.2s ease,
-        border-color 0.2s ease;
-    }
-
-    .nav.is-scrolled,
-    .nav.is-open {
-      background:
-        rgba(255, 255, 255, 0.95);
-
-      border-color:
-        rgba(39, 35, 33, 0.09);
-
-      box-shadow:
-        0 12px 30px
-        rgba(59, 42, 30, 0.07);
-    }
-
-    .nav-inner {
-      min-height:
-        var(--nav-h);
-
-      display: flex;
-
-      align-items: center;
-
-      gap: 28px;
-
-      padding:
-        0 18px;
-    }
-
-    .brand-logo {
-      display:
-        inline-flex;
-
-      align-items: center;
-
-      gap: 0;
-
-      min-width: 0;
-
-      padding:
-        8px 4px;
-    }
-
-    .brand-wordmark {
-      display:
-        inline-flex;
-
-      align-items:
-        baseline;
-
-      gap: 0.22em;
-
-      font-size:
-        22px;
-
-      line-height:
-        1;
-
-      letter-spacing:
-        0;
-
-      white-space:
-        nowrap;
-
-      color:
-        var(--ink);
-    }
-
-    .brand-wordmark .word {
-      font-family:
-        "Iowan Old Style",
-        "Palatino Linotype",
-        "Book Antiqua",
-        Palatino,
-        Georgia,
-        serif;
-
-      font-style:
-        normal;
-
-      font-weight:
-        600;
-
-      letter-spacing:
-        -0.018em;
-    }
-
-    .brand-wordmark em {
-      font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-      font-size:
-        1.06em;
-
-      font-style:
-        italic;
-
-      font-weight:
-        400;
-
-      color:
-        var(--accent);
-    }
-
-    .nav-links {
-      display: flex;
-
-      align-items: center;
-
-      gap: 24px;
-
-      margin-left: auto;
-
-      color: #5d5550;
-
-      font-size: 13px;
-    }
-
-    .nav-links a {
-      position: relative;
-
-      padding:
-        10px 0;
-    }
-
-    .nav-links a::after {
-      content: "";
-
-      position: absolute;
-
-      left: 0;
-      bottom: 5px;
-
-      width: 100%;
-      height: 1px;
-
-      background:
-        var(--accent);
-
-      transform:
-        scaleX(0);
-
-      transform-origin:
-        left;
-
-      transition:
-        transform 0.2s ease;
-    }
-
-    .nav-links a:hover::after,
-    .nav-links a:focus-visible::after {
-      transform:
-        scaleX(1);
-    }
-
-    /* ========================================
-       BUTTONS
-    ======================================== */
-
-    .btn {
-      display:
-        inline-flex;
-
-      align-items:
-        center;
-
-      justify-content:
-        center;
-
-      gap: 10px;
-
-      min-height:
-        48px;
-
-      padding:
-        0 18px;
-
-      border-radius:
-        999px;
-
-      border:
-        1px solid transparent;
-
-      background:
-        transparent;
-
-      color:
-        inherit;
-
-      font-size:
-        14px;
-
-      font-weight:
-        650;
-
-      letter-spacing:
-        -0.01em;
-
-      cursor:
-        pointer;
-
-      transition:
-        transform 0.18s ease,
-        background 0.18s ease,
-        box-shadow 0.18s ease,
-        border-color 0.18s ease;
-    }
-
-    .btn:hover {
-      transform:
-        translateY(-1px);
-    }
-
-    .btn:focus-visible {
-      outline:
-        3px solid
-        rgba(161, 105, 61, 0.22);
-
-      outline-offset:
-        3px;
-    }
-
-    .btn-primary {
-      background:
-        var(--dark);
-
-      color:
-        #fff;
-
-      box-shadow:
-        0 12px 28px
-        rgba(39, 35, 33, 0.14);
-    }
-
-    .btn-primary:hover {
-      box-shadow:
-        0 16px 34px
-        rgba(39, 35, 33, 0.20);
-    }
-
-    .btn-accent {
-      background:
-        var(--accent);
-
-      color:
-        #fff;
-
-      border-color:
-        var(--accent);
-
-      box-shadow:
-        0 12px 28px
-        rgba(161, 105, 61, 0.20);
-    }
-
-    .btn-accent:hover {
-      background:
-        #8f5c35;
-
-      border-color:
-        #8f5c35;
-
-      box-shadow:
-        0 16px 34px
-        rgba(161, 105, 61, 0.28);
-    }
-
-    .btn-ghost {
-      border-color:
-        var(--line);
-
-      background:
-        rgba(255, 255, 255, 0.52);
-    }
-
-    .btn-arrow::after {
-      content:
-        "↗";
-
-      font-size:
-        1.05em;
-    }
-
-    /* ========================================
-       MOBILE MENU
-    ======================================== */
-
-    .menu-toggle {
-      display: none;
-
-      width: 46px;
-      height: 46px;
-
-      border-radius:
-        50%;
-
-      border:
-        1px solid
-        var(--line);
-
-      background:
-        rgba(255, 255, 255, 0.82);
-
-      align-items:
-        center;
-
-      justify-content:
-        center;
-
-      cursor:
-        pointer;
-
-      margin-left:
-        auto;
-    }
-
-    .menu-toggle span,
-    .menu-toggle span::before,
-    .menu-toggle span::after {
-      content: "";
-
-      display: block;
-
-      width: 18px;
-      height: 1.5px;
-
-      background:
-        var(--ink);
-
-      transition:
-        transform 0.2s ease,
-        opacity 0.2s ease;
-    }
-
-    .menu-toggle span {
-      position:
-        relative;
-    }
-
-    .menu-toggle span::before {
-      position:
-        absolute;
-
-      top:
-        -6px;
-    }
-
-    .menu-toggle span::after {
-      position:
-        absolute;
-
-      top:
-        6px;
-    }
-
-    .nav.is-open .menu-toggle span {
-      background:
-        transparent;
-    }
-
-    .nav.is-open .menu-toggle span::before {
-      top:
-        0;
-
-      transform:
-        rotate(45deg);
-    }
-
-    .nav.is-open .menu-toggle span::after {
-      top:
-        0;
-
-      transform:
-        rotate(-45deg);
-    }
-
-    .mobile-menu {
-      display:
-        none;
-
-      padding:
-        0 18px 18px;
-    }
-
-    .mobile-menu-inner {
-      border-top:
-        1px solid
-        var(--line);
-
-      padding-top:
-        12px;
-    }
-
-    .mobile-menu a.mobile-link {
-      display: flex;
-
-      align-items:
-        center;
-
-      justify-content:
-        space-between;
-
-      padding:
-        16px 2px;
-
-      border-bottom:
-        1px solid
-        var(--line);
-
-      font-size:
-        22px;
-
-      letter-spacing:
-        -0.025em;
-    }
-
-    .mobile-menu .btn {
-      width:
-        100%;
-
-      margin-top:
-        14px;
-    }
-
-    /* ========================================
-       HERO
-    ======================================== */
-
-    .hero {
-      position:
-        relative;
-
-      overflow:
-        clip;
-
-      padding-top:
-        calc(var(--nav-h) + 28px);
-    }
-
-    .hero::before {
-      display:
-        none !important;
-
-      content:
-        none !important;
-    }
-
-    .hero-inner {
-      display:
-        grid;
-
-      grid-template-columns:
-        minmax(0, 1.04fr)
-        minmax(430px, 0.96fr);
-
-      gap:
-        clamp(
-          34px,
-          4vw,
-          58px
-        );
-
-      align-items:
-        start;
-
-      min-height:
-        min(
-          650px,
-          72svh
-        );
-
-      padding:
-        28px 0 58px;
-    }
-
-    .hero-copy {
-      max-width:
-        760px;
-
-      position:
-        relative;
-
-      z-index:
-        2;
-
-      padding-top:
-        10px;
-    }
-
-    .hero h1 {
-      margin:
-        0;
-
-      max-width:
-        10.6ch;
-
-      font-size:
-        clamp(
-          50px,
-          5.35vw,
-          78px
-        );
-
-      line-height:
-        0.90;
-
-      letter-spacing:
-        -0.058em;
-
-      font-weight:
-        430;
-    }
-
-    .hero h1 .accent-word {
-      color:
-        var(--accent);
-
-      font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-      font-style:
-        italic;
-
-      font-weight:
-        400;
-    }
-
-    .hero-sub {
-      max-width:
-        560px;
-
-      margin:
-        20px 0 0;
-
-      color:
-        var(--muted);
-
-      font-size:
-        clamp(
-          16px,
-          1.1vw,
-          18px
-        );
-
-      line-height:
-        1.55;
-
-      letter-spacing:
-        -0.018em;
-    }
-
-    .hero-sub strong {
-      color:
-        var(--ink);
-
-      font-weight:
-        650;
-    }
-
-    .hero-actions {
-      display:
-        flex;
-
-      flex-wrap:
-        wrap;
-
-      gap:
-        12px;
-
-      margin-top:
-        22px;
-    }
-
-    /* ========================================
-       HERO VISUAL
-    ======================================== */
-
-    .hero-visual {
-      position:
-        relative;
-
-      width:
-        min(
-          100%,
-          540px
-        );
-
-      min-height:
-        410px;
-
-      justify-self:
-        end;
-
-      margin-top:
-        -8px;
-
-      isolation:
-        isolate;
-
-      perspective:
-        1000px;
-
-      --px: 0;
-      --py: 0;
-    }
-
-    .hero-visual::before {
-      content: "";
-
-      position:
-        absolute;
-
-      inset:
-        3% 2% 1%;
-
-      border-radius:
-        50%;
-
-      background:
-        radial-gradient(
-          circle,
-          rgba(161, 105, 61, 0.12),
-          rgba(161, 105, 61, 0) 66%
-        );
-
-      filter:
-        blur(6px);
-
-      transform:
-        translate(
-          calc(var(--px) * 8px),
-          calc(var(--py) * 8px)
-        );
-
-      transition:
-        transform 0.16s ease-out;
-
-      z-index:
-        -2;
-    }
-
-    .hero-grid {
-      position:
-        absolute;
-
-      inset:
-        2% 0 0;
-
-      z-index:
-        -1;
-
-      background-image:
-        linear-gradient(
-          rgba(39, 35, 33, 0.045) 1px,
-          transparent 1px
-        ),
-        linear-gradient(
-          90deg,
-          rgba(39, 35, 33, 0.045) 1px,
-          transparent 1px
-        );
-
-      background-size:
-        50px 50px;
-
-      mask-image:
-        radial-gradient(
-          circle at 52% 50%,
-          #000 10%,
-          transparent 72%
-        );
-
-      -webkit-mask-image:
-        radial-gradient(
-          circle at 52% 50%,
-          #000 10%,
-          transparent 72%
-        );
-
-      opacity:
-        0.68;
-    }
-
-    .hero-paths {
-      position:
-        absolute;
-
-      inset:
-        0;
-
-      width:
-        100%;
-
-      height:
-        100%;
-
-      overflow:
-        visible;
-
-      transform:
-        translate(
-          calc(var(--px) * -4px),
-          calc(var(--py) * -4px)
-        );
-
-      transition:
-        transform 0.16s ease-out;
-    }
-
-    .hero-paths .path {
-      fill:
-        none;
-
-      stroke:
-        rgba(161, 105, 61, 0.44);
-
-      stroke-width:
-        1.7;
-
-      stroke-linecap:
-        round;
-
-      stroke-dasharray:
-        8 10;
-
-      animation:
-        dashMove 9s linear infinite;
-    }
-
-    .hero-paths .path-b {
-      stroke:
-        rgba(39, 35, 33, 0.25);
-
-      animation-direction:
-        reverse;
-
-      animation-duration:
-        11s;
-    }
-
-    .flow-dot {
-      fill:
-        var(--accent);
-
-      filter:
-        drop-shadow(
-          0 0 8px
-          rgba(161, 105, 61, 0.45)
-        );
-    }
-
-    @keyframes dashMove {
-      to {
-        stroke-dashoffset:
-          -180;
-      }
-    }
-
-    .hero-node {
-      position:
-        absolute;
-
-      display:
-        grid;
-
-      gap:
-        5px;
-
-      padding:
-        0;
-
-      transform:
-        translate3d(
-          calc(var(--px) * var(--dx, 0px)),
-          calc(var(--py) * var(--dy, 0px)),
-          0
-        );
-
-      transition:
-        transform 0.16s ease-out;
-    }
-
-    .hero-node::before {
-      content: "";
-
-      position:
-        absolute;
-
-      left:
-        -18px;
-
-      top:
-        8px;
-
-      width:
-        8px;
-
-      height:
-        8px;
-
-      border-radius:
-        50%;
-
-      background:
-        var(--accent);
-
-      box-shadow:
-        0 0 0 7px
-        rgba(161, 105, 61, 0.10);
-    }
-
-    .hero-node-index {
-      color:
-        var(--muted-2);
-
-      font-size:
-        9px;
-
-      font-weight:
-        760;
-
-      letter-spacing:
-        0.16em;
-    }
-
-    .hero-node strong {
-      font-size:
-        clamp(
-          26px,
-          2.4vw,
-          37px
-        );
-
-      line-height:
-        1;
-
-      letter-spacing:
-        -0.055em;
-
-      font-weight:
-        520;
-    }
-
-    .hero-node small {
-      color:
-        var(--muted);
-
-      font-size:
-        10px;
-
-      letter-spacing:
-        0.01em;
-    }
-
-    .hero-node-brand {
-      left:
-        8%;
-
-      top:
-        13%;
-
-      --dx:
-        12px;
-
-      --dy:
-        8px;
-    }
-
-    .hero-node-core {
-      left:
-        42%;
-
-      top:
-        42%;
-
-      --dx:
-        -15px;
-
-      --dy:
-        14px;
-    }
-
-    .hero-node-core strong {
-      color:
-        var(--accent);
-
-      font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-      font-style:
-        italic;
-
-      font-weight:
-        400;
-
-      font-size:
-        clamp(
-          50px,
-          5vw,
-          70px
-        );
-    }
-
-    .hero-node-core::before {
-      width:
-        10px;
-
-      height:
-        10px;
-
-      background:
-        var(--ink);
-
-      box-shadow:
-        0 0 0 9px
-        rgba(39, 35, 33, 0.07);
-    }
-
-    .hero-node-spot {
-      right:
-        1%;
-
-      bottom:
-        12%;
-
-      --dx:
-        10px;
-
-      --dy:
-        -12px;
-    }
-
-    .hero-visual-caption {
-      position:
-        absolute;
-
-      right:
-        1%;
-
-      top:
-        2%;
-
-      color:
-        var(--muted-2);
-
-      font-size:
-        9px;
-
-      letter-spacing:
-        0.16em;
-
-      text-transform:
-        uppercase;
-    }
-
-    /* ========================================
-       GENERAL SECTION TYPE
-    ======================================== */
-
-    .section-kicker {
-      margin:
-        0 0 16px;
-
-      color:
-        #786f68;
-
-      font-size:
-        11px;
-
-      font-weight:
-        730;
-
-      letter-spacing:
-        0.20em;
-
-      text-transform:
-        uppercase;
-    }
-
-    .section-title {
-      margin:
-        0;
-
-      max-width:
-        14ch;
-
-      font-size:
-        clamp(
-          36px,
-          4.6vw,
-          64px
-        );
-
-      line-height:
-        0.98;
-
-      letter-spacing:
-        -0.052em;
-
-      font-weight:
-        430;
-    }
-
-    .section-lead {
-      max-width:
-        740px;
-
-      margin:
-        24px 0 0;
-
-      color:
-        var(--muted);
-
-      font-size:
-        clamp(
-          15px,
-          1.15vw,
-          17px
-        );
-
-      line-height:
-        1.65;
-    }
-
-    /* ========================================
-       CONCEPT
-    ======================================== */
-
-    .concept {
-      padding:
-        clamp(
-          96px,
-          10vw,
-          150px
-        ) 0;
-    }
-
-    .route-card {
-      margin-top:
-        56px;
-
-      padding:
-        0;
-
-      border:
-        0;
-
-      border-radius:
-        0;
-
-      background:
-        transparent;
-
-      box-shadow:
-        none;
-
-      overflow:
-        visible;
-
-      position:
-        relative;
-    }
-
-    .route-card::before {
-      display:
-        none;
-    }
-
-    .route-diagram {
-      display:
-        grid;
-
-      grid-template-columns:
-        1fr 120px
-        1fr 120px
-        1fr;
-
-      gap:
-        12px;
-
-      align-items:
-        center;
-
-      position:
-        relative;
-
-      z-index:
-        1;
-    }
-
-    .route-node {
-      min-height:
-        250px;
-
-      display:
-        flex;
-
-      flex-direction:
-        column;
-
-      justify-content:
-        space-between;
-
-      padding:
-        28px;
-
-      border-radius:
-        28px;
-
-      border:
-        1px solid
-        var(--line);
-
-      background:
-        rgba(255, 255, 255, 0.70);
-
-      transition:
-        transform 0.22s ease,
-        border-color 0.22s ease,
-        box-shadow 0.22s ease;
-    }
-
-    .route-node:hover {
-      transform:
-        translateY(-4px);
-
-      border-color:
-        var(--line-warm);
-
-      box-shadow:
-        0 20px 44px
-        rgba(59, 42, 30, 0.08);
-    }
-
-    .route-node.is-core {
-      background:
-        linear-gradient(
-          155deg,
-          #2d2825,
-          #201c1a
-        );
-
-      color:
-        #fff;
-
-      border-color:
-        transparent;
-
-      box-shadow:
-        0 24px 54px
-        rgba(39, 35, 33, 0.18);
-    }
-
-    .route-label {
-      display:
-        flex;
-
-      justify-content:
-        space-between;
-
-      gap:
-        14px;
-
-      align-items:
-        center;
-
-      font-size:
-        10px;
-
-      letter-spacing:
-        0.18em;
-
-      text-transform:
-        uppercase;
-
-      color:
-        var(--muted-2);
-
-      font-weight:
-        700;
-    }
-
-    .route-node.is-core .route-label {
-      color:
-        rgba(255, 255, 255, 0.52);
-    }
-
-    .route-node h3 {
-      margin:
-        38px 0 0;
-
-      font-size:
-        clamp(
-          27px,
-          2.6vw,
-          38px
-        );
-
-      line-height:
-        1;
-
-      letter-spacing:
-        -0.045em;
-
-      font-weight:
-        520;
-    }
-
-    .route-node p {
-      margin:
-        14px 0 0;
-
-      color:
-        var(--muted);
-
-      line-height:
-        1.55;
-
-      font-size:
-        13px;
-
-      max-width:
-        27ch;
-    }
-
-    .route-node.is-core p {
-      color:
-        rgba(255, 255, 255, 0.67);
-    }
-
-    .route-arrow {
-      display:
-        flex;
-
-      align-items:
-        center;
-
-      gap:
-        8px;
-
-      color:
-        var(--accent);
-    }
-
-    .route-arrow::before {
-      content: "";
-
-      flex:
-        1;
-
-      height:
-        1px;
-
-      background:
-        linear-gradient(
-          90deg,
-          rgba(161, 105, 61, 0.18),
-          rgba(161, 105, 61, 0.72)
-        );
-    }
-
-    .route-arrow::after {
-      content:
-        "→";
-
-      font-size:
-        22px;
-
-      transform:
-        translateY(-1px);
-    }
-
-    .concept-note {
-      display:
-        grid;
-
-      grid-template-columns:
-        1fr 1fr;
-
-      gap:
-        18px;
-
-      margin-top:
-        18px;
-    }
-
-    .concept-note article {
-      padding:
-        20px 0 0;
-
-      border:
-        0;
-
-      border-radius:
-        0;
-
-      border-top:
-        1px solid
-        var(--line-warm);
-
-      background:
-        transparent;
-    }
-
-    .concept-note strong {
-      display:
-        block;
-
-      margin-bottom:
-        7px;
-
-      font-size:
-        16px;
-
-      letter-spacing:
-        -0.02em;
-    }
-
-    .concept-note p {
-      margin:
-        0;
-
-      color:
-        var(--muted);
-
-      line-height:
-        1.6;
-
-      font-size:
-        14px;
-    }
-
-    /* ========================================
-       B2S BRIDGE
-    ======================================== */
-
-    .visual-section {
-      padding:
-        clamp(
-          68px,
-          7vw,
-          100px
-        ) 0;
-    }
-
-    .concept-bridge {
-      display:
-        grid;
-
-      grid-template-columns:
-        minmax(280px, 0.8fr)
-        minmax(460px, 1.2fr);
-
-      gap:
-        clamp(
-          48px,
-          8vw,
-          110px
-        );
-
-      align-items:
-        center;
-    }
-
-    .concept-bridge-copy h2 {
-      margin:
-        0;
-
-      max-width:
-        11ch;
-
-      font-size:
-        clamp(
-          34px,
-          4vw,
-          58px
-        );
-
-      line-height:
-        0.98;
-
-      letter-spacing:
-        -0.05em;
-
-      font-weight:
-        440;
-    }
-
-    .concept-bridge-copy p:last-child {
-      margin:
-        18px 0 0;
-
-      max-width:
-        42ch;
-
-      color:
-        var(--muted);
-
-      font-size:
-        14px;
-
-      line-height:
-        1.62;
-    }
-
-    .bridge-track {
-      display:
-        grid;
-
-      grid-template-columns:
-        auto
-        minmax(70px, 1fr)
-        auto
-        minmax(70px, 1fr)
-        auto;
-
-      align-items:
-        center;
-
-      gap:
-        12px;
-
-      min-height:
-        160px;
-    }
-
-    .bridge-label,
-    .bridge-core {
-      white-space:
-        nowrap;
-
-      font-size:
-        clamp(
-          18px,
-          2vw,
-          28px
-        );
-
-      letter-spacing:
-        -0.035em;
-
-      font-weight:
-        560;
-    }
-
-    .bridge-core {
-      color:
-        var(--accent);
-
-      font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-      font-style:
-        italic;
-
-      font-size:
-        clamp(
-          34px,
-          4vw,
-          58px
-        );
-
-      font-weight:
-        400;
-    }
-
-    .bridge-line {
-      position:
-        relative;
-
-      height:
-        1px;
-
-      background:
-        linear-gradient(
-          90deg,
-          rgba(161, 105, 61, 0.18),
-          rgba(161, 105, 61, 0.62)
-        );
-
-      overflow:
-        visible;
-    }
-
-    .bridge-line::after {
-      content:
-        "→";
-
-      position:
-        absolute;
-
-      right:
-        -4px;
-
-      top:
-        50%;
-
-      transform:
-        translateY(-54%);
-
-      color:
-        var(--accent);
-
-      font-size:
-        18px;
-    }
-
-    .bridge-line i {
-      position:
-        absolute;
-
-      top:
-        -3px;
-
-      left:
-        0;
-
-      width:
-        7px;
-
-      height:
-        7px;
-
-      border-radius:
-        50%;
-
-      background:
-        var(--accent);
-
-      box-shadow:
-        0 0 0 5px
-        rgba(161, 105, 61, 0.08);
-
-      animation:
-        bridgePulse
-        3.8s
-        ease-in-out
-        infinite;
-    }
-
-    @keyframes bridgePulse {
-      0%,
-      100% {
-        left:
-          0;
-
-        opacity:
-          0.35;
-      }
-
-      50% {
-        left:
-          calc(100% - 7px);
-
-        opacity:
-          1;
-      }
-    }
-
-    /* ========================================
-       SEARCH OFFER
-    ======================================== */
-
-    .search-section {
-      padding:
-        clamp(
-          96px,
-          10vw,
-          150px
-        ) 0
-        clamp(
-          54px,
-          5.4vw,
-          76px
-        );
-
-      background:
-        linear-gradient(
-          180deg,
-          rgba(242, 232, 224, 0.34),
-          rgba(247, 242, 237, 0)
-        );
-    }
-
-    .search-header {
-      display:
-        block;
-
-      max-width:
-        850px;
-    }
-
-    .search-offer-copy {
-      max-width:
-        690px;
-
-      margin:
-        24px 0 0;
-
-      padding:
-        0 0 0 20px;
-
-      border-left:
-        2px solid
-        var(--line-warm);
-
-      color:
-        var(--muted);
-
-      font-size:
-        14px;
-
-      line-height:
-        1.65;
-    }
-
-    .search-offer-copy strong {
-      color:
-        var(--ink);
-
-      font-weight:
-        650;
-    }
-
-    .steps {
-      display:
-        grid;
-
-      grid-template-columns:
-        repeat(3, 1fr);
-
-      gap:
-        0;
-
-      margin-top:
-        46px;
-
-      border-top:
-        1px solid
-        var(--line-warm);
-
-      border-bottom:
-        1px solid
-        var(--line);
-    }
-
-    .step-card {
-      min-height:
-        215px;
-
-      padding:
-        28px 30px 30px 0;
-
-      border:
-        0;
-
-      border-right:
-        1px solid
-        var(--line);
-
-      border-radius:
-        0;
-
-      background:
-        transparent;
-
-      box-shadow:
-        none;
-
-      display:
-        flex;
-
-      flex-direction:
-        column;
-
-      transition:
-        transform 0.22s ease,
-        border-color 0.22s ease,
-        box-shadow 0.22s ease;
-    }
-
-    .step-card + .step-card {
-      padding-left:
-        30px;
-    }
-
-    .step-card:last-child {
-      border-right:
-        0;
-
-      padding-right:
-        0;
-    }
-
-    .step-card:hover {
-      transform:
-        none;
-
-      border-color:
-        var(--line);
-
-      box-shadow:
-        none;
-    }
-
-    .step-num {
-      width:
-        auto;
-
-      height:
-        auto;
-
-      display:
-        block;
-
-      border:
-        0;
-
-      border-radius:
-        0;
-
-      background:
-        transparent;
-
-      color:
-        var(--accent);
-
-      font-size:
-        10px;
-
-      letter-spacing:
-        0.15em;
-
-      font-weight:
-        740;
-    }
-
-    .step-card h3 {
-      margin:
-        auto 0 0;
-
-      font-size:
-        20px;
-
-      line-height:
-        1.08;
-
-      letter-spacing:
-        -0.035em;
-
-      font-weight:
-        560;
-    }
-
-    .step-card p {
-      margin:
-        12px 0 0;
-
-      color:
-        var(--muted);
-
-      font-size:
-        13.5px;
-
-      line-height:
-        1.6;
-    }
-
-    /* ========================================
-       CONTACT
-    ======================================== */
-
-    #konzept,
-    #suchauftrag,
-    #suchauftrag-formular,
-    #blog,
-    #kontakt {
-      scroll-margin-top:
-        112px;
-    }
-
-    .contact-section {
-      padding-top:
-        clamp(
-          44px,
-          4.6vw,
-          64px
-        );
-
-      padding-bottom:
-        clamp(
-          54px,
-          5.4vw,
-          76px
-        );
-    }
-
-    .search-form-shell {
-      margin-top:
-        0;
-
-      display:
-        grid;
-
-      grid-template-columns:
-        0.76fr 1.24fr;
-
-      gap:
-        clamp(
-          42px,
-          7vw,
-          92px
-        );
-
-      padding:
-        42px 0;
-
-      border:
-        0;
-
-      border-top:
-        1px solid
-        var(--line-warm);
-
-      border-bottom:
-        1px solid
-        var(--line);
-
-      border-radius:
-        0;
-
-      background:
-        transparent;
-
-      box-shadow:
-        none;
-    }
-
-    .search-form-intro h3 {
-      margin:
-        0;
-
-      max-width:
-        11ch;
-
-      font-size:
-        clamp(
-          30px,
-          3vw,
-          43px
-        );
-
-      line-height:
-        1.02;
-
-      letter-spacing:
-        -0.045em;
-
-      font-weight:
-        500;
-    }
-
-    .search-form-intro > p:not(.section-kicker) {
-      margin:
-        18px 0 0;
-
-      max-width:
-        42ch;
-
-      color:
-        var(--muted);
-
-      font-size:
-        14px;
-
-      line-height:
-        1.62;
-    }
-
-    .form-mail-note {
-      margin-top:
-        24px;
-
-      padding-top:
-        18px;
-
-      border-top:
-        1px solid
-        var(--line-warm);
-
-      color:
-        var(--muted);
-
-      font-size:
-        12px;
-
-      line-height:
-        1.5;
-    }
-
-    .form-mail-note strong {
-      color:
-        var(--ink);
-    }
-
-    .search-form {
-      display:
-        grid;
-
-      grid-template-columns:
-        1fr 1fr;
-
-      gap:
-        13px;
-
-      align-self:
-        start;
-    }
-
-    .field {
-      display:
-        grid;
-
-      gap:
-        7px;
-    }
-
-    .field.full {
-      grid-column:
-        1 / -1;
-    }
-
-    .field label {
-      font-size:
-        11px;
-
-      font-weight:
-        700;
-
-      color:
-        #625a54;
-
-      letter-spacing:
-        0.01em;
-    }
-
-    .field input,
-    .field textarea,
-    .field select {
-      width:
-        100%;
-
-      border:
-        1px solid
-        rgba(39, 35, 33, 0.11);
-
-      border-radius:
-        11px;
-
-      background:
-        rgba(255, 255, 255, 0.72);
-
-      color:
-        var(--ink);
-
-      padding:
-        12px 13px;
-
-      font-size:
-        13px;
-
-      line-height:
-        1.4;
-
-      outline:
-        none;
-
-      transition:
-        border-color 0.18s ease,
-        box-shadow 0.18s ease,
-        background 0.18s ease;
-    }
-
-    .field textarea {
-      min-height:
-        96px;
-
-      resize:
-        vertical;
-    }
-
-    .field input::placeholder,
-    .field textarea::placeholder {
-      color:
-        #a39a93;
-    }
-
-    .field input:focus,
-    .field textarea:focus,
-    .field select:focus {
-      border-color:
-        rgba(161, 105, 61, 0.52);
-
-      box-shadow:
-        0 0 0 4px
-        rgba(161, 105, 61, 0.07);
-
-      background:
-        #fff;
-    }
-
-    .call-row {
-      grid-column:
-        1 / -1;
-
-      display:
-        flex;
-
-      align-items:
-        flex-start;
-
-      gap:
-        10px;
-
-      padding:
-        4px 0 1px;
-
-      color:
-        var(--ink);
-
-      font-size:
-        12px;
-
-      line-height:
-        1.45;
-    }
-
-    .call-row input {
-      margin-top:
-        2px;
-
-      accent-color:
-        var(--accent);
-    }
-
-    .privacy-row {
-      grid-column:
-        1 / -1;
-
-      display:
-        flex;
-
-      align-items:
-        flex-start;
-
-      gap:
-        10px;
-
-      margin-top:
-        2px;
-
-      color:
-        var(--muted);
-
-      font-size:
-        10.5px;
-
-      line-height:
-        1.45;
-    }
-
-    .privacy-row input {
-      margin-top:
-        2px;
-    }
-
-    .privacy-row a {
-      text-decoration:
-        underline;
-
-      text-underline-offset:
-        2px;
-    }
-
-    .contact-submit {
-      grid-column:
-        1 / -1;
-
-      display:
-        flex;
-
-      align-items:
-        center;
-
-      justify-content:
-        space-between;
-
-      gap:
-        16px;
-
-      margin-top:
-        4px;
-    }
-
-    .contact-submit small {
-      color:
-        var(--muted-2);
-
-      font-size:
-        11px;
-    }
-
-    /* ========================================
-       BLOG
-    ======================================== */
-
-    .blog-section {
-      padding:
-        clamp(
-          44px,
-          4.6vw,
-          64px
-        ) 0
-        clamp(
-          86px,
-          9vw,
-          130px
-        );
-    }
-
-    .blog-header {
-      display:
-        block;
-
-      max-width:
-        820px;
-
-      padding-bottom:
-        28px;
-
-      border-bottom:
-        1px solid
-        var(--line-warm);
-    }
-
-    .blog-header .section-title {
-      max-width:
-        none;
-    }
-
-    .blog-header > p {
-      max-width:
-        620px;
-
-      margin:
-        16px 0 0;
-
-      color:
-        var(--muted);
-
-      font-size:
-        14px;
-
-      line-height:
-        1.62;
-    }
-
-    .blog-grid {
-      display:
-        grid;
-
-      grid-template-columns:
-        repeat(
-          3,
-          minmax(0, 1fr)
-        );
-
-      gap:
-        14px;
-
-      margin-top:
-        42px;
-    }
-
-    .blog-card {
-      border:
-        1px solid
-        var(--line);
-
-      border-radius:
-        18px;
-
-      background:
-        rgba(255, 255, 255, 0.62);
-
-      overflow:
-        hidden;
-
-      transition:
-        border-color 0.2s ease,
-        box-shadow 0.2s ease,
-        transform 0.2s ease;
-    }
-
-    .blog-card:hover {
-      border-color:
-        var(--line-warm);
-
-      box-shadow:
-        0 16px 36px
-        rgba(59, 42, 30, 0.06);
-
-      transform:
-        translateY(-2px);
-    }
-
-    .blog-card summary {
-      list-style:
-        none;
-
-      cursor:
-        pointer;
-
-      padding:
-        24px;
-    }
-
-    .blog-card summary::-webkit-details-marker {
-      display:
-        none;
-    }
-
-    .blog-meta {
-      display:
-        block;
-
-      margin-bottom:
-        28px;
-
-      color:
-        var(--muted-2);
-
-      font-size:
-        10px;
-
-      font-weight:
-        700;
-
-      letter-spacing:
-        0.14em;
-
-      text-transform:
-        uppercase;
-    }
-
-    .blog-card h3 {
-      margin:
-        0;
-
-      font-size:
-        22px;
-
-      line-height:
-        1.08;
-
-      letter-spacing:
-        -0.035em;
-
-      font-weight:
-        560;
-    }
-
-    .blog-card summary p {
-      margin:
-        12px 0 22px;
-
-      color:
-        var(--muted);
-
-      font-size:
-        13.5px;
-
-      line-height:
-        1.58;
-    }
-
-    .blog-link {
-      display:
-        flex;
-
-      align-items:
-        center;
-
-      justify-content:
-        space-between;
-
-      gap:
-        12px;
-
-      padding-top:
-        16px;
-
-      border-top:
-        1px solid
-        var(--line);
-
-      color:
-        var(--accent);
-
-      font-size:
-        12px;
-
-      font-weight:
-        700;
-    }
-
-    .blog-link span {
-      font-size:
-        18px;
-
-      font-weight:
-        400;
-
-      transition:
-        transform 0.2s ease;
-    }
-
-    .blog-card[open] .blog-link span {
-      transform:
-        rotate(45deg);
-    }
-
-    .blog-body {
-      padding:
-        0 24px 24px;
-
-      border-top:
-        1px solid
-        rgba(39, 35, 33, 0.06);
-    }
-
-    .blog-body p {
-      margin:
-        16px 0 0;
-
-      color:
-        var(--muted);
-
-      font-size:
-        13px;
-
-      line-height:
-        1.65;
-    }
-
-    /* ========================================
-       FINAL CTA
-    ======================================== */
-
-    .final-cta {
-      padding:
-        clamp(
-          90px,
-          10vw,
-          150px
-        ) 0;
-    }
-
-    .final-card {
-      position:
-        relative;
-
-      overflow:
-        hidden;
-
-      min-height:
-        430px;
-
-      padding:
-        clamp(
-          38px,
-          7vw,
-          88px
-        );
-
-      border-radius:
-        30px;
-
-      background:
-        linear-gradient(
-          150deg,
-          #2a2522,
-          #1d1a18
-        );
-
-      color:
-        #fff;
-
-      box-shadow:
-        var(--shadow-lg);
-
-      display:
-        flex;
-
-      flex-direction:
-        column;
-
-      justify-content:
-        space-between;
-    }
-
-    .final-card::before {
-      content:
-        "B2S";
-
-      position:
-        absolute;
-
-      right:
-        -22px;
-
-      bottom:
-        -32px;
-
-      font-size:
-        clamp(
-          150px,
-          23vw,
-          320px
-        );
-
-      line-height:
-        0.8;
-
-      letter-spacing:
-        -0.09em;
-
-      font-weight:
-        800;
-
-      color:
-        rgba(255, 255, 255, 0.035);
-
-      pointer-events:
-        none;
-    }
-
-    .final-card h2 {
-      position:
-        relative;
-
-      z-index:
-        1;
-
-      margin:
-        0;
-
-      max-width:
-        9.7ch;
-
-      font-size:
-        clamp(
-          40px,
-          5.4vw,
-          72px
-        );
-
-      line-height:
-        0.95;
-
-      letter-spacing:
-        -0.055em;
-
-      font-weight:
-        420;
-    }
-
-    .final-bottom {
-      position:
-        relative;
-
-      z-index:
-        1;
-
-      display:
-        flex;
-
-      align-items:
-        end;
-
-      justify-content:
-        space-between;
-
-      gap:
-        28px;
-
-      margin-top:
-        64px;
-    }
-
-    .final-bottom p {
-      margin:
-        0;
-
-      max-width:
-        560px;
-
-      color:
-        rgba(255, 255, 255, 0.66);
-
-      font-size:
-        13px;
-
-      line-height:
-        1.6;
-    }
-
-    .final-card .btn-primary {
-      background:
-        #fff;
-
-      color:
-        var(--ink);
-    }
-
-    /* ========================================
-       FOOTER
-    ======================================== */
-
-    footer {
-      padding:
-        0 0 34px;
-
-      color:
-        #7b726c;
-
-      font-size:
-        12px;
-    }
-
-    .footer-inner {
-      border-top:
-        1px solid
-        var(--line-warm);
-
-      padding-top:
-        22px;
-
-      display:
-        flex;
-
-      align-items:
-        center;
-
-      justify-content:
-        space-between;
-
-      gap:
-        22px;
-    }
-
-    .footer-links {
-      display:
-        flex;
-
-      gap:
-        18px;
-
-      flex-wrap:
-        wrap;
-    }
-
-    .footer-links a:hover {
-      color:
-        var(--ink);
-    }
-
-    /* ========================================
-       REVEAL
-    ======================================== */
-
-    .reveal {
-      opacity:
-        0;
-
-      transform:
-        translateY(20px);
-
-      transition:
-        opacity 0.7s ease,
-        transform 0.7s ease;
-    }
-
-    .reveal.in {
-      opacity:
-        1;
-
-      transform:
-        none;
-    }
-
-    /* ========================================
-       RESPONSIVE — LARGE TABLET
-    ======================================== */
-
+      --ink: #0b211d;
+      --ink-soft: #173a31;
+      --mint: #c7f56a;
+      --mint-dark: #a5ce47;
+      --paper: #f5f7f2;
+      --white: #fff;
+      --line: #dce4dc;
+      --muted: #64736c;
+      --muted-light: #a7b9b0;
+      --radius: 22px;
+      --shadow: 0 24px 80px rgba(6, 30, 24, .12);
+      --max: 1216px;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 98px; }
+    body { margin: 0; color: var(--ink); background: var(--paper); font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 15px; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font: inherit; }
+    button { cursor: pointer; }
+    button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, summary:focus-visible { outline: 3px solid var(--mint-dark); outline-offset: 4px; }
+    ::selection { background: var(--mint); color: var(--ink); }
+    .container { width: min(calc(100% - 72px), var(--max)); margin-inline: auto; }
+    .skip { position: absolute; top: -60px; left: 14px; z-index: 1000; padding: 12px 18px; border-radius: 12px; background: var(--mint); }
+    .skip:focus { top: 10px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 11px; font-size: 11px; line-height: 1.5; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
+    .eyebrow .line { height: 1px; width: 25px; background: currentColor; opacity: .55; }
+    .section { padding: 112px 0; }
+    .section-head { max-width: 765px; margin-bottom: 48px; }
+    .section-head h2 { font-size: clamp(39px, 4.5vw, 62px); line-height: 1.08; letter-spacing: -.055em; margin: 20px 0 17px; font-weight: 700; }
+    .section-head p { color: var(--muted); line-height: 1.8; font-size: 17px; max-width: 635px; margin: 0; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 13px; padding: 15px 22px; border: 1px solid transparent; border-radius: 100px; font-weight: 700; font-size: 13px; white-space: nowrap; min-height: 50px; transition: transform .2s, background .2s, border-color .2s; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--mint); color: var(--ink); }
+    .btn-primary:hover { background: #d6ff88; }
+    .btn-outline-dark { border-color: rgba(255,255,255,.27); color: #fff; background: transparent; }
+    .btn-outline-dark:hover { border-color: var(--mint); background: rgba(255,255,255,.055); }
+    .btn-outline { border-color: var(--line); color: var(--ink); background: transparent; }
+    .btn-outline:hover { border-color: var(--ink); }
+    .arrow { font-size: 19px; line-height: 0; font-weight: 400; transition: transform .2s; }
+    .btn:hover .arrow { transform: translate(3px,-2px); }
+    .dark-shell { overflow: hidden; background: var(--ink); color: var(--white); position: relative; }
+    .dark-shell::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 47% 59% at 87% 41%, rgba(38, 112, 83, .21), transparent 76%); }
+    /* Navigation */
+    .site-header { height: 91px; position: relative; z-index: 40; border-bottom: 1px solid rgba(255,255,255,.10); }
+    .header-inner { height: 100%; display: flex; justify-content: space-between; align-items: center; gap: 32px; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; line-height: 1; }
+    .brand-mark { display: grid; place-items: center; width: 33px; height: 33px; border-radius: 9px; background: var(--mint); color: var(--ink); flex-shrink: 0; }
+    .brand > span:nth-child(2) { display: flex; flex-direction: column; min-width: 0; }
+    .brand-name { font-size: 18px; letter-spacing: -.06em; font-weight: 850; }
+    .brand-name span { color: var(--mint); }
+    .brand-sub { color: var(--muted-light); margin-top: 4px; font-size: 9px; text-transform: uppercase; letter-spacing: .145em; font-weight: 700; }
+    .nav-links { display: flex; align-items: center; gap: 25px; }
+    .nav-links a:not(.btn) { font-size: 13px; color: #c3cec7; font-weight: 580; transition: color .2s; }
+    .nav-links a:not(.btn):hover { color: var(--white); }
+    .nav-links .btn { padding: 12px 19px; min-height: 43px; }
+    .menu-button { display: none; border: 1px solid rgba(255,255,255,.23); border-radius: 12px; width: 43px; height: 43px; background: transparent; color: white; align-items: center; justify-content: center; font-size: 20px; }
+    /* Hero */
+    .hero { position: relative; padding: 95px 0 100px; }
+    .hero-grid { display: grid; grid-template-columns: 1.06fr .94fr; align-items: center; gap: 47px; min-height: 550px; }
+    .hero-copy { position: relative; z-index: 3; }
+    .hero-tag { display: inline-flex; align-items: center; gap: 10px; color: #d9e7df; font-size: 12px; font-weight: 650; border: 1px solid rgba(230,246,230,.17); padding: 9px 14px; border-radius: 100px; margin-bottom: 34px; background: rgba(255,255,255,.035); }
+    .hero-tag .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--mint); box-shadow: 0 0 0 4px rgba(199,245,106,.10); }
+    h1 { font-size: clamp(53px, 5.65vw, 82px); line-height: 1.045; font-weight: 720; letter-spacing: -.072em; margin: 0; }
+    h1 em { font-style: normal; color: var(--mint); }
+    .hero-desc { color: #afc0b6; font-size: clamp(16px,1.48vw,18px); line-height: 1.8; max-width: 545px; margin: 30px 0 32px; }
+    .hero-ctas { display: flex; gap: 11px; flex-wrap: wrap; }
+    .hero-foot { display: flex; gap: 23px; flex-wrap: wrap; margin-top: 43px; }
+    .hero-foot span { font-size: 12px; color: #9cafaa; display: flex; gap: 8px; align-items: center; }
+    .hero-foot b { color: var(--mint); font-size: 16px; font-weight: 500; }
+    /* Interactive hero dashboard */
+    .hero-visual { position: relative; padding: 25px 0 20px; min-width: 0; }
+    .visual-halo { position: absolute; width: 670px; height: 590px; right: -145px; top: -44px; border-radius: 50%; background: radial-gradient(circle,rgba(150,230,127,.12) 0%,rgba(19,62,50,.08) 42%,transparent 73%); pointer-events: none; }
+    .orbit-a, .orbit-b { position: absolute; border: 1px solid rgba(199,245,106,.08); border-radius: 50%; pointer-events: none; }
+    .orbit-a { width: 480px; height: 480px; right: -49px; top: -24px; }
+    .orbit-b { width: 610px; height: 610px; right: -115px; top: -93px; }
+    .dash { position: relative; z-index: 2; border: 1px solid #33584b; border-radius: 22px; overflow: hidden; background: #142d27; box-shadow: 0 44px 140px rgba(0,0,0,.34), 0 0 0 8px rgba(255,255,255,.018); transform: rotate(-1deg); }
+    .dash-top { height: 48px; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; background: #1b3b32; border-bottom: 1px solid rgba(255,255,255,.085); }
+    .traffic { display: flex; gap: 6px; }
+    .traffic i { display: block; width: 7px; height: 7px; border-radius: 50%; background: #557469; }
+    .traffic i:first-child { background: #c7f56a; }
+    .dash-top-name { font-size: 10px; font-weight: 750; color: #a8c7b6; letter-spacing: .08em; }
+    .dash-live { display: flex; align-items: center; gap: 6px; font-size: 10px; color: #d5e6dc; }
+    .dash-live::before { content: ""; width: 5px; height: 5px; background: var(--mint); border-radius: 50%; }
+    .dash-main { padding: 28px 26px 25px; }
+    .dash-kicker { color: #8eaa9b; font-size: 10px; letter-spacing: .11em; text-transform: uppercase; font-weight: 800; }
+    .dash-heading { font-size: 26px; line-height: 1.2; margin: 9px 0 7px; letter-spacing: -.045em; font-weight: 700; }
+    .dash-sub { color: #a4beb0; font-size: 12px; line-height: 1.65; margin: 0; min-height: 38px; }
+    .dash-switch { background: #10251f; border: 1px solid #345547; display: grid; grid-template-columns: repeat(3,1fr); padding: 5px; border-radius: 12px; gap: 4px; margin: 26px 0 20px; }
+    .dash-tab { border: 0; background: transparent; padding: 10px 3px; color: #a4b8ac; border-radius: 9px; font-size: 12px; font-weight: 700; transition: background .2s, color .2s; }
+    .dash-tab[aria-selected="true"] { color: #0f2920; background: var(--mint); }
+    .dash-content { display: grid; gap: 9px; min-height: 210px; align-content: start; }
+    .dash-item { display: flex; align-items: center; gap: 13px; background: #1d3b31; border: 1px solid #315345; border-radius: 12px; padding: 15px 14px; animation: item-in .3s ease both; }
+    .dash-item:nth-child(2) { animation-delay: .05s; }
+    .dash-item:nth-child(3) { animation-delay: .10s; }
+    @keyframes item-in { from { opacity: 0; transform: translateY(7px); } to { opacity: 1; transform: translateY(0); } }
+    .dash-icon { display: grid; place-items: center; flex: 0 0 34px; height: 34px; border: 1px solid #466d53; background: #2b4a37; color: var(--mint); border-radius: 9px; font-size: 16px; font-weight: 800; }
+    .dash-item-text { min-width: 0; flex: 1; }
+    .dash-item-title { font-size: 12px; color: #edf7f0; font-weight: 750; line-height: 1.3; }
+    .dash-item-sub { color: #9fbbae; font-size: 10px; line-height: 1.5; margin-top: 3px; }
+    .dash-item-tag { flex: 0 0 auto; font-size: 9px; padding: 5px 7px; border-radius: 5px; background: #345740; color: #d4efcb; font-weight: 700; }
+    .dash-bottom { margin-top: 19px; padding-top: 18px; border-top: 1px solid #3c5a4b; display: flex; align-items: center; justify-content: space-between; gap: 9px; }
+    .dash-bottom-label { color: #c3d7ca; font-size: 11px; }
+    .dash-bottom a { color: var(--mint); font-size: 11px; font-weight: 800; display: inline-flex; align-items: center; gap: 6px; }
+    .float-card { position: absolute; z-index: 3; bottom: -70px; right: -12px; color: var(--ink); background: #f0f7e4; border: 1px solid white; border-radius: 13px; box-shadow: 0 15px 45px rgba(0,0,0,.26); padding: 14px 17px; display: flex; gap: 11px; align-items: center; transform: rotate(3deg); }
+    .float-card .ficon { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 9px; background: #d4edb8; font-size: 17px; }
+    .float-card strong { display: block; font-size: 11px; }
+    .float-card span { display: block; color: #547163; font-size: 10px; margin-top: 3px; }
+    .hero-bottom { border-top: 1px solid rgba(255,255,255,.09); position: relative; }
+    .hero-bottom-inner { display: flex; justify-content: space-between; align-items: center; gap: 15px; padding: 23px 0; }
+    .hero-bottom-inner strong { color: #b0c2b6; font-size: 11px; letter-spacing: .10em; text-transform: uppercase; }
+    .benefit-row { display: flex; flex-wrap: wrap; gap: 27px; }
+    .benefit-row span { font-size: 12px; color: #bdcfc2; }
+    .benefit-row span::before { content: "+"; color: var(--mint); font-size: 16px; margin-right: 8px; }
+    /* What we do */
+    .services { background: var(--paper); }
+    .services-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 15px; }
+    .service-card { min-height: 275px; border: 1px solid var(--line); border-radius: var(--radius); padding: 29px; background: #fff; transition: transform .2s, box-shadow .2s; }
+    .service-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .service-card .num { color: #8c9d93; font-size: 11px; font-weight: 750; }
+    .service-icon { display: grid; place-items: center; background: #eaf1e6; border-radius: 13px; height: 48px; width: 48px; margin: 25px 0 22px; color: var(--ink); }
+    .service-icon svg { width: 25px; height: 25px; }
+    .service-card h3 { margin: 0 0 10px; font-size: 23px; letter-spacing: -.045em; }
+    .service-card p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.8; }
+    /* Difference */
+    .difference { background: #eaf0e8; }
+    .diff-layout { display: grid; grid-template-columns: .82fr 1.18fr; gap: 68px; align-items: center; }
+    .diff-layout .section-head { margin: 0; }
+    .diff-layout .section-head h2 { font-size: clamp(40px,4vw,57px); }
+    .diff-card { background: var(--white); border: 1px solid #d4ded4; padding: 10px 28px; border-radius: 22px; box-shadow: 0 18px 50px rgba(14,50,31,.045); }
+    .diff-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; padding: 20px 0; border-bottom: 1px solid #e7ede7; align-items: start; }
+    .diff-row:last-child { border-bottom: 0; }
+    .diff-row .instead { font-size: 12px; color: #85938c; line-height: 1.55; }
+    .diff-row .instead::before { content: "–"; margin-right: 9px; }
+    .diff-row .ours { font-size: 13px; font-weight: 750; line-height: 1.55; display: flex; align-items: start; gap: 9px; }
+    .diff-row .ours b { color: #52852d; }
+    /* Packages */
+    .packages { background: var(--paper); }
+    .packages-top { display: flex; gap: 24px; align-items: end; justify-content: space-between; }
+    .packages-top .section-head { margin-bottom: 44px; }
+    .package-note { max-width: 280px; color: var(--muted); font-size: 12px; line-height: 1.7; padding-bottom: 51px; }
+    .pricing-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 15px; align-items: stretch; }
+    .price-card { display: flex; flex-direction: column; background: #fff; border: 1px solid var(--line); border-radius: 23px; padding: 27px 26px 26px; min-width: 0; }
+    .price-card.featured { background: var(--ink); color: white; border-color: var(--ink); position: relative; box-shadow: 0 23px 55px rgba(14,45,31,.15); }
+    .card-kicker { display: flex; align-items: center; justify-content: space-between; gap: 10px; font-size: 10px; color: #7e9085; text-transform: uppercase; font-weight: 820; letter-spacing: .12em; }
+    .featured .card-kicker { color: #b0cbba; }
+    .card-badge { display: inline-flex; border-radius: 100px; padding: 7px 9px; color: #17301e; background: var(--mint); font-size: 9px; text-transform: none; letter-spacing: 0; font-weight: 800; }
+    .price-card h3 { font-size: clamp(23px, 2.25vw, 29px); line-height: 1.18; letter-spacing: -.048em; margin: 25px 0 10px; min-height: 69px; }
+    .price-card .card-description { min-height: 68px; font-size: 13px; color: var(--muted); line-height: 1.65; margin: 0 0 22px; }
+    .featured .card-description { color: #b4c8ba; }
+    .price { display: flex; align-items: baseline; gap: 4px; flex-wrap: wrap; font-size: clamp(28px,3vw,37px); font-weight: 790; line-height: 1.1; letter-spacing: -.052em; }
+    .price small { font-size: 12px; font-weight: 600; letter-spacing: 0; color: var(--muted); }
+    .featured .price small { color: #b9cabb; }
+    .duration { color: var(--muted); font-size: 11px; margin: 12px 0 25px; }
+    .featured .duration { color: #b2c3b8; }
+    .features { list-style: none; margin: 0 0 27px; padding: 20px 0 0; border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: 15px; flex: 1; }
+    .featured .features { border-color: rgba(255,255,255,.16); }
+    .features li { display: flex; align-items: start; gap: 11px; font-size: 12px; line-height: 1.55; color: #42564b; }
+    .featured .features li { color: #e1ede5; }
+    .tick { display: inline-flex; align-items: center; justify-content: center; flex: 0 0 16px; width: 16px; height: 16px; color: #547f2e; margin-top: 1px; }
+    .featured .tick { color: var(--mint); }
+    .tick svg { height: 15px; width: 15px; stroke: currentColor; stroke-width: 2.6; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    .price-card .btn { width: 100%; margin-top: auto; }
+    .featured .btn-primary { color: var(--ink); }
+    .price-card .btn-outline { border-color: #cbd9cf; }
+    .promise { min-height: 95px; padding-top: 23px; color: #30483b; font-size: 12px; line-height: 1.65; }
+    .promise strong { display: block; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: #718477; margin-bottom: 8px; }
+    .featured .promise { color: #d7e6da; }
+    .featured .promise strong { color: #a9bfb0; }
+    .subscription { margin-top: 17px; background: #e8f0e2; border: 1px solid #d4e4d1; border-radius: 23px; display: grid; grid-template-columns: .83fr 1.17fr; gap: 36px; padding: 36px 38px; }
+    .subscription h3 { font-size: clamp(30px,3.2vw,44px); line-height: 1.12; letter-spacing: -.06em; margin: 18px 0 16px; }
+    .subscription p { color: #526b59; line-height: 1.8; font-size: 13px; max-width: 370px; }
+    .subscription .price { margin: 23px 0 10px; font-size: 32px; }
+    .subscription .price small { font-size: 13px; }
+    .subscription .small { font-size: 11px; margin-bottom: 20px; }
+    .subscription .features { display: grid; grid-template-columns: 1fr 1fr; column-gap: 24px; align-content: center; margin: 0; border: 0; padding: 0; }
+    .subscription .features li { font-size: 12px; }
+    .pricing-footnote { text-align: center; font-size: 11px; color: #75877b; margin-top: 25px; line-height: 1.7; }
+    /* Process */
+    .process { background: #eaf0e8; }
+    .steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; }
+    .step { border-top: 2px solid #cbd8cc; padding-top: 21px; position: relative; }
+    .step:first-child { border-top-color: #507951; }
+    .step .step-num { display: inline-flex; align-items: center; justify-content: center; background: #d4e2ce; border-radius: 50%; width: 37px; height: 37px; font-size: 12px; font-weight: 800; }
+    .step h3 { font-size: 20px; letter-spacing: -.04em; margin: 25px 0 8px; }
+    .step p { color: #64776b; margin: 0; font-size: 13px; line-height: 1.75; max-width: 230px; }
+    .step:last-child .step-num { color: #e2f9b6; background: var(--ink); }
+    /* Portal teaser */
+    .portal { background: var(--ink); color: #fff; overflow: hidden; }
+    .portal-layout { display: grid; grid-template-columns: .8fr 1.2fr; align-items: center; gap: 70px; }
+    .portal .section-head { margin-bottom: 28px; }
+    .portal .section-head h2 { font-size: clamp(40px,4vw,57px); }
+    .portal .section-head p { color: #afc3b4; }
+    .portal-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
+    .portal-list li { display: flex; align-items: center; gap: 12px; font-size: 13px; color: #d6e4d9; }
+    .portal-list li .tick { color: var(--mint); }
+    .portal-mock { border: 1px solid #375549; border-radius: 19px; padding: 15px; background: #1a372f; box-shadow: 0 30px 100px rgba(0,0,0,.2); }
+    .portal-screen { background: #f8faf7; color: var(--ink); border-radius: 12px; overflow: hidden; }
+    .portal-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e5ebe4; padding: 15px 19px; font-size: 11px; font-weight: 750; }
+    .portal-header .sample { border-radius: 100px; background: #ecf2e8; color: #627767; padding: 5px 9px; font-weight: 700; }
+    .portal-screen-body { padding: 24px; }
+    .portal-screen-body h3 { font-size: 24px; margin: 5px 0 6px; letter-spacing: -.045em; }
+    .portal-screen-body p { font-size: 11px; color: #74837a; margin: 0; }
+    .portal-mini-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
+    .portal-mini { padding: 18px 16px; border: 1px solid #e0e7dc; border-radius: 10px; min-height: 91px; background: white; }
+    .portal-mini span { display: block; font-size: 10px; color: #718276; margin-bottom: 11px; }
+    .portal-mini strong { font-size: 15px; letter-spacing: -.02em; }
+    .portal-roadmap { border: 1px solid #dce5d8; background: white; margin-top: 11px; border-radius: 10px; padding: 17px 16px; }
+    .road-line { display: flex; gap: 9px; align-items: center; margin-top: 11px; }
+    .road-line span { flex: 0 0 97px; color: #748476; font-size: 10px; }
+    .road-bar { height: 6px; flex: 1; border-radius: 10px; background: #ecf1e9; overflow: hidden; }
+    .road-bar i { height: 100%; display: block; border-radius: 10px; background: #5d9e72; }
+    /* FAQ */
+    .faq { background: var(--paper); }
+    .faq-layout { display: grid; grid-template-columns: .8fr 1.2fr; gap: 80px; }
+    .faq-layout .section-head h2 { font-size: clamp(40px,4vw,57px); }
+    .faq-list { border-top: 1px solid var(--line); }
+    details { border-bottom: 1px solid var(--line); }
+    details summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; gap: 25px; align-items: center; padding: 23px 0; font-size: 14px; font-weight: 710; }
+    details summary::-webkit-details-marker { display: none; }
+    details summary::after { content: "+"; font-size: 21px; color: #638069; font-weight: 400; }
+    details[open] summary::after { content: "−"; }
+    details p { margin: -4px 0 23px; font-size: 13px; color: var(--muted); line-height: 1.8; max-width: 580px; }
+    /* Contact */
+    .contact { background: #dfeadc; padding: 105px 0; }
+    .contact-grid { display: grid; grid-template-columns: 1fr .86fr; gap: 85px; align-items: center; }
+    .contact h2 { font-size: clamp(43px,5vw,70px); line-height: 1.06; letter-spacing: -.065em; margin: 19px 0 20px; }
+    .contact p { color: #5a7461; font-size: 16px; line-height: 1.8; max-width: 495px; }
+    .contact-stats { display: flex; gap: 25px; flex-wrap: wrap; margin-top: 35px; color: #4d6954; font-size: 12px; }
+    .contact-stats span::before { content: "✓"; margin-right: 7px; font-weight: 800; }
+    .form { background: #fff; border: 1px solid #d7e3d3; border-radius: 22px; padding: 30px; box-shadow: 0 24px 60px rgba(18,48,27,.055); }
+    .form h3 { font-size: 22px; letter-spacing: -.04em; margin: 0 0 7px; }
+    .form > p { color: var(--muted); font-size: 12px; margin: 0 0 20px; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .field { display: flex; flex-direction: column; gap: 7px; margin-bottom: 15px; }
+    .field label { font-size: 11px; font-weight: 750; }
+    .field input, .field select, .field textarea { width: 100%; background: #f9fbf7; border: 1px solid #dce6db; border-radius: 9px; color: var(--ink); outline: 0; padding: 13px 12px; font-size: 12px; min-height: 44px; }
+    .field textarea { resize: vertical; min-height: 84px; }
+    .field input:focus, .field select:focus, .field textarea:focus { border-color: #6ba16c; box-shadow: 0 0 0 3px rgba(119,173,108,.14); }
+    .form .btn { width: 100%; }
+    .form-note { font-size: 10px!important; color: #7e8d83!important; line-height: 1.6!important; margin: 13px 0 0!important; }
+    .form-message { display: none; padding: 10px 12px; margin-top: 12px; background: #edf5e7; color: #305c3f; font-size: 11px; border-radius: 8px; }
+    .form-message.show { display: block; }
+    /* Footer */
+    footer { background: var(--ink); color: #e3ece5; padding: 38px 0 25px; }
+    .footer-top { display: flex; justify-content: space-between; gap: 30px; align-items: start; padding-bottom: 33px; border-bottom: 1px solid rgba(255,255,255,.14); }
+    .footer-brand .brand-sub { margin: 12px 0 0; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 25px; align-items: center; }
+    .footer-links a, .footer-links button { background: none; border: 0; padding: 0; color: #b7c8bb; font-size: 12px; }
+    .footer-links a:hover, .footer-links button:hover { color: white; }
+    .footer-bottom { padding-top: 23px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 15px; color: #83998a; font-size: 10px; }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
     @media (max-width: 1100px) {
-      .hero-inner {
-        grid-template-columns:
-          minmax(0, 1.03fr)
-          minmax(390px, 0.97fr);
-
-        gap:
-          28px;
-      }
-
-      .hero-visual {
-        width:
-          min(
-            100%,
-            485px
-          );
-
-        min-height:
-          380px;
-      }
+      .hero { padding: 70px 0 83px; }
+      .hero-grid { gap: 25px; }
+      h1 { font-size: clamp(49px,6vw,70px); }
+      .hero-visual { transform: scale(.92); transform-origin: center right; }
+      .float-card { right: -8px; }
+      .price-card { padding: 23px 21px; }
+      .subscription { grid-template-columns: 1fr 1.3fr; }
     }
-
-    /* ========================================
-       RESPONSIVE — TABLET
-    ======================================== */
-
-    @media (max-width: 980px) {
-      .nav-links,
-      .desktop-cta {
-        display:
-          none;
-      }
-
-      .menu-toggle {
-        display:
-          inline-flex;
-      }
-
-      .nav.is-open .mobile-menu {
-        display:
-          block;
-      }
-
-      .hero-inner {
-        grid-template-columns:
-          1fr;
-
-        min-height:
-          auto;
-
-        gap:
-          20px;
-      }
-
-      .hero-copy {
-        max-width:
-          760px;
-      }
-
-      .hero-visual {
-        width:
-          min(
-            100%,
-            600px
-          );
-
-        min-height:
-          365px;
-
-        justify-self:
-          start;
-
-        margin-top:
-          4px;
-      }
-
-      .route-diagram {
-        grid-template-columns:
-          1fr;
-      }
-
-      .route-arrow {
-        width:
-          1px;
-
-        height:
-          58px;
-
-        margin:
-          0 auto;
-
-        flex-direction:
-          column;
-      }
-
-      .route-arrow::before {
-        width:
-          1px;
-
-        flex:
-          1;
-
-        background:
-          linear-gradient(
-            180deg,
-            rgba(161, 105, 61, 0.18),
-            rgba(161, 105, 61, 0.72)
-          );
-      }
-
-      .route-arrow::after {
-        content:
-          "↓";
-      }
-
-      .route-node {
-        min-height:
-          220px;
-      }
-
-      .concept-bridge {
-        grid-template-columns:
-          1fr;
-
-        gap:
-          28px;
-      }
-
-      .bridge-track {
-        min-height:
-          120px;
-      }
-
-      .steps {
-        grid-template-columns:
-          1fr;
-      }
-
-      .search-form-shell {
-        grid-template-columns:
-          1fr;
-
-        gap:
-          28px;
-      }
-
-      .blog-grid {
-        grid-template-columns:
-          1fr;
-      }
+    @media (max-width: 880px) {
+      .container { width: min(calc(100% - 44px), var(--max)); }
+      .site-header { height: 76px; }
+      .menu-button { display: inline-flex; }
+      .nav-links { display: none; position: absolute; left: 0; right: 0; top: 76px; padding: 22px; background: #102b25; flex-direction: column; align-items: stretch; gap: 20px; box-shadow: 0 20px 30px rgba(0,0,0,.2); }
+      .nav-links.open { display: flex; }
+      .nav-links .btn { align-self: stretch; }
+      .hero-grid { grid-template-columns: 1fr; gap: 50px; }
+      .hero { padding: 74px 0 75px; }
+      .hero-copy { max-width: 690px; }
+      .hero-visual { max-width: 600px; transform: none; width: min(100%, 620px); margin: 0 auto; }
+      .float-card { right: -8px; }
+      .hero-bottom-inner { align-items: flex-start; flex-direction: column; }
+      .services-grid { grid-template-columns: repeat(3,1fr); }
+      .service-card { padding: 22px; min-height: 280px; }
+      .service-card h3 { font-size: 20px; }
+      .diff-layout, .portal-layout, .faq-layout, .contact-grid { grid-template-columns: 1fr; gap: 42px; }
+      .diff-layout .section-head { max-width: 600px; }
+      .pricing-grid { grid-template-columns: 1fr 1fr; }
+      .price-card.featured { order: -1; }
+      .price-card h3 { min-height: unset; }
+      .price-card .card-description { min-height: unset; }
+      .subscription { grid-template-columns: 1fr; gap: 25px; }
+      .portal-layout { max-width: 650px; }
+      .contact-grid { max-width: 700px; }
     }
-
-    /* ========================================
-       RESPONSIVE — MOBILE
-    ======================================== */
-
-    @media (max-width: 760px) {
-      :root {
-        --nav-h:
-          68px;
-      }
-
-      .container {
-        width:
-          min(
-            calc(100% - 28px),
-            var(--max)
-          );
-      }
-
-      .nav-wrap {
-        top:
-          8px;
-
-        padding-inline:
-          8px;
-      }
-
-      .nav {
-        width:
-          min(
-            calc(100% - 16px),
-            calc(var(--max) + 16px)
-          );
-
-        border-radius:
-          20px;
-      }
-
-      .nav-inner {
-        min-height:
-          var(--nav-h);
-
-        padding:
-          0 12px;
-      }
-
-      .brand-wordmark {
-        font-size:
-          19px;
-      }
-
-      .mobile-menu {
-        padding-inline:
-          12px;
-      }
-
-      .hero {
-        padding-top:
-          calc(var(--nav-h) + 30px);
-      }
-
-      .hero-inner {
-        padding:
-          18px 0 46px;
-      }
-
-      .hero h1 {
-        font-size:
-          clamp(
-            42px,
-            11.5vw,
-            56px
-          );
-
-        max-width:
-          10.8ch;
-
-        line-height:
-          0.92;
-      }
-
-      .hero-sub {
-        margin-top:
-          18px;
-
-        font-size:
-          16px;
-      }
-
-      .hero-actions .btn {
-        width:
-          100%;
-      }
-
-      .hero-visual {
-        min-height:
-          315px;
-
-        margin-top:
-          4px;
-      }
-
-      .hero-grid {
-        background-size:
-          42px 42px;
-      }
-
-      .hero-node strong {
-        font-size:
-          24px;
-      }
-
-      .hero-node-core strong {
-        font-size:
-          52px;
-      }
-
-      .hero-node-brand {
-        left:
-          9%;
-
-        top:
-          14%;
-      }
-
-      .hero-node-core {
-        left:
-          41%;
-
-        top:
-          42%;
-      }
-
-      .hero-node-spot {
-        right:
-          2%;
-
-        bottom:
-          14%;
-      }
-
-      .hero-visual-caption {
-        display:
-          none;
-      }
-
-      .concept {
-        padding:
-          82px 0;
-      }
-
-      .section-title {
-        font-size:
-          clamp(
-            40px,
-            12vw,
-            62px
-          );
-      }
-
-      .route-card {
-        margin-top:
-          40px;
-
-        padding:
-          0;
-
-        border-radius:
-          0;
-      }
-
-      .route-node {
-        padding:
-          24px;
-
-        border-radius:
-          24px;
-      }
-
-      .concept-note {
-        grid-template-columns:
-          1fr;
-      }
-
-      .concept-bridge-copy h2 {
-        font-size:
-          clamp(
-            34px,
-            10vw,
-            48px
-          );
-      }
-
-      .bridge-track {
-        grid-template-columns:
-          auto
-          1fr
-          auto
-          1fr
-          auto;
-
-        gap:
-          8px;
-
-        min-height:
-          90px;
-      }
-
-      .bridge-label {
-        font-size:
-          15px;
-      }
-
-      .bridge-core {
-        font-size:
-          30px;
-      }
-
-      .search-section {
-        padding-top:
-          82px;
-
-        padding-bottom:
-          48px;
-      }
-
-      .search-offer-copy {
-        padding-left:
-          14px;
-
-        margin-top:
-          20px;
-      }
-
-      .steps {
-        grid-template-columns:
-          1fr;
-      }
-
-      .step-card,
-      .step-card + .step-card,
-      .step-card:last-child {
-        min-height:
-          0;
-
-        padding:
-          24px 0;
-
-        border-right:
-          0;
-
-        border-bottom:
-          1px solid
-          var(--line);
-      }
-
-      .step-card:last-child {
-        border-bottom:
-          0;
-      }
-
-      .step-card h3 {
-        margin-top:
-          34px;
-      }
-
-      .contact-section {
-        padding-top:
-          40px;
-
-        padding-bottom:
-          48px;
-      }
-
-      .search-form-shell {
-        margin-top:
-          0;
-
-        padding:
-          32px 0;
-
-        border-radius:
-          0;
-      }
-
-      .search-form {
-        grid-template-columns:
-          1fr;
-      }
-
-      .search-form .field,
-      .search-form .field.full,
-      .search-form .call-row,
-      .search-form .privacy-row,
-      .search-form .contact-submit {
-        grid-column:
-          1;
-      }
-
-      .contact-submit {
-        flex-direction:
-          column;
-
-        align-items:
-          stretch;
-      }
-
-      .contact-submit .btn {
-        width:
-          100%;
-      }
-
-      .blog-section {
-        padding-top:
-          40px;
-      }
-
-      .final-cta {
-        padding:
-          82px 0;
-      }
-
-      .final-card {
-        min-height:
-          520px;
-
-        padding:
-          34px 24px;
-
-        border-radius:
-          30px;
-      }
-
-      .final-bottom {
-        flex-direction:
-          column;
-
-        align-items:
-          flex-start;
-      }
-
-      .final-bottom .btn {
-        width:
-          100%;
-      }
-
-      .footer-inner {
-        flex-direction:
-          column;
-
-        align-items:
-          flex-start;
-      }
+    @media (max-width: 620px) {
+      html { scroll-padding-top: 75px; }
+      .container { width: min(calc(100% - 36px), var(--max)); }
+      .section { padding: 78px 0; }
+      .section-head { margin-bottom: 30px; }
+      .section-head h2 { font-size: clamp(34px,10vw,45px); }
+      .section-head p { font-size: 14px; }
+      .hero { padding: 55px 0 57px; }
+      h1 { font-size: clamp(44px,12vw,64px); }
+      .hero-tag { font-size: 10px; margin-bottom: 24px; }
+      .hero-desc { font-size: 15px; margin: 25px 0; }
+      .hero-ctas { flex-direction: column; align-items: stretch; }
+      .hero-foot { margin-top: 26px; gap: 13px; }
+      .hero-foot span { font-size: 11px; }
+      .hero-grid { gap: 32px; }
+      .dash { transform: none; }
+      .dash-main { padding: 21px 16px 18px; }
+      .dash-heading { font-size: 21px; }
+      .dash-item { padding: 12px 10px; }
+      .dash-item-tag { display: none; }
+      .float-card { bottom: -43px; right: -1px; padding: 11px 13px; }
+      .hero-bottom-inner { gap: 14px; }
+      .benefit-row { gap: 9px 18px; }
+      .benefit-row span { font-size: 10px; }
+      .services-grid, .pricing-grid { grid-template-columns: 1fr; }
+      .service-card { min-height: auto; padding: 25px; }
+      .service-icon { margin: 19px 0; }
+      .diff-layout { gap: 27px; }
+      .diff-card { padding: 5px 16px; }
+      .diff-row { gap: 10px; }
+      .diff-row .instead { font-size: 11px; }
+      .diff-row .ours { font-size: 11px; }
+      .packages-top { display: block; }
+      .package-note { padding: 0; margin: -15px 0 25px; }
+      .price-card { padding: 29px 25px; }
+      .price-card.featured { order: 0; }
+      .price-card .card-description { min-height: unset; }
+      .subscription { padding: 29px 24px; }
+      .subscription .features { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr 1fr; gap: 30px 18px; }
+      .step h3 { margin: 18px 0 8px; font-size: 18px; }
+      .step p { font-size: 12px; }
+      .portal-layout { gap: 30px; }
+      .portal-screen-body { padding: 16px; }
+      .portal-mini { padding: 14px 11px; min-height: 85px; }
+      .portal-mini strong { font-size: 13px; }
+      .contact { padding: 72px 0; }
+      .form { padding: 24px 19px; }
+      .form-grid { grid-template-columns: 1fr; gap: 0; }
+      .footer-top { flex-direction: column; }
     }
-
-    @media (max-width: 470px) {
-      .hero-visual {
-        min-height:
-          285px;
-      }
-
-      .hero-node small {
-        font-size:
-          10px;
-      }
-
-      .hero-node-brand {
-        left:
-          9%;
-
-        top:
-          13%;
-      }
-
-      .hero-node-core {
-        left:
-          39%;
-
-        top:
-          41%;
-      }
-
-      .hero-node-spot {
-        right:
-          0;
-
-        bottom:
-          10%;
-      }
-
-      .bridge-track {
-        grid-template-columns:
-          1fr;
-
-        justify-items:
-          start;
-
-        min-height:
-          0;
-
-        gap:
-          10px;
-
-        padding-top:
-          10px;
-      }
-
-      .bridge-line {
-        width:
-          1px;
-
-        height:
-          30px;
-
-        background:
-          linear-gradient(
-            180deg,
-            rgba(161, 105, 61, 0.18),
-            rgba(161, 105, 61, 0.62)
-          );
-
-        margin-left:
-          12px;
-      }
-
-      .bridge-line::after {
-        content:
-          "↓";
-
-        right:
-          auto;
-
-        left:
-          -6px;
-
-        top:
-          auto;
-
-        bottom:
-          -7px;
-
-        transform:
-          none;
-      }
-
-      .bridge-line i {
-        display:
-          none;
-      }
-    }
-
-    @media (max-width: 420px) {
-      .hero h1 {
-        font-size:
-          42px;
-      }
-    }
-
     @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        animation-duration:
-          0.01ms !important;
-
-        animation-iteration-count:
-          1 !important;
-
-        transition-duration:
-          0.01ms !important;
-
-        scroll-behavior:
-          auto !important;
-      }
-
-      .reveal {
-        opacity:
-          1;
-
-        transform:
-          none;
-      }
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none!important; animation: none!important; }
+      .reveal { opacity: 1; transform: none; }
     }
   </style>
 </head>
-
 <body>
-  <div
-    class="page-noise"
-    aria-hidden="true"
-  ></div>
-
-  <a
-    class="skip-link"
-    href="#main"
-  >
-    Zum Inhalt
-  </a>
-
-  <!-- ========================================
-       NAVIGATION
-  ========================================= -->
-
-  <div class="nav-wrap">
-
-    <header
-      class="nav"
-      id="nav"
-    >
-
-      <div class="nav-inner">
-
-        <a
-          class="brand-logo"
-          href="#top"
-          aria-label="Brand 2 Spots Startseite"
-        >
-          <span class="brand-wordmark">
-            <span class="word">
-              Brand
-            </span>
-
-            <em>
-              2
-            </em>
-
-            <span class="word">
-              Spots
-            </span>
+  <a class="skip" href="#inhalt">Zum Inhalt springen</a>
+  <div class="dark-shell" id="start">
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="#start" aria-label="UPGRADEWISE, zur Startseite">
+          <span class="brand-mark" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3.5 6.5 9 12l-5.5 5.5M11.5 6.5 17 12l-5.5 5.5M17 6.5l5.5 5.5L17 17.5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
+          <span><span class="brand-name">UPGRADE<span>WISE</span></span><span class="brand-sub">Business Improvement</span></span>
         </a>
-
-        <nav
-          class="nav-links"
-          aria-label="Hauptnavigation"
-        >
-          <a href="#konzept">
-            Unser Konzept
-          </a>
-
-          <a href="#suchauftrag">
-            Suchauftrag
-          </a>
-
-          <a href="#blog">
-            Blogs
-          </a>
+        <nav class="nav-links" id="site-nav" aria-label="Hauptnavigation">
+          <a href="#leistungen">Leistungen</a>
+          <a href="#unterschied">Unser Ansatz</a>
+          <a href="#pakete">Pakete & Preise</a>
+          <a href="#ablauf">Ablauf</a>
+          <a class="btn btn-primary" href="#kontakt">Uns beauftragen <span class="arrow" aria-hidden="true">↗</span></a>
         </nav>
-
-        <a
-          class="btn btn-accent desktop-cta"
-          href="#suchauftrag-formular"
-        >
-          Kontakt aufnehmen
-        </a>
-
-        <button
-          class="menu-toggle"
-          type="button"
-          aria-label="Menü öffnen"
-          aria-expanded="false"
-          aria-controls="mobile-menu"
-        >
-          <span aria-hidden="true"></span>
-        </button>
-
+        <button type="button" class="menu-button" id="menu-button" aria-controls="site-nav" aria-expanded="false" aria-label="Menü öffnen">☰</button>
       </div>
-
-      <nav
-        class="mobile-menu"
-        id="mobile-menu"
-        aria-label="Mobile Navigation"
-      >
-
-        <div class="mobile-menu-inner">
-
-          <a
-            class="mobile-link"
-            href="#konzept"
-          >
-            Unser Konzept
-            <span>↘</span>
-          </a>
-
-          <a
-            class="mobile-link"
-            href="#suchauftrag"
-          >
-            Suchauftrag
-            <span>↘</span>
-          </a>
-
-          <a
-            class="mobile-link"
-            href="#blog"
-          >
-            Blogs
-            <span>↘</span>
-          </a>
-
-          <a
-            class="btn btn-accent"
-            href="#suchauftrag-formular"
-          >
-            Kontakt aufnehmen
-          </a>
-
-        </div>
-
-      </nav>
-
     </header>
 
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <span class="hero-tag"><span class="dot" aria-hidden="true"></span> KI-Kompetenz & ganzheitliche Unternehmensverbesserung</span>
+            <h1 id="hero-title">KI einführen.<br><em>Besser arbeiten.</em></h1>
+            <p class="hero-desc">Wir erkennen sinnvolle KI-Möglichkeiten, führen passende Systeme in Ihrem Unternehmen ein und verbessern auf Wunsch Ihr Geschäft auch ganzheitlich – von Abläufen und Kosten bis zu Produkten und Marketing. Klar, praxisnah und auf den Punkt.</p>
+            <div class="hero-ctas">
+              <a class="btn btn-primary" href="#pakete">Pakete entdecken <span class="arrow" aria-hidden="true">↗</span></a>
+              <a class="btn btn-outline-dark" href="#unterschied">Was uns anders macht <span class="arrow" aria-hidden="true">→</span></a>
+            </div>
+            <div class="hero-foot" aria-label="Unser Arbeitsmodell">
+              <span><b>✓</b> Überwiegend remote</span>
+              <span><b>✓</b> Klare Leistungspakete</span>
+              <span><b>✓</b> Keine Dauerbindung</span>
+            </div>
+          </div>
+          <div class="hero-visual" aria-label="Interaktive Übersicht unserer drei Hauptpakete mit je drei Schritten">
+            <div class="visual-halo"></div><div class="orbit-a"></div><div class="orbit-b"></div>
+            <div class="dash">
+              <div class="dash-top"><span class="traffic"><i></i><i></i><i></i></span><span class="dash-top-name">UPGRADEWISE / ANGEBOTE</span><span class="dash-live">Demo</span></div>
+              <div class="dash-main">
+                <div class="dash-kicker" id="dash-kicker">AI ENABLEMENT &amp; IMPLEMENTATION</div>
+                <h2 class="dash-heading" id="dash-title">So führen wir KI ein.</h2>
+                <p class="dash-sub" id="dash-sub">In 2–3 Wochen von der Auswahl zur Anwendung.</p>
+                <div class="dash-switch" role="tablist" aria-label="Unsere drei Pakete auswählen">
+                  <button type="button" class="dash-tab" id="tab-enable" role="tab" aria-selected="true" aria-controls="dash-content" data-stage="enable">KI-Einführung</button>
+                  <button type="button" class="dash-tab" id="tab-check" role="tab" aria-selected="false" aria-controls="dash-content" data-stage="check" tabindex="-1">AI Check</button>
+                  <button type="button" class="dash-tab" id="tab-improve" role="tab" aria-selected="false" aria-controls="dash-content" data-stage="improve" tabindex="-1">Business 360°</button>
+                </div>
+                <div class="dash-content" id="dash-content" role="tabpanel" aria-labelledby="tab-check" aria-live="polite"></div>
+                <div class="dash-bottom"><span class="dash-bottom-label" id="dash-bottom-label">Ergebnis: KI, die im Team genutzt wird</span><a id="dash-link" href="#paket-enable">Paket ansehen <span aria-hidden="true">↗</span></a></div>
+              </div>
+            </div>
+            <div class="float-card" aria-hidden="true"><span class="ficon">✓</span><span><strong>Von der Auswahl zur Anwendung.</strong><span>Ausgewählt. Eingeführt. Begleitet.</span></span></div>
+          </div>
+        </div>
+      </section>
+      <div class="hero-bottom"><div class="container hero-bottom-inner"><strong>Wofür wir stehen</strong><div class="benefit-row"><span>KI einführen statt nur darüber reden</span><span>Kosten, Produkte & Abläufe verbessern</span><span>Klare Lösungen statt Dauerberatung</span></div></div></div>
   </div>
 
-  <main id="main">
-
-    <!-- ========================================
-         HERO
-    ========================================= -->
-
-    <section
-      class="hero"
-      id="top"
-      aria-labelledby="hero-title"
-    >
-
-      <div class="container hero-inner">
-
-        <div class="hero-copy reveal in">
-
-          <h1 id="hero-title">
-            Bringe deine
-            <span class="accent-word">
-              Brand
-            </span>
-            ins echte Leben.
-          </h1>
-
-          <p class="hero-sub">
-            <strong>B2S</strong>
-            verbindet Brands mit den Orten, die zum Leben
-            ihrer Zielgruppe gehören.
-          </p>
-
-          <div class="hero-actions">
-
-            <a
-              class="btn btn-accent btn-arrow"
-              href="#suchauftrag-formular"
-            >
-              Kontakt aufnehmen
-            </a>
-
-            <a
-              class="btn btn-ghost"
-              href="#konzept"
-            >
-              B2S entdecken
-            </a>
-
+    <main id="inhalt">
+      <section id="leistungen" class="section services">
+        <div class="container">
+          <div class="section-head reveal"><span class="eyebrow"><span class="line"></span> UNSER ANSPRUCH</span><h2>Neue Technologien nutzen.<br>Unternehmen besser aufstellen.</h2><p>Wir verbinden zwei Kompetenzen: Als KI-Spezialisten prüfen und implementieren wir Technologien, die Ihren Arbeitsalltag erleichtern. Als Business Improvement Partner betrachten wir unabhängig davon auch Kosten, Produkte, interne Abläufe, Marketing und Ihre Außenwirkung. Unsere Arbeit soll konkret, verständlich und hochwertig sein – nicht nur theoretisch überzeugen.</p></div>
+          <div class="services-grid">
+            <article class="service-card reveal"><span class="num">01 / Orientierung</span><span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m16.2 16.2 4.2 4.2M8 11h6M11 8v6"/></svg></span><h3>AI Opportunity</h3><p>Wir prüfen Ihre internen Prozesse und zeigen konkret, welche KI-Anwendungen für Ihre Mitarbeiter sinnvoll sind – inklusive fertiger Analyse und Empfehlungen.</p></article>
+            <article class="service-card reveal"><span class="num">02 / Umsetzung</span><span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9L12 3Z"/><path d="m4 7.5 8 5 8-5M12 12.5V21"/></svg></span><h3>AI Enablement</h3><p>Wir machen den AI Check, richten passende Systeme ein, führen Mitarbeitende live ein und liefern Anleitungen plus 30-Tage-Recheck.</p></article>
+            <article class="service-card reveal"><span class="num">03 / Verbesserung</span><span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18h16M5 14l5-5 4 3 5-6"/><path d="M15 6h4v4"/></svg></span><h3>Business Improvement 360°</h3><p>Wir betrachten Ihr gesamtes Unternehmen: Prozesse, Kosten, Produkte, Marketing und Außenwirkung – unabhängig davon, ob KI dabei hilft.</p></article>
           </div>
-
         </div>
+      </section>
 
-        <div
-          class="hero-visual reveal"
-          id="hero-visual"
-          aria-label="Visualisierung des B2S Weges von Brand zu Spot"
-        >
-
-          <div
-            class="hero-grid"
-            aria-hidden="true"
-          ></div>
-
-          <svg
-            class="hero-paths"
-            viewBox="0 0 620 470"
-            role="img"
-            aria-label="Brand wird über B2S mit einem passenden Spot verbunden"
-          >
-
-            <path
-              class="path path-a"
-              d="M74 112 C190 108 210 226 309 228"
-            />
-
-            <path
-              class="path path-b"
-              d="M309 228 C422 230 438 354 552 356"
-            />
-
-            <circle
-              class="flow-dot"
-              r="5"
-            >
-
-              <animateMotion
-                dur="4.6s"
-                repeatCount="indefinite"
-                path="M74 112 C190 108 210 226 309 228 C422 230 438 354 552 356"
-              />
-
-            </circle>
-
-          </svg>
-
-          <div class="hero-node hero-node-brand">
-
-            <span class="hero-node-index">
-              01
-            </span>
-
-            <strong>
-              Brand
-            </strong>
-
-            <small>
-              Produkt &amp; Zielgruppe
-            </small>
-
+      <section id="unterschied" class="section difference">
+        <div class="container diff-layout">
+          <div class="section-head reveal"><span class="eyebrow"><span class="line"></span> UNSER ANSATZ · STATT KLASSISCHER BERATUNG</span><h2>KI-Expertise. Und der Blick aufs Ganze.</h2><p>Mit aktuellem KI-Know-how helfen wir Unternehmen, neue Möglichkeiten sicher und praktisch zu nutzen. Zugleich hinterfragen wir bei unserem Business-Improvement-Angebot Produkte, Kosten, Abläufe und Marktauftritt – auch ganz ohne KI. Wir arbeiten als externer Spezialist auf Zeit: klarer Umfang, transparente Ergebnisse und hochwertige Übergabe statt offener Beratungsverträge.</p></div>
+          <div class="diff-card reveal">
+            <div class="diff-row"><div class="instead">Theorie ohne Alltagsbezug</div><div class="ours"><b>✓</b><span>Praxisnahe KI-Einführung oder umsetzbare Business-Empfehlungen</span></div></div>
+            <div class="diff-row"><div class="instead">Offene Beratungsmandate</div><div class="ours"><b>✓</b><span>Definierte Leistungen mit transparentem Umfang</span></div></div>
+            <div class="diff-row"><div class="instead">Dauerhafte Einbindung ins Unternehmen</div><div class="ours"><b>✓</b><span>Temporäre Unterstützung, danach saubere Übergabe</span></div></div>
+            <div class="diff-row"><div class="instead">KI als Antwort auf jedes Problem</div><div class="ours"><b>✓</b><span>Technologie, wenn sie hilft – Business-Verbesserung auch ohne KI</span></div></div>
+            <div class="diff-row"><div class="instead">Beratung mit unklarem Ergebnis</div><div class="ours"><b>✓</b><span>Verständlicher Bericht, klare Prioritäten und konkrete Maßnahmen</span></div></div>
           </div>
-
-          <div class="hero-node hero-node-core">
-
-            <span class="hero-node-index">
-              02
-            </span>
-
-            <strong>
-              B2S
-            </strong>
-
-            <small>
-              Matching &amp; Zugang
-            </small>
-
-          </div>
-
-          <div class="hero-node hero-node-spot">
-
-            <span class="hero-node-index">
-              03
-            </span>
-
-            <strong>
-              Spot
-            </strong>
-
-            <small>
-              Reale Community
-            </small>
-
-          </div>
-
-          <div class="hero-visual-caption">
-            Bewege den Cursor
-          </div>
-
         </div>
+      </section>
 
-      </div>
-
-    </section>
-
-    <!-- ========================================
-         KONZEPT
-    ========================================= -->
-
-    <section
-      class="concept section-line"
-      id="konzept"
-    >
-
-      <div class="container">
-
-        <p class="section-kicker reveal">
-          Unser Konzept
-        </p>
-
-        <h2 class="section-title reveal">
-          Brand → Spot → Community.
-        </h2>
-
-        <p class="section-lead reveal">
-          Online ist Zielgruppenzugang längst planbar.
-          Offline ist er noch fragmentiert. B2S überträgt
-          diese Logik in die reale Welt: Eine Brand wird
-          gezielt mit Orten verbunden, an denen ihre
-          Zielgruppe bereits regelmäßig ist.
-        </p>
-
-        <div class="route-card reveal">
-
-          <div
-            class="route-diagram"
-            aria-label="B2S Vertriebsweg"
-          >
-
-            <article class="route-node">
-
-              <div class="route-label">
-                <span>01</span>
-                <span>Brand</span>
-              </div>
-
-              <div>
-
-                <h3>
-                  Dein Produkt.
-                </h3>
-
-                <p>
-                  Eine Brand mit Produkt, Zielgruppe und
-                  dem Wunsch nach echter Offline-Präsenz.
-                </p>
-
-              </div>
-
+      <section id="pakete" class="section packages">
+        <div class="container">
+          <div class="packages-top"><div class="section-head reveal"><span class="eyebrow"><span class="line"></span> PAKETE & PREISE</span><h2>Klare Leistungen.<br>Klare Entscheidungen.</h2><p>Drei unterschiedliche Leistungen: KI-Chancen erkennen, KI im Alltag einführen oder das Unternehmen ganzheitlich betrachten. Jedes Paket ist einzeln buchbar – ohne Pflicht-Abo.</p></div><p class="package-note">Feste Pakete statt Dauerberatung. Beim 360°-Check ist die Analyse ganzheitlich; größere Umsetzungen sind separat buchbar.</p></div>
+          <div class="pricing-grid">
+            <article id="paket-check" class="price-card reveal">
+              <div class="card-kicker"><span>PAKET 01</span><span>ORIENTIERUNG</span></div>
+              <h3>AI Opportunity<br>Check</h3>
+              <p class="card-description">Wir prüfen Ihre internen Arbeitsabläufe und zeigen, wo KI sinnvoll eingesetzt werden kann – ohne etwas installieren zu müssen.</p>
+              <div class="price">1.500–3.000 €</div><div class="duration">1–2 Wochen · Remote</div>
+              <ul class="features">
+                <li><span class="tick"></span>Kurzer Überblick über passende KI-Technologien und aktuelle Möglichkeiten</li>
+                <li><span class="tick"></span>Analyse interner Abläufe und vorhandener Software</li>
+                <li><span class="tick"></span>Konkrete KI-Anwendungen für ausgewählte interne Aufgaben</li>
+                <li><span class="tick"></span>Fertige Analyse mit priorisierten Vorschlägen und nächsten Schritten</li>
+                <li><span class="tick"></span>Interaktiver Ergebnisbericht im Kundenportal</li>
+              </ul>
+              <a class="btn btn-outline package-link" href="#kontakt" data-package="AI Opportunity Check">Paket anfragen <span class="arrow" aria-hidden="true">↗</span></a>
+              <div class="promise"><strong>Ihr Mehrwert</strong>Sie wissen konkret, wo KI intern unterstützen kann, welche Tools infrage kommen und wie Sie starten sollten.</div>
             </article>
-
-            <div
-              class="route-arrow"
-              aria-hidden="true"
-            ></div>
-
-            <article class="route-node is-core">
-
-              <div class="route-label">
-                <span>02</span>
-                <span>B2S</span>
-              </div>
-
-              <div>
-
-                <h3>
-                  Der neue Weg.
-                </h3>
-
-                <p>
-                  Brand to Spots: Wir matchen Produkt,
-                  Zielgruppe und realen Ort zu einem
-                  passenden Touchpoint.
-                </p>
-
-              </div>
-
+            <article id="paket-enable" class="price-card featured reveal">
+              <div class="card-kicker"><span>PAKET 02</span><span class="card-badge">FOKUSANGEBOT</span></div>
+              <h3>AI Enablement &<br>Implementation</h3>
+              <p class="card-description">Alles aus dem AI Check – plus passende KI-Systeme einrichten, Mitarbeitende anleiten und die Nutzung begleiten.</p>
+              <div class="price">3.900–6.900 €</div><div class="duration">2–3 Wochen · Remote</div>
+              <ul class="features">
+                <li><span class="tick"></span>AI Opportunity Check im vereinbarten Umfang inklusive</li>
+                <li><span class="tick"></span>Auswahl und Einrichtung passender KI-Systeme (1–3, je nach Aufwand)</li>
+                <li><span class="tick"></span>Live-Einführung für Mitarbeitende mit konkreten Anwendungsfällen</li>
+                <li><span class="tick"></span>Schriftliche Anleitungen: wann, wie und wofür KI genutzt wird</li>
+                <li><span class="tick"></span>Klare KI-Nutzungsregeln und sichere Anwendung im Unternehmen</li>
+                <li><span class="tick"></span>Gemeinsamer Praxistest und Anpassung der Nutzungsempfehlungen</li>
+                <li><span class="tick"></span>Recheck nach 30 Tagen</li>
+              </ul>
+              <a class="btn btn-primary package-link" href="#kontakt" data-package="AI Enablement & Implementation">Paket anfragen <span class="arrow" aria-hidden="true">↗</span></a>
+              <div class="promise"><strong>Ihr Mehrwert</strong>Sie erhalten nutzbare KI-Systeme und Mitarbeitende, die wissen, wie sie diese im Alltag richtig einsetzen – inklusive Recheck.</div>
             </article>
-
-            <div
-              class="route-arrow"
-              aria-hidden="true"
-            ></div>
-
-            <article class="route-node">
-
-              <div class="route-label">
-                <span>03</span>
-                <span>Spot</span>
-              </div>
-
-              <div>
-
-                <h3>
-                  Echte Community.
-                </h3>
-
-                <p>
-                  Gyms, Studios und andere relevante Orte
-                  werden zu physischen Vertriebspunkten
-                  und Marken-Touchpoints.
-                </p>
-
-              </div>
-
+            <article id="paket-performance" class="price-card reveal">
+              <div class="card-kicker"><span>PAKET 03</span><span>GANZHEITLICHER BLICK</span></div>
+              <h3>Business<br>Improvement 360°</h3>
+              <p class="card-description">Unabhängiger Blick auf Ihr gesamtes Unternehmen: Kosten, Leistungen, Abläufe und Marktauftritt – KI ist optional.</p>
+              <div class="price">3.900–6.900 €</div><div class="duration">2–4 Wochen · Remote</div>
+              <ul class="features">
+                <li><span class="tick"></span>Überblick über interne Prozesse, Kosten und Organisation</li>
+                <li><span class="tick"></span>Prüfung von Kosten- und Einsparpotenzialen anhand freigegebener Daten</li>
+                <li><span class="tick"></span>Bewertung von Produkten, Leistungen und Angebotsstruktur</li>
+                <li><span class="tick"></span>Prüfung von Marketingkonzept, Positionierung und Außenwirkung</li>
+                <li><span class="tick"></span>Priorisierter Maßnahmenplan mit konkreten Verbesserungen</li>
+                <li><span class="tick"></span>Online-Ergebnisgespräch mit ersten umsetzbaren Sofortmaßnahmen</li>
+              </ul>
+              <a class="btn btn-outline package-link" href="#kontakt" data-package="Business Improvement 360°">Paket anfragen <span class="arrow" aria-hidden="true">↗</span></a>
+              <div class="promise"><strong>Ihr Mehrwert</strong>Ein unabhängiger 360°-Blick auf Ihr Unternehmen – mit konkreten Vorschlägen zu Kosten, Produkten, Prozessen und Vermarktung.</div>
             </article>
-
           </div>
-
-          <div class="concept-note">
-
-            <article>
-
-              <strong>
-                Nicht einfach Fläche mieten.
-              </strong>
-
-              <p>
-                Der Spot ist nicht das Produkt.
-                Entscheidend ist der Zugang zu einer
-                passenden realen Zielgruppe und Community.
-              </p>
-
-            </article>
-
-            <article>
-
-              <strong>
-                Offline wie einen Kanal denken.
-              </strong>
-
-              <p>
-                B2S macht reale Touchpoints auffindbarer,
-                strukturierter und perspektivisch
-                messbarer – statt jede Location einzeln
-                neu zu suchen.
-              </p>
-
-            </article>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- ========================================
-         B2S BRIDGE
-    ========================================= -->
-
-    <section
-      class="visual-section section-line"
-      aria-label="B2S Prinzip"
-    >
-
-      <div class="container">
-
-        <div class="concept-bridge reveal">
-
-          <div class="concept-bridge-copy">
-
-            <p class="section-kicker">
-              B2S in einem Satz
-            </p>
-
-            <h2>
-              Die richtige Brand am richtigen Spot.
-            </h2>
-
-            <p>
-              Wir verbinden Produkt, Zielgruppe und
-              realen Ort zu einem relevanten Touchpoint.
-            </p>
-
-          </div>
-
-          <div
-            class="bridge-track"
-            aria-hidden="true"
-          >
-
-            <span class="bridge-label bridge-brand">
-              Brand
-            </span>
-
-            <span class="bridge-line">
-              <i></i>
-            </span>
-
-            <span class="bridge-core">
-              B2S
-            </span>
-
-            <span class="bridge-line">
-              <i></i>
-            </span>
-
-            <span class="bridge-label bridge-spot">
-              Spot
-            </span>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- ========================================
-         SUCHAUFTRAG / ANGEBOT
-    ========================================= -->
-
-    <section
-      class="search-section section-line"
-      id="suchauftrag"
-    >
-
-      <div class="container">
-
-        <div class="search-header">
-
-          <p class="section-kicker reveal">
-            Unser Angebot
-          </p>
-
-          <h2 class="section-title reveal">
-            Du suchst einen Spot.
-            Wir finden ihn.
-          </h2>
-
-          <p class="search-offer-copy reveal">
-            <strong>
-              Einfach statt kompliziert:
-            </strong>
-
-            Du sagst uns, welches Produkt du hast,
-            wen du erreichen willst und in welcher
-            Region. Wir übernehmen die Suche und
-            kommen mit einer kuratierten Auswahl
-            passender Spots zurück.
-          </p>
-
-        </div>
-
-        <div
-          class="steps"
-          id="ablauf"
-        >
-
-          <article class="step-card reveal">
-
-            <div class="step-num">
-              01
-            </div>
-
+          <article id="paket-service" class="subscription reveal">
             <div>
-
-              <h3>
-                Briefing senden
-              </h3>
-
-              <p>
-                Produkt, Zielgruppe, Region und grobe
-                Vorstellung reichen für den ersten Schritt.
-              </p>
-
+              <span class="eyebrow"><span class="line"></span> OPTIONAL · LAUFENDE BETREUUNG</span>
+              <h3>Improvement<br>as a Service.</h3>
+              <p>Ihr externer Improvement Desk: Wir nehmen Anliegen und Ideen aus Ihrem Team aktiv an, prüfen sie und bleiben Ansprechpartner für praktische Weiterentwicklung.</p>
+              <div class="price">1.500–2.500 € <small>/ Monat</small></div>
+              <p class="small">Zunächst 3 Monate · bei Bedarf verlängerbar</p>
+              <a href="#kontakt" class="btn btn-outline package-link" data-package="Improvement as a Service">Betreuung anfragen <span class="arrow" aria-hidden="true">↗</span></a>
             </div>
-
+            <ul class="features">
+              <li><span class="tick"></span>Digitaler Ansprechpartner für KI-Fragen, Probleme und Verbesserungsideen</li>
+              <li><span class="tick"></span>Aktive Annahme und Prüfung von bis zu fünf Anliegen pro Monat</li>
+              <li><span class="tick"></span>Konkrete Antworten und Handlungsempfehlungen</li>
+              <li><span class="tick"></span>Eine kleine Verbesserung pro Monat inklusive (bis 4 Arbeitsstunden)</li>
+              <li><span class="tick"></span>Proaktive Hinweise auf relevante neue KI-Funktionen</li>
+              <li><span class="tick"></span>Monatliche Übersicht aller bearbeiteten Anliegen und Verbesserungen</li>
+              <li><span class="tick"></span>Größere Umsetzungen auf Wunsch separat buchbar</li>
+              <li><span class="tick"></span>Verlängerung nur, wenn die Betreuung sinnvoll bleibt</li>
+            </ul>
           </article>
-
-          <article class="step-card reveal">
-
-            <div class="step-num">
-              02
-            </div>
-
-            <div>
-
-              <h3>
-                Wir suchen
-              </h3>
-
-              <p>
-                Wir identifizieren passende reale Spots,
-                prüfen den Fit und sprechen geeignete
-                Locations an.
-              </p>
-
-            </div>
-
-          </article>
-
-          <article class="step-card reveal">
-
-            <div class="step-num">
-              03
-            </div>
-
-            <div>
-
-              <h3>
-                Du bekommst Matches
-              </h3>
-
-              <p>
-                Du erhältst eine kleine, relevante
-                Auswahl statt einer langen Liste
-                beliebiger Flächen.
-              </p>
-
-            </div>
-
-          </article>
-
+          <p class="pricing-footnote">Alle Preise sind unverbindliche Richtwerte zzgl. gesetzlicher Umsatzsteuer. Softwarelizenzen, komplexe IT-Integrationen und Vor-Ort-Termine sind nicht enthalten. Der konkrete Leistungsumfang wird vor Auftragsbeginn vereinbart.</p>
         </div>
+      </section>
 
-      </div>
-
-    </section>
-
-    <!-- ========================================
-         KONTAKT — FORMSUBMIT
-    ========================================= -->
-
-    <section
-      class="contact-section"
-      id="suchauftrag-formular"
-      aria-labelledby="contact-title"
-    >
-
-      <div class="container">
-
-        <div
-          class="search-form-shell reveal"
-          id="kontaktformular"
-        >
-
-          <div class="search-form-intro">
-
-            <p class="section-kicker">
-              Kontakt aufnehmen
-            </p>
-
-            <h3 id="contact-title">
-              Lass uns kurz über deine Brand sprechen.
-            </h3>
-
-            <p>
-              Ein paar Angaben reichen. Wir melden uns
-              persönlich und können bei Bedarf direkt
-              einen kurzen Call vereinbaren.
-            </p>
-
-            <div class="form-mail-note">
-              Direkt an
-              <strong>
-                info@brand2spots.de
-              </strong>
-            </div>
-
+      <section id="ablauf" class="section process">
+        <div class="container">
+          <div class="section-head reveal"><span class="eyebrow"><span class="line"></span> SO ARBEITEN WIR</span><h2>Ein klarer Start.<br>Ein sauberes Ende.</h2><p>Sie beauftragen uns für ein konkretes Ziel: KI-Potenziale verstehen, KI einführen oder Ihr Unternehmen mit frischem Blick überprüfen lassen. Danach erhalten Sie eine klare Übergabe.</p></div>
+          <div class="steps">
+            <div class="step reveal"><span class="step-num">01</span><h3>Verstehen</h3><p>In einem Online-Gespräch klären wir Ihr Anliegen und stecken den Umfang ab.</p></div>
+            <div class="step reveal"><span class="step-num">02</span><h3>Prüfen</h3><p>Wir analysieren Ihre KI-Möglichkeiten oder bewerten Kosten, Produkte und Außenwirkung – je nach Paket.</p></div>
+            <div class="step reveal"><span class="step-num">03</span><h3>Umsetzen</h3><p>Beim KI-Einführungspaket richten wir ein und schulen. Beim Business-Check erstellen wir konkrete Empfehlungen.</p></div>
+            <div class="step reveal"><span class="step-num">04</span><h3>Übergeben</h3><p>Sie erhalten Ergebnisse und Dokumentation. Weiterbetreuung nur bei Bedarf.</p></div>
           </div>
+        </div>
+      </section>
 
-          <form
-            class="search-form"
-            action="https://formsubmit.co/info@brand2spots.de"
-            method="POST"
-          >
-
-            <input
-              type="hidden"
-              name="_subject"
-              value="Neue Brand2Spots Kontaktanfrage"
-            />
-
-            <input
-              type="hidden"
-              name="_template"
-              value="table"
-            />
-
-            <input
-              type="text"
-              name="_honey"
-              tabindex="-1"
-              autocomplete="off"
-              style="display:none"
-            />
-
-            <div class="field">
-
-              <label for="request-name">
-                Name *
-              </label>
-
-              <input
-                id="request-name"
-                name="Name"
-                type="text"
-                autocomplete="name"
-                placeholder="Vor- und Nachname"
-                required
-              />
-
+      <section class="section portal" id="portal">
+        <div class="container portal-layout">
+          <div class="reveal">
+            <div class="section-head"><span class="eyebrow"><span class="line"></span> IHR DIGITALER KUNDENBEREICH</span><h2>Alles Wichtige.<br>An einem Ort.</h2><p>Keine lose Sammlung aus Folien und E-Mails. Ihre KI-Analysen, Einführungshilfen oder Business-Verbesserungsvorschläge finden Sie übersichtlich in Ihrem digitalen Kundenbereich.</p></div>
+            <ul class="portal-list"><li><span class="tick"></span>Interaktive Reports statt starrer Präsentationen</li><li><span class="tick"></span>Klare Empfehlungen und nächste Schritte</li><li><span class="tick"></span>Dokumentation, die auch nach unserem Einsatz bleibt</li></ul>
+          </div>
+          <div class="portal-mock reveal" aria-label="Beispielansicht eines digitalen Kundenreports">
+            <div class="portal-screen">
+              <div class="portal-header"><span>U<span style="color:#5d925b">.</span> <span style="font-weight:500;color:#728578">/ Kundenbereich</span></span><span class="sample">BEISPIELANSICHT</span></div>
+              <div class="portal-screen-body"><span class="eyebrow" style="font-size:9px;color:#708774">IHR ÜBERBLICK</span><h3>Ihr nächster Schritt.</h3><p>Ihre Empfehlungen und Maßnahmen übersichtlich dokumentiert.</p>
+                <div class="portal-mini-grid"><div class="portal-mini"><span>Identifizierte Möglichkeiten</span><strong>5 Empfehlungen</strong></div><div class="portal-mini"><span>Priorität</span><strong>Maßnahmen priorisieren</strong></div></div>
+                <div class="portal-roadmap"><span style="font-size:11px;font-weight:800">Beispiel-Roadmap</span><div class="road-line"><span>Potenziale prüfen</span><div class="road-bar"><i style="width:100%"></i></div></div><div class="road-line"><span>Plan erstellen</span><div class="road-bar"><i style="width:70%"></i></div></div><div class="road-line"><span>Nächste Schritte</span><div class="road-bar"><i style="width:28%"></i></div></div></div>
+              </div>
             </div>
+          </div>
+        </div>
+      </section>
 
-            <div class="field">
+      <section id="fragen" class="section faq">
+        <div class="container faq-layout">
+          <div class="section-head reveal"><span class="eyebrow"><span class="line"></span> HÄUFIGE FRAGEN</span><h2>Ohne Umwege.<br>Ohne Kleingedrucktes.</h2><p>Die wichtigsten Antworten vor dem ersten Gespräch.</p></div>
+          <div class="faq-list reveal">
+            <details><summary>Müssen wir bereits KI-Systeme einsetzen?</summary><p>Nein. Gerade wenn Sie noch keine klare Übersicht über die verfügbaren Möglichkeiten haben, eignet sich der AI Opportunity Check als Einstieg.</p></details>
+            <details><summary>Arbeiten Sie bei uns vor Ort?</summary><p>Der überwiegende Teil unserer Leistungen findet online statt. Wenn ein Vor-Ort-Termin fachlich sinnvoll ist, kann er individuell vereinbart und gesondert angeboten werden.</p></details>
+            <details><summary>Brauchen wir anschließend eine laufende Betreuung?</summary><p>Nein. Unsere drei Leistungspakete enden mit einer nachvollziehbaren Übergabe. Wenn weiterer Bedarf besteht, können Sie Improvement as a Service optional dazubuchen.</p></details>
+            <details><summary>Ist Business Improvement 360° auch ohne KI sinnvoll?</summary><p>Ja. Hier geht es um das gesamte Unternehmen: Kosten, Produkte und Dienstleistungen, interne Prozesse, Marketing und Außenwirkung. KI ist nur dann Teil einer Empfehlung, wenn sie wirklich sinnvoll ist. Die Analyse betrachtet alle genannten Bereiche auf Überblicksebene. Die Tiefe hängt von den freigegebenen Unterlagen und dem vereinbarten Umfang ab.</p></details>
+            <details><summary>Entwickeln Sie eigene KI-Software?</summary><p>Nein, unser Schwerpunkt sind geeignete bestehende KI-Systeme. Wir wählen aus, richten im Standardumfang ein und begleiten die Nutzung. Komplexe Integrationen und individuelle Softwareentwicklung sind nicht in den Paketpreisen enthalten.</p></details>
+            <details><summary>Wie gehen Sie mit unseren Daten um?</summary><p>Wir legen vor dem Start fest, welche Daten und Zugriffe tatsächlich nötig sind. Wo möglich, arbeiten wir mit anonymisierten Beispielen oder freigegebenen Informationen. Technische und datenschutzrechtliche Anforderungen werden vor einer Einführung abgestimmt.</p></details>
+            <details><summary>Garantieren Sie Einsparungen oder mehr Umsatz?</summary><p>Nein. Nein. Wir liefern beim AI Check eine konkrete Analyse, beim Enablement eine begleitete Einführung und beim Business Improvement einen priorisierten Maßnahmenplan. Umsatz- und Gewinnsteigerungen lassen sich daraus nicht pauschal garantieren.</p></details>
+          </div>
+        </div>
+      </section>
 
-              <label for="request-email">
-                E-Mail *
-              </label>
-
-              <input
-                id="request-email"
-                name="E-Mail"
-                type="email"
-                autocomplete="email"
-                placeholder="name@brand.de"
-                required
-              />
-
-            </div>
-
-            <div class="field full">
-
-              <label for="request-brand">
-                Brand *
-              </label>
-
-              <input
-                id="request-brand"
-                name="Brand"
-                type="text"
-                autocomplete="organization"
-                placeholder="Wie heißt deine Brand?"
-                required
-              />
-
-            </div>
-
-            <div class="field full">
-
-              <label for="request-message">
-                Worum geht es? *
-              </label>
-
-              <textarea
-                id="request-message"
-                name="Anfrage"
-                placeholder="Was suchst du, welche Zielgruppe möchtest du erreichen und wo?"
-                required
-              ></textarea>
-
-            </div>
-
-            <label class="call-row full">
-
-              <input
-                type="checkbox"
-                name="Call gewünscht"
-                value="Ja"
-              />
-
-              <span>
-                Ich möchte gerne einen kurzen
-                Kennenlern-Call vereinbaren.
-              </span>
-
-            </label>
-
-            <label class="privacy-row">
-
-              <input
-                type="checkbox"
-                name="Datenschutz bestätigt"
-                value="Ja"
-                required
-              />
-
-              <span>
-                Ich habe die
-                <a href="#">
-                  Datenschutzhinweise
-                </a>
-                zur Kenntnis genommen.
-              </span>
-
-            </label>
-
-            <div class="contact-submit">
-
-              <small>
-                Wir melden uns persönlich bei dir.
-              </small>
-
-              <button
-                class="btn btn-accent btn-arrow"
-                type="submit"
-              >
-                Anfrage senden
-              </button>
-
-            </div>
-
+      <section id="kontakt" class="contact">
+        <div class="container contact-grid">
+          <div class="reveal"><span class="eyebrow"><span class="line"></span> DER NÄCHSTE SCHRITT</span><h2>Was könnten wir bei Ihnen verbessern?</h2><p>Sie wollen KI sinnvoll nutzen oder Ihr Unternehmen grundsätzlich verbessern? Wir klären, welches Paket zu Ihrem Anliegen passt – oder sagen offen, wenn wir nicht die Richtigen sind.</p><div class="contact-stats"><span>Unverbindliche Erstkontaktaufnahme</span><span>Digital & unkompliziert</span></div></div>
+          <form id="inquiry-form" class="form reveal">
+            <h3>Unsere Leistungen anfragen</h3><p>Ein paar Angaben reichen für den ersten Schritt.</p>
+            <div class="form-grid"><div class="field"><label for="name">Ihr Name *</label><input id="name" name="name" placeholder="Vor- und Nachname" autocomplete="name" required maxlength="80"></div><div class="field"><label for="company">Unternehmen *</label><input id="company" name="company" placeholder="Unternehmensname" autocomplete="organization" required maxlength="100"></div></div>
+            <div class="field"><label for="email">Geschäftliche E-Mail *</label><input id="email" name="email" type="email" placeholder="name@unternehmen.de" autocomplete="email" required maxlength="180"></div>
+            <div class="field"><label for="package">Wofür interessieren Sie sich?</label><select id="package" name="package"><option value="Noch unsicher">Ich bin noch unsicher</option><option>AI Opportunity Check</option><option>AI Enablement & Implementation</option><option>Business Improvement 360°</option><option>Improvement as a Service</option></select></div>
+            <div class="field"><label for="message">Ihr Anliegen (optional)</label><textarea id="message" name="message" placeholder="Was möchten Sie verändern oder verbessern?" maxlength="1200"></textarea></div>
+            <button class="btn btn-primary" type="submit">E-Mail-Anfrage vorbereiten <span class="arrow" aria-hidden="true">↗</span></button>
+            <p class="form-note">Dieses Formular öffnet Ihr E-Mail-Programm; es speichert oder versendet selbst keine Daten. Vor dem Livegang muss die Kontaktadresse im HTML-Code ergänzt werden.</p>
+            <div class="form-message" id="form-message" role="status" aria-live="polite"></div>
           </form>
-
         </div>
+      </section>
+    </main>
 
-      </div>
-
-    </section>
-
-    <!-- ========================================
-         BLOGS
-    ========================================= -->
-
-    <section
-      class="blog-section"
-      id="blog"
-    >
-
+    <footer>
       <div class="container">
-
-        <div class="blog-header reveal">
-
-          <h2 class="section-title">
-            Blogs
-          </h2>
-
-          <p>
-            Kurze Artikel über reale Touchpoints,
-            Communities und die Frage, wie B2S den
-            Weg von Brands in die reale Welt neu
-            strukturiert.
-          </p>
-
-        </div>
-
-        <div class="blog-grid">
-
-          <details class="blog-card reveal">
-
-            <summary>
-
-              <span class="blog-meta">
-                Grundlagen · 4 Min.
-              </span>
-
-              <h3>
-                Was ist B2S?
-              </h3>
-
-              <p>
-                Warum wir Brand to Spots als eigenen
-                Weg zwischen digitalem Marketing,
-                Sampling und realen Communities denken.
-              </p>
-
-              <span class="blog-link">
-                Artikel lesen
-                <span>+</span>
-              </span>
-
-            </summary>
-
-            <div class="blog-body">
-
-              <p>
-                B2S steht für Brand to Spots.
-                Die Grundidee: Eine Brand sucht nicht
-                einfach irgendeine Fläche, sondern einen
-                realen Ort, an dem ihre Zielgruppe
-                bereits regelmäßig zusammenkommt.
-              </p>
-
-              <p>
-                Dadurch wird der Spot zum physischen
-                Touchpoint: Produktplatzierung, Sampling
-                oder Testing passieren in einem Kontext,
-                der zur Brand und zur Community passt.
-              </p>
-
-            </div>
-
-          </details>
-
-          <details class="blog-card reveal">
-
-            <summary>
-
-              <span class="blog-meta">
-                Strategie · 5 Min.
-              </span>
-
-              <h3>
-                Warum der Spot mehr als Fläche ist.
-              </h3>
-
-              <p>
-                Die entscheidende Ressource eines guten
-                Spots ist nicht der Quadratmeter,
-                sondern die Community, die dort bereits
-                existiert.
-              </p>
-
-              <span class="blog-link">
-                Artikel lesen
-                <span>+</span>
-              </span>
-
-            </summary>
-
-            <div class="blog-body">
-
-              <p>
-                Ein Gym, Pilates-Studio oder Padel-Club
-                ist für eine Brand dann interessant,
-                wenn Produkt, Umfeld und Zielgruppe
-                zusammenpassen. B2S bewertet deshalb
-                nicht nur freie Fläche, sondern den
-                gesamten Touchpoint.
-              </p>
-
-              <p>
-                Das Ziel ist ein sinnvoller Markenmoment
-                im echten Leben – nicht bloß ein weiteres
-                Werbeformat.
-              </p>
-
-            </div>
-
-          </details>
-
-          <details class="blog-card reveal">
-
-            <summary>
-
-              <span class="blog-meta">
-                Praxis · 3 Min.
-              </span>
-
-              <h3>
-                Vom Suchauftrag zum passenden Spot.
-              </h3>
-
-              <p>
-                Wie wir zum Start Brands persönlich
-                dabei helfen, geeignete reale
-                Touchpoints zu finden.
-              </p>
-
-              <span class="blog-link">
-                Artikel lesen
-                <span>+</span>
-              </span>
-
-            </summary>
-
-            <div class="blog-body">
-
-              <p>
-                Die Brand beschreibt Produkt, Zielgruppe,
-                Region und gewünschte Aktivierung.
-                Anschließend suchen wir gezielt nach
-                Spots, prüfen den Fit und sprechen
-                passende Locations an.
-              </p>
-
-              <p>
-                So entsteht zunächst bewusst kein
-                unübersichtlicher Marktplatz, sondern
-                eine kleine kuratierte Auswahl
-                relevanter Matches.
-              </p>
-
-            </div>
-
-          </details>
-
-        </div>
-
+        <div class="footer-top"><div class="footer-brand"><a class="brand" href="#start"><span class="brand-mark" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3.5 6.5 9 12l-5.5 5.5M11.5 6.5 17 12l-5.5 5.5M17 6.5l5.5 5.5L17 17.5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="brand-name">UPGRADE<span>WISE</span></span></a><div class="brand-sub">Business Improvement</div></div><nav class="footer-links" aria-label="Footernavigation"><a href="#leistungen">Leistungen</a><a href="#pakete">Pakete</a><a href="#ablauf">Ablauf</a><a href="#kontakt">Kontakt</a><button class="legal-placeholder" type="button">Impressum</button><button class="legal-placeholder" type="button">Datenschutz</button></nav></div>
+        <div class="footer-bottom"><span>© <span id="year">2026</span> UPGRADEWISE. KI einführen. Besser arbeiten.</span><span>Temporär angedockt. Nachhaltig verbessert.</span></div>
       </div>
-
-    </section>
-
-    <!-- ========================================
-         FINAL CTA
-    ========================================= -->
-
-    <section
-      class="final-cta section-line"
-      id="kontakt"
-    >
-
-      <div class="container">
-
-        <div class="final-card reveal">
-
-          <h2>
-            Bring deine Brand ins echte Leben.
-          </h2>
-
-          <div class="final-bottom">
-
-            <p>
-              Du willst wissen, welche realen Spots
-              zu deiner Brand passen? Schick uns dein
-              Briefing. Wir übernehmen die Suche.
-            </p>
-
-            <a
-              class="btn btn-primary btn-arrow"
-              href="#suchauftrag-formular"
-            >
-              Kontakt aufnehmen
-            </a>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-  </main>
-
-  <!-- ========================================
-       FOOTER
-  ========================================= -->
-
-  <footer>
-
-    <div class="container footer-inner">
-
-      <div>
-        ©
-        <span id="year"></span>
-        Brand 2 Spots
-      </div>
-
-      <div class="footer-links">
-
-        <a href="impressum/">
-          Impressum
-        </a>
-
-        <a href="#">
-          Datenschutz
-        </a>
-
-        <a href="mailto:info@brand2spots.de">
-          info@brand2spots.de
-        </a>
-
-      </div>
-
-    </div>
-
-  </footer>
-
-  <!-- ========================================
-       JAVASCRIPT
-  ========================================= -->
-
+    </footer>
   <script>
-    const nav =
-      document.getElementById("nav");
+    /* WICHTIG: Vor Veröffentlichung echte Kontaktadresse einsetzen. */
+    const CONTACT_EMAIL = 'hello@example.com';
 
-    const toggle =
-      document.querySelector(".menu-toggle");
-
-    const mobileMenu =
-      document.getElementById("mobile-menu");
-
-    const setNavState = () => {
-      nav.classList.toggle(
-        "is-scrolled",
-        window.scrollY > 8
-      );
+    const stages = {
+      check: {
+        kicker: 'PAKET 01 · AI OPPORTUNITY CHECK', title: 'Wo kann KI Ihnen helfen?',
+        sub: 'Drei Schritte bis zur konkreten KI-Analyse.',
+        bottom: 'Ergebnis: fertiger KI-Report', href: '#paket-check',
+        items: [
+          { icon: '1', title: 'Interne Abläufe verstehen', sub: 'Aufgaben & heutige Tools kurz prüfen', tag: 'Check' },
+          { icon: '2', title: 'KI-Chancen auswählen', sub: 'Konkrete Anwendungen identifizieren', tag: 'Potenzial' },
+          { icon: '3', title: 'KI-Report übergeben', sub: 'Empfehlungen mit klaren Prioritäten', tag: 'Report' }
+        ]
+      },
+      enable: {
+        kicker: 'PAKET 02 · AI ENABLEMENT & IMPLEMENTATION', title: 'So führen wir KI ein.',
+        sub: 'Vom AI Check zur Anwendung – in 2–3 Wochen.',
+        bottom: 'Ergebnis: KI im Arbeitsalltag', href: '#paket-enable',
+        items: [
+          { icon: '1', title: 'KI prüfen & auswählen', sub: 'AI Check und passende Systeme', tag: 'Check' },
+          { icon: '2', title: 'Einrichten & erklären', sub: 'Tools, Live-Einweisung & Anleitung', tag: 'Start' },
+          { icon: '3', title: 'Nach 30 Tagen prüfen', sub: 'Fragen klären und Nutzung verbessern', tag: 'Recheck' }
+        ]
+      },
+      improve: {
+        kicker: 'PAKET 03 · BUSINESS IMPROVEMENT 360°', title: 'Mehr als nur KI.',
+        sub: 'Das ganze Unternehmen aus externer Sicht.',
+        bottom: 'Ergebnis: priorisierter Maßnahmenplan', href: '#paket-performance',
+        items: [
+          { icon: '1', title: 'Unternehmen betrachten', sub: 'Kosten, Abläufe, Produkte & Marketing', tag: '360°' },
+          { icon: '2', title: 'Potenziale bewerten', sub: 'Intern und in der Außenwirkung', tag: 'Analyse' },
+          { icon: '3', title: 'Verbesserungen empfehlen', sub: 'Konkrete Maßnahmen & erste Schritte', tag: 'Plan' }
+        ]
+      }
     };
-
-    setNavState();
-
-    window.addEventListener(
-      "scroll",
-      setNavState,
-      {
-        passive: true
-      }
-    );
-
-    const closeMenu = () => {
-      nav.classList.remove(
-        "is-open"
-      );
-
-      document.body.classList.remove(
-        "menu-open"
-      );
-
-      toggle.setAttribute(
-        "aria-expanded",
-        "false"
-      );
-
-      toggle.setAttribute(
-        "aria-label",
-        "Menü öffnen"
-      );
-    };
-
-    toggle.addEventListener(
-      "click",
-      () => {
-        const open =
-          nav.classList.toggle(
-            "is-open"
-          );
-
-        document.body.classList.toggle(
-          "menu-open",
-          open
-        );
-
-        toggle.setAttribute(
-          "aria-expanded",
-          String(open)
-        );
-
-        toggle.setAttribute(
-          "aria-label",
-          open
-            ? "Menü schließen"
-            : "Menü öffnen"
-        );
-      }
-    );
-
-    document
-      .querySelectorAll(
-        ".mobile-link"
-      )
-      .forEach(
-        (link) => {
-          link.addEventListener(
-            "click",
-            closeMenu
-          );
-        }
-      );
-
-    window.addEventListener(
-      "keydown",
-      (event) => {
-        if (
-          event.key === "Escape"
-        ) {
-          closeMenu();
-        }
-      }
-    );
-
-    const reduceMotion =
-      window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-      ).matches;
-
-    if (
-      !reduceMotion &&
-      "IntersectionObserver" in window
-    ) {
-
-      const observer =
-        new IntersectionObserver(
-          (entries) => {
-            entries.forEach(
-              (entry) => {
-                if (
-                  entry.isIntersecting
-                ) {
-                  entry.target.classList.add(
-                    "in"
-                  );
-
-                  observer.unobserve(
-                    entry.target
-                  );
-                }
-              }
-            );
-          },
-          {
-            threshold:
-              0.12,
-
-            rootMargin:
-              "0px 0px -4% 0px"
-          }
-        );
-
-      document
-        .querySelectorAll(
-          ".reveal:not(.in)"
-        )
-        .forEach(
-          (el) => {
-            observer.observe(el);
-          }
-        );
-
-    } else {
-
-      document
-        .querySelectorAll(
-          ".reveal"
-        )
-        .forEach(
-          (el) => {
-            el.classList.add(
-              "in"
-            );
-          }
-        );
-
+    const dashContent = document.getElementById('dash-content');
+    const tabs = Array.from(document.querySelectorAll('.dash-tab'));
+    function setStage(key, focusTab = false) {
+      const s = stages[key];
+      if (!s) return;
+      document.getElementById('dash-kicker').textContent = s.kicker;
+      document.getElementById('dash-title').textContent = s.title;
+      document.getElementById('dash-sub').textContent = s.sub;
+      document.getElementById('dash-bottom-label').textContent = s.bottom;
+      document.getElementById('dash-link').setAttribute('href', s.href);
+      dashContent.setAttribute('aria-labelledby', 'tab-' + key);
+      dashContent.replaceChildren();
+      s.items.forEach(item => {
+        const row = document.createElement('div'); row.className = 'dash-item';
+        const icon = document.createElement('div'); icon.className = 'dash-icon'; icon.textContent = item.icon;
+        const mid = document.createElement('div'); mid.className = 'dash-item-text';
+        const title = document.createElement('div'); title.className = 'dash-item-title'; title.textContent = item.title;
+        const sub = document.createElement('div'); sub.className = 'dash-item-sub'; sub.textContent = item.sub;
+        const tag = document.createElement('div'); tag.className = 'dash-item-tag'; tag.textContent = item.tag;
+        mid.append(title, sub); row.append(icon, mid, tag); dashContent.appendChild(row);
+      });
+      tabs.forEach(tab => { const active = tab.dataset.stage === key; tab.setAttribute('aria-selected', String(active)); tab.tabIndex = active ? 0 : -1; if (active && focusTab) tab.focus(); });
     }
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => setStage(tab.dataset.stage));
+      tab.addEventListener('keydown', ev => {
+        let next;
+        if (ev.key === 'ArrowRight') next = (index + 1) % tabs.length;
+        else if (ev.key === 'ArrowLeft') next = (index + tabs.length - 1) % tabs.length;
+        else if (ev.key === 'Home') next = 0;
+        else if (ev.key === 'End') next = tabs.length - 1;
+        else return;
+        ev.preventDefault(); setStage(tabs[next].dataset.stage, true);
+      });
+    });
+    setStage('enable');
 
-    const heroVisual =
-      document.getElementById(
-        "hero-visual"
-      );
+    /* Mobile Navigation */
+    const menuBtn = document.getElementById('menu-button');
+    const nav = document.getElementById('site-nav');
+    menuBtn.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(open));
+      menuBtn.setAttribute('aria-label', open ? 'Menü schließen' : 'Menü öffnen');
+      menuBtn.textContent = open ? '×' : '☰';
+    });
+    nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      nav.classList.remove('open'); menuBtn.setAttribute('aria-expanded', 'false');
+      menuBtn.setAttribute('aria-label', 'Menü öffnen'); menuBtn.textContent = '☰';
+    }));
 
-    if (
-      heroVisual &&
-      !reduceMotion &&
-      window.matchMedia(
-        "(pointer:fine)"
-      ).matches
-    ) {
+    /* Checkmarks: one reusable accessible inline SVG. */
+    document.querySelectorAll('.tick').forEach(el => {
+      el.innerHTML = '<svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3 9l4 4 8-8"/></svg>';
+      el.setAttribute('aria-hidden','true');
+    });
 
-      heroVisual.addEventListener(
-        "pointermove",
-        (event) => {
+    /* Pricing CTAs preselect their product in the contact form. */
+    document.querySelectorAll('.package-link').forEach(link => {
+      link.addEventListener('click', () => {
+        const selector = document.getElementById('package');
+        selector.value = link.dataset.package;
+      });
+    });
 
-          const rect =
-            heroVisual.getBoundingClientRect();
+    /* The static frontend cannot send mail; it prepares a mailto request. */
+    document.getElementById('inquiry-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const form = e.currentTarget;
+      if (!form.reportValidity()) return;
+      const name = document.getElementById('name').value.trim();
+      const company = document.getElementById('company').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const product = document.getElementById('package').value;
+      const message = document.getElementById('message').value.trim();
+      const subject = encodeURIComponent('Anfrage zu: ' + product + ' | ' + company);
+      const body = encodeURIComponent('Name: ' + name + '\nUnternehmen: ' + company + '\nE-Mail: ' + email + '\nPaket: ' + product + '\n\nAnliegen:\n' + (message || 'Ich freue mich auf eine Rückmeldung.'));
+      const status = document.getElementById('form-message');
+      if (CONTACT_EMAIL.endsWith('@example.com')) {
+        status.classList.add('show');
+        status.textContent = 'Demo-Modus: Bitte ersetzen Sie im HTML-Code CONTACT_EMAIL durch Ihre geschäftliche E-Mail-Adresse. Danach öffnet dieser Button eine vorbereitete E-Mail.';
+        return;
+      }
+      status.classList.add('show');
+      status.textContent = 'Ihr E-Mail-Programm wird mit einer vorbereiteten Anfrage geöffnet. Bitte senden Sie die E-Mail dort ab.';
+      window.location.href = 'mailto:' + CONTACT_EMAIL + '?subject=' + subject + '&body=' + body;
+    });
 
-          const x =
-            (
-              (
-                event.clientX -
-                rect.left
-              ) /
-              rect.width -
-              0.5
-            ) * 2;
+    /* Legal links are deliberately not presented as complete legal pages. */
+    document.querySelectorAll('.legal-placeholder').forEach(button => {
+      button.addEventListener('click', () => alert('Vor Veröffentlichung bitte eine vollständige, rechtlich geprüfte Seite für ' + button.textContent + ' ergänzen.'));
+    });
 
-          const y =
-            (
-              (
-                event.clientY -
-                rect.top
-              ) /
-              rect.height -
-              0.5
-            ) * 2;
-
-          heroVisual.style.setProperty(
-            "--px",
-            x.toFixed(3)
-          );
-
-          heroVisual.style.setProperty(
-            "--py",
-            y.toFixed(3)
-          );
-        }
-      );
-
-      heroVisual.addEventListener(
-        "pointerleave",
-        () => {
-          heroVisual.style.setProperty(
-            "--px",
-            "0"
-          );
-
-          heroVisual.style.setProperty(
-            "--py",
-            "0"
-          );
-        }
-      );
-
-    }
-
-    document.getElementById(
-      "year"
-    ).textContent =
-      new Date().getFullYear();
+    document.getElementById('year').textContent = new Date().getFullYear();
+    if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
+      }, { threshold: .08, rootMargin: '0px 0px 50px 0px' });
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    } else document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
   </script>
-
-  <script defer src="https://cloud.umami.is/script.js" data-website-id="0a505942-d7e5-4363-b533-c50c3b20146e"></script>
 </body>
 </html>
