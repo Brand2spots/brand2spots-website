@@ -1,2220 +1,1473 @@
-```
 
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="robots" content="noindex,nofollow">
-  <title>TRIPGRADE · Chamäleon Reisen</title>
-
-  <!--
-    TRIPGRADE · Analyseplattform
-
-    Diese Datei als index.html speichern.
-
-    Für die vollständige Sizilien-Analyse die bereits
-    vorhandene Originaldatei in denselben Ordner legen:
-
-    TRIPGRADE_Sizilien_DeepAudit-10(1).html
-
-    Bilder werden von Wikimedia Commons geladen.
-    Der echte Passwortschutz muss separat eingerichtet werden.
-  -->
-
-  <style>
-    :root {
-      --bg: #F6F7F9;
-      --surface: #FFFFFF;
-      --surface-soft: #F9FAFB;
-      --text: #17202C;
-      --text-soft: #687482;
-      --text-muted: #9BA4AF;
-      --line: #E9ECF0;
-      --yellow: #FFD54A;
-      --yellow-soft: #FFF8DF;
-      --green: #328061;
-      --green-soft: #EDF8F2;
-      --dark: #192432;
-      --radius: 24px;
-      --sidebar-width: 244px;
-      --shadow: 0 8px 35px rgba(30, 45, 65, .035);
-      --shadow-hover: 0 22px 50px rgba(30, 45, 65, .105);
-      --ease: cubic-bezier(.2,.8,.2,1);
-      --font: -apple-system, BlinkMacSystemFont,
-        "Segoe UI", Inter, Arial, sans-serif;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font: 14px/1.55 var(--font);
-      -webkit-font-smoothing: antialiased;
-    }
-
-    button, input {
-      font: inherit;
-    }
-
-    button {
-      cursor: pointer;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    h1, h2, h3, p {
-      margin: 0;
-    }
-
-    [hidden] {
-      display: none !important;
-    }
-
-    :focus-visible {
-      outline: 3px solid var(--yellow);
-      outline-offset: 3px;
-    }
-
-    /* ICONS */
-
-    .icon {
-      width: 19px;
-      height: 19px;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 1.8;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      flex-shrink: 0;
-    }
-
-    .icon.small {
-      width: 16px;
-      height: 16px;
-    }
-
-    /* APP LAYOUT */
-
-    .app {
-      min-height: 100dvh;
-      display: flex;
-    }
-
-    .sidebar {
-      width: var(--sidebar-width);
-      position: fixed;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      z-index: 40;
-      background: #FFFFFF;
-      border-right: 1px solid var(--line);
-      display: flex;
-      flex-direction: column;
-    }
-
-    .brand {
-      height: 97px;
-      display: flex;
-      align-items: center;
-      padding: 0 25px;
-      gap: 12px;
-    }
-
-    .brand-symbol {
-      width: 36px;
-      height: 36px;
-      background: var(--dark);
-      border-radius: 12px;
-      display: grid;
-      place-items: center;
-    }
-
-    .brand-symbol span {
-      width: 12px;
-      height: 12px;
-      transform: rotate(45deg);
-      border-radius: 3px;
-      background: var(--yellow);
-    }
-
-    .brand-name {
-      font-weight: 850;
-      font-size: 15px;
-      letter-spacing: .145em;
-    }
-
-    .sidebar-label {
-      padding: 27px 25px 13px;
-      color: var(--text-muted);
-      font-size: 10px;
-      font-weight: 750;
-      letter-spacing: .13em;
-      text-transform: uppercase;
-    }
-
-    .navigation {
-      display: grid;
-      gap: 5px;
-      padding: 0 13px;
-    }
-
-    .nav-item {
-      border: 0;
-      background: transparent;
-      display: flex;
-      align-items: center;
-      width: 100%;
-      text-align: left;
-      gap: 12px;
-      border-radius: 13px;
-      padding: 13px 14px;
-      color: #788391;
-      font-size: 13px;
-      font-weight: 640;
-      transition: background .2s, color .2s;
-    }
-
-    .nav-item:hover {
-      background: #F5F6F8;
-      color: var(--text);
-    }
-
-    .nav-item.active {
-      background: #F2F4F6;
-      color: var(--text);
-      font-weight: 800;
-    }
-
-    .nav-item.active .nav-icon {
-      color: var(--text);
-    }
-
-    .nav-icon {
-      width: 20px;
-      display: flex;
-      color: #A5AEBA;
-    }
-
-    .nav-title {
-      flex: 1;
-    }
-
-    .nav-count {
-      font-size: 11px;
-      color: #9EA7B2;
-      padding: 2px 7px;
-      border-radius: 7px;
-      background: white;
-      border: 1px solid #EDF0F3;
-    }
-
-    .sidebar-footer {
-      margin-top: auto;
-      padding: 15px;
-    }
-
-    .client-card {
-      border-radius: 19px;
-      background: #F7F8FA;
-      border: 1px solid #EBEDF1;
-      padding: 17px;
-    }
-
-    .client-overline {
-      font-size: 10px;
-      color: #9AA5B1;
-      text-transform: uppercase;
-      letter-spacing: .1em;
-      font-weight: 780;
-    }
-
-    .client-name {
-      font-size: 14px;
-      font-weight: 780;
-      margin-top: 9px;
-    }
-
-    .client-type {
-      font-size: 11px;
-      color: #9BA5AF;
-      margin-top: 3px;
-    }
-
-    .client-status {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      font-size: 11px;
-      color: #788795;
-      margin-top: 16px;
-    }
-
-    .client-status::before {
-      content: "";
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #58AD84;
-    }
-
-    /* MAIN */
-
-    .main {
-      margin-left: var(--sidebar-width);
-      width: calc(100% - var(--sidebar-width));
-      min-width: 0;
-      min-height: 100dvh;
-    }
-
-    .topbar {
-      height: 76px;
-      background: rgba(255,255,255,.89);
-      backdrop-filter: blur(18px);
-      border-bottom: 1px solid var(--line);
-      display: flex;
-      align-items: center;
-      padding: 0 clamp(24px,4vw,60px);
-      gap: 15px;
-    }
-
-    .breadcrumb {
-      color: #9AA4AF;
-      font-size: 12px;
-      font-weight: 650;
-    }
-
-    .breadcrumb strong {
-      color: #5B6978;
-    }
-
-    .topbar-right {
-      margin-left: auto;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .workspace-name {
-      font-size: 12px;
-      font-weight: 720;
-      color: #566270;
-    }
-
-    .avatar {
-      width: 36px;
-      height: 36px;
-      border-radius: 12px;
-      background: var(--dark);
-      color: #FFFFFF;
-      display: grid;
-      place-items: center;
-      font-weight: 800;
-      font-size: 11px;
-    }
-
-    .menu-button {
-      display: none;
-      width: 38px;
-      height: 38px;
-      background: white;
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .page {
-      max-width: 1550px;
-      margin: 0 auto;
-      padding: 45px clamp(24px,4vw,60px) 90px;
-    }
-
-    .page-heading {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 20px;
-      margin-bottom: 34px;
-    }
-
-    .eyebrow {
-      text-transform: uppercase;
-      font-size: 11px;
-      letter-spacing: .12em;
-      font-weight: 770;
-      color: #919CA9;
-      display: flex;
-      align-items: center;
-      gap: 9px;
-      margin-bottom: 10px;
-    }
-
-    .eyebrow::before {
-      content: "";
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--yellow);
-    }
-
-    h1 {
-      font-size: clamp(32px,3.6vw,46px);
-      line-height: 1.12;
-      letter-spacing: -.055em;
-      font-weight: 790;
-    }
-
-    .page-description {
-      margin-top: 9px;
-      color: #9BA6B2;
-      font-size: 13px;
-    }
-
-    .stats {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 9px;
-    }
-
-    .stat {
-      border: 1px solid #E7EBEF;
-      background: white;
-      border-radius: 999px;
-      padding: 8px 13px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      white-space: nowrap;
-      font-size: 11px;
-      color: #84909D;
-      font-weight: 650;
-    }
-
-    .stat b {
-      font-size: 13px;
-      color: #273445;
-    }
-
-    .stat.ready b {
-      color: var(--green);
-    }
-
-    .stat-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #5EB98A;
-    }
-
-    /* SECTION */
-
-    .section-heading {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 17px;
-      gap: 15px;
-    }
-
-    .section-heading h2 {
-      font-size: 19px;
-      letter-spacing: -.035em;
-      font-weight: 780;
-    }
-
-    .section-title-group {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .number-pill {
-      font-size: 11px;
-      font-weight: 760;
-      background: #EDEFF3;
-      color: #8C97A3;
-      padding: 3px 10px;
-      border-radius: 999px;
-    }
-
-    /* SEARCH + FILTERS */
-
-    .toolbar {
-      background: white;
-      border: 1px solid var(--line);
-      border-radius: 19px;
-      padding: 9px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 21px;
-      box-shadow: var(--shadow);
-    }
-
-    .search {
-      display: flex;
-      align-items: center;
-      gap: 11px;
-      color: #A0ACB8;
-      flex: 1;
-      padding: 0 13px;
-      min-width: 0;
-    }
-
-    .search input {
-      background: transparent;
-      border: none;
-      outline: none;
-      height: 40px;
-      width: 100%;
-      min-width: 0;
-      font-size: 13px;
-      color: var(--text);
-    }
-
-    .search input::placeholder {
-      color: #A6B0BB;
-    }
-
-    .toolbar-divider {
-      width: 1px;
-      height: 27px;
-      background: var(--line);
-    }
-
-    .filters {
-      display: flex;
-      align-items: center;
-      gap: 3px;
-    }
-
-    .filter-button {
-      border: 0;
-      background: transparent;
-      color: #8D98A5;
-      padding: 11px 14px;
-      border-radius: 12px;
-      font-size: 12px;
-      font-weight: 680;
-      white-space: nowrap;
-    }
-
-    .filter-button:hover {
-      background: #F5F6F8;
-    }
-
-    .filter-button[aria-pressed="true"] {
-      background: #F0F2F5;
-      color: #243141;
-      font-weight: 780;
-    }
-
-    /* TRAVEL GRID */
-
-    .travel-grid {
-      display: grid;
-      grid-template-columns: repeat(3,minmax(0,1fr));
-      gap: 20px;
-    }
-
-    .travel-card {
-      border-radius: 25px;
-      background: white;
-      padding: 9px;
-      overflow: hidden;
-      border: 1px solid #E9EDF1;
-      box-shadow: var(--shadow);
-      min-width: 0;
-      transition:
-        transform .32s var(--ease),
-        box-shadow .32s var(--ease),
-        border-color .32s var(--ease);
-    }
-
-    .travel-card.available {
-      cursor: pointer;
-    }
-
-    .travel-card.available:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-hover);
-      border-color: #D7DDE5;
-    }
-
-    .travel-card.pending {
-      cursor: default;
-    }
-
-    .travel-image {
-      width: 100%;
-      aspect-ratio: 1.72;
-      overflow: hidden;
-      border-radius: 17px;
-      position: relative;
-      background: linear-gradient(
-        125deg,
-        #C8D9E2,
-        #E2EBEF,
-        #B6C9D3
-      );
-    }
-
-    .travel-image img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition:
-        transform .65s var(--ease),
-        filter .4s;
-    }
-
-    .travel-card.pending img {
-      filter: saturate(.76);
-    }
-
-    .travel-card.available:hover img {
-      transform: scale(1.065);
-    }
-
-    .travel-image::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to bottom,
-        rgba(0,0,0,.10),
-        transparent 48%,
-        rgba(15,25,35,.09)
-      );
-      pointer-events: none;
-    }
-
-    .status {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      z-index: 2;
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      padding: 7px 12px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.96);
-      box-shadow: 0 3px 12px rgba(0,0,0,.045);
-      font-size: 10px;
-      font-weight: 790;
-      color: #8A95A1;
-    }
-
-    .status::before {
-      content: "";
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: #A6AFB9;
-    }
-
-    .status.live {
-      color: var(--green);
-    }
-
-    .status.live::before {
-      background: #51AB7D;
-    }
-
-    .travel-info {
-      padding: 16px 12px 12px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .travel-info-main {
-      flex: 1;
-      min-width: 0;
-    }
-
-    .travel-country {
-      color: #9AA5B1;
-      font-size: 11px;
-      font-weight: 650;
-      margin-bottom: 5px;
-    }
-
-    .travel-name {
-      font-size: 20px;
-      line-height: 1.25;
-      letter-spacing: -.035em;
-      font-weight: 770;
-      overflow-wrap: anywhere;
-    }
-
-    .travel-action {
-      width: 35px;
-      height: 35px;
-      border-radius: 12px;
-      display: grid;
-      place-items: center;
-      background: #F3F5F7;
-      color: #A4ADB7;
-      flex-shrink: 0;
-      transition: background .2s;
-    }
-
-    .travel-card.available .travel-action {
-      background: #FFF2BD;
-      color: #25313B;
-    }
-
-    .travel-card.available:hover .travel-action {
-      background: var(--yellow);
-    }
-
-    .empty-results {
-      margin-top: 15px;
-      background: white;
-      border: 1px dashed #DCE2E8;
-      border-radius: 24px;
-      padding: 65px 20px;
-      text-align: center;
-    }
-
-    .empty-results h3 {
-      font-size: 19px;
-    }
-
-    .empty-results p {
-      font-size: 13px;
-      color: #98A4AF;
-      margin-top: 7px;
-    }
-
-    /* OTHER CONTINENTS */
-
-    .continents {
-      margin-top: 54px;
-      padding-top: 30px;
-      border-top: 1px solid #E4E8EC;
-    }
-
-    .continent-grid {
-      display: grid;
-      grid-template-columns: repeat(4,minmax(0,1fr));
-      gap: 15px;
-    }
-
-    .continent-card {
-      border: 1px solid #E9EDF1;
-      background: white;
-      border-radius: 20px;
-      text-align: left;
-      padding: 19px;
-      display: flex;
-      align-items: center;
-      gap: 13px;
-      transition: transform .25s,box-shadow .25s;
-    }
-
-    .continent-card:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-hover);
-    }
-
-    .continent-icon {
-      background: #F1F4F7;
-      color: #8695A5;
-      border-radius: 13px;
-      width: 41px;
-      height: 41px;
-      display: grid;
-      place-items: center;
-    }
-
-    .continent-name {
-      font-size: 13px;
-      font-weight: 770;
-    }
-
-    .continent-sub {
-      font-size: 11px;
-      color: #A0AAB5;
-      margin-top: 3px;
-    }
-
-    .coming-area {
-      background: white;
-      border: 1px solid var(--line);
-      border-radius: 25px;
-      padding: 58px 25px 34px;
-      text-align: center;
-    }
-
-    .coming-icon {
-      margin: 0 auto 17px;
-      width: 59px;
-      height: 59px;
-      border-radius: 19px;
-      display: grid;
-      place-items: center;
-      background: #F0F3F6;
-      color: #93A0AE;
-    }
-
-    .coming-area h2 {
-      font-size: 23px;
-      letter-spacing: -.04em;
-    }
-
-    .coming-area p {
-      font-size: 13px;
-      color: #A0AAB4;
-      margin-top: 8px;
-    }
-
-    .ghost-grid {
-      display: grid;
-      grid-template-columns: repeat(3,1fr);
-      gap: 17px;
-      margin-top: 35px;
-    }
-
-    .ghost-card {
-      border: 1px solid #EFF1F4;
-      border-radius: 21px;
-      padding: 9px;
-      text-align: left;
-      background: #FAFBFC;
-    }
-
-    .ghost-photo {
-      border-radius: 14px;
-      aspect-ratio: 1.7;
-      background: linear-gradient(
-        135deg,
-        #E7ECEF,
-        #F3F5F7
-      );
-    }
-
-    .ghost-lines {
-      padding: 17px 11px 12px;
-    }
-
-    .ghost-line {
-      height: 9px;
-      background: #E7EBEF;
-      border-radius: 999px;
-      width: 42%;
-      margin-bottom: 11px;
-    }
-
-    .ghost-line:nth-child(2) {
-      height: 15px;
-      width: 72%;
-    }
-
-    /* DETAIL WORKSPACE */
-
-    .detail {
-      padding: 26px clamp(20px,3vw,45px) 40px;
-      height: calc(100dvh - 76px);
-      min-height: 670px;
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-    }
-
-    .detail-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
-
-    .detail-left-actions {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .back-button {
-      border: 1px solid var(--line);
-      background: white;
-      color: #5C6B7B;
-      border-radius: 12px;
-      width: 39px;
-      height: 39px;
-      display: grid;
-      place-items: center;
-    }
-
-    .detail-title h2 {
-      font-size: 21px;
-      letter-spacing: -.04em;
-    }
-
-    .detail-title p {
-      font-size: 11px;
-      color: #99A4AF;
-      margin-top: 3px;
-    }
-
-    .detail-buttons {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .view-button {
-      border: 1px solid #E4E8ED;
-      background: white;
-      border-radius: 12px;
-      padding: 10px 14px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      font-size: 12px;
-      font-weight: 700;
-      color: #708090;
-      white-space: nowrap;
-      transition: background .2s,color .2s;
-    }
-
-    .view-button:hover {
-      background: #F5F6F8;
-      color: #263441;
-    }
-
-    .view-button.active {
-      background: var(--dark);
-      color: white;
-      border-color: var(--dark);
-    }
-
-    .view-button.primary {
-      background: var(--yellow);
-      color: #17202C;
-      border-color: var(--yellow);
-    }
-
-    .detail-layout {
-      display: grid;
-      grid-template-columns: 265px minmax(0,1fr);
-      gap: 17px;
-      flex: 1;
-      min-height: 0;
-    }
-
-    .detail-sidebar {
-      background: white;
-      border: 1px solid var(--line);
-      border-radius: 23px;
-      padding: 18px;
-      display: flex;
-      flex-direction: column;
-      min-height: 0;
-      overflow: hidden;
-    }
-
-    .detail-sidebar-title {
-      color: #99A4AE;
-      text-transform: uppercase;
-      font-size: 10px;
-      font-weight: 790;
-      letter-spacing: .12em;
-      padding: 5px 5px 15px;
-    }
-
-    .detail-travel-list {
-      overflow-y: auto;
-      min-height: 0;
-      display: grid;
-      align-content: start;
-      gap: 5px;
-    }
-
-    .detail-travel-item {
-      padding: 12px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: #8F9AA6;
-      font-size: 12px;
-      font-weight: 660;
-    }
-
-    .detail-travel-item.current {
-      background: #FFF7DB;
-      color: #27313E;
-      font-weight: 790;
-    }
-
-    .detail-travel-item .mini-dot {
-      width: 7px;
-      height: 7px;
-      background: #CBD3DA;
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-
-    .detail-travel-item.current .mini-dot {
-      background: #E3AF13;
-    }
-
-    .detail-travel-item span:nth-child(2) {
-      flex: 1;
-    }
-
-    .detail-travel-item .mini-label {
-      color: #ADB6BE;
-      font-size: 10px;
-    }
-
-    .detail-view {
-      min-width: 0;
-      min-height: 0;
-      border: 1px solid #E6EAF0;
-      border-radius: 23px;
-      overflow: hidden;
-      background: white;
-      box-shadow: var(--shadow);
-      display: flex;
-      flex-direction: column;
-    }
-
-    .browser-bar {
-      background: #FFFFFF;
-      border-bottom: 1px solid #EDF0F3;
-      height: 48px;
-      min-height: 48px;
-      display: flex;
-      align-items: center;
-      padding: 0 19px;
-      gap: 8px;
-    }
-
-    .browser-dot {
-      height: 8px;
-      width: 8px;
-      border-radius: 50%;
-      background: #E1E5EA;
-    }
-
-    .browser-dot:first-child {
-      background: #FFD54A;
-    }
-
-    .browser-label {
-      margin-left: 10px;
-      font-size: 11px;
-      color: #A0AAB4;
-      font-weight: 600;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-
-    .report-frame {
-      width: 100%;
-      height: 100%;
-      border: 0;
-      background: white;
-      flex: 1;
-      min-height: 0;
-    }
-
-    /* FULL WINDOW REPORT */
-
-    body.fullscreen .sidebar,
-    body.fullscreen .topbar {
-      display: none;
-    }
-
-    body.fullscreen .main {
-      margin: 0;
-      width: 100%;
-    }
-
-    body.fullscreen .detail {
-      position: fixed;
-      inset: 0;
-      z-index: 100;
-      background: #F5F7F9;
-      padding: 13px;
-      height: 100dvh;
-      min-height: 0;
-      gap: 10px;
-    }
-
-    body.fullscreen .detail-top {
-      background: white;
-      border-radius: 17px;
-      padding: 10px 16px;
-      border: 1px solid var(--line);
-    }
-
-    body.fullscreen .detail-layout {
-      display: flex;
-    }
-
-    body.fullscreen .detail-sidebar {
-      display: none;
-    }
-
-    body.fullscreen .detail-view {
-      flex: 1;
-      border-radius: 17px;
-    }
-
-    /* CREDITS */
-
-    .credits {
-      margin-top: 35px;
-      color: #A0AAB5;
-      font-size: 11px;
-    }
-
-    .credits summary {
-      cursor: pointer;
-      width: fit-content;
-    }
-
-    .credits-content {
-      padding: 12px 0;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px 14px;
-    }
-
-    .credits-content a {
-      text-decoration: underline;
-      text-underline-offset: 3px;
-    }
-
-    /* MOBILE NAVIGATION */
-
-    .mobile-overlay {
-      display: none;
-    }
-
-    @media (max-width: 1250px) {
-      .travel-grid {
-        grid-template-columns: repeat(2,minmax(0,1fr));
-      }
-
-      .continent-grid {
-        grid-template-columns: repeat(2,1fr);
-      }
-    }
-
-    @media (max-width: 920px) {
-      .sidebar {
-        transform: translateX(-102%);
-        transition: transform .3s var(--ease);
-      }
-
-      body.menu-open .sidebar {
-        transform: translateX(0);
-      }
-
-      body.menu-open .mobile-overlay {
-        display: block;
-        position: fixed;
-        inset: 0;
-        background: rgba(20,30,40,.35);
-        z-index: 30;
-      }
-
-      .main {
-        margin-left: 0;
-        width: 100%;
-      }
-
-      .menu-button {
-        display: flex;
-      }
-
-      .detail-layout {
-        grid-template-columns: 200px minmax(0,1fr);
-      }
-    }
-
-    @media (max-width: 650px) {
-      .topbar {
-        height: 68px;
-        padding: 0 18px;
-      }
-
-      .workspace-name {
-        display: none;
-      }
-
-      .page {
-        padding: 30px 17px 65px;
-      }
-
-      .page-heading {
-        display: block;
-        margin-bottom: 24px;
-      }
-
-      .stats {
-        margin-top: 21px;
-      }
-
-      .toolbar {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 4px;
-      }
-
-      .search {
-        height: 47px;
-      }
-
-      .toolbar-divider {
-        display: none;
-      }
-
-      .filters {
-        overflow-x: auto;
-      }
-
-      .filter-button {
-        flex: 1;
-      }
-
-      .travel-grid {
-        grid-template-columns: 1fr;
-        gap: 15px;
-      }
-
-      .continent-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .continent-card {
-        padding: 13px;
-        gap: 9px;
-      }
-
-      .continent-icon {
-        width: 34px;
-        height: 34px;
-      }
-
-      .ghost-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .ghost-card:nth-child(n+2) {
-        display: none;
-      }
-
-      .detail {
-        padding: 15px;
-        min-height: 0;
-        height: calc(100dvh - 68px);
-      }
-
-      .detail-top {
-        align-items: flex-start;
-      }
-
-      .detail-buttons {
-        width: 100%;
-      }
-
-      .view-button {
-        flex: 1;
-        padding: 10px;
-      }
-
-      .detail-layout {
-        display: flex;
-      }
-
-      .detail-sidebar {
-        display: none;
-      }
-
-      .detail-view {
-        flex: 1;
-      }
-
-      body.fullscreen .detail-top {
-        padding: 10px;
-      }
-
-      body.fullscreen .detail {
-        padding: 7px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        transition: none !important;
-        animation: none !important;
-        scroll-behavior: auto !important;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>TRIPGRADE | Chamäleon Reisen</title>
+
+<style>
+:root {
+  --bg: #f3f6f9;
+  --ink: #172838;
+  --sub: #81909e;
+  --line: #e6edf2;
+  --white: #fff;
+  --nav: #152839;
+  --mint: #a7ead8;
+  --yellow: #ffda69;
+  --radius: 23px;
+  --shadow: 0 12px 35px #24364c0b;
+  --ease: cubic-bezier(.22,1,.36,1);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 14px/1.5 -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Arial, sans-serif;
+}
+button, input { font: inherit; }
+button { cursor: pointer; }
+button:focus-visible, a:focus-visible,
+input:focus-visible {
+  outline: 3px solid #e4ba38;
+  outline-offset: 3px;
+}
+a { color: inherit; text-decoration: none; }
+h1, h2, h3, p { margin: 0; }
+[hidden] { display: none !important; }
+svg {
+  width: 19px;
+  height: 19px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+/* SIDEBAR */
+
+.layout { display: flex; min-height: 100vh; }
+.sidebar {
+  width: 245px;
+  position: fixed;
+  inset: 0 auto 0 0;
+  background: linear-gradient(
+    165deg,#132638 0%,#1c3446 70%,#1e3e4d 100%
+  );
+  color: #dce7ec;
+  display: flex;
+  flex-direction: column;
+  z-index: 30;
+  border-right: 1px solid #ffffff12;
+}
+.brand {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 25px;
+  font-weight: 850;
+  letter-spacing: .17em;
+  font-size: 15px;
+  color: white;
+}
+.brandmark {
+  background: var(--yellow);
+  width: 34px;
+  height: 34px;
+  border-radius: 11px;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 5px 25px #ffdc5740;
+}
+.brandmark:before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  background: #162a38;
+  transform: rotate(45deg);
+  border-radius: 3px;
+}
+.navlabel {
+  padding: 26px 24px 12px;
+  font-size: 10px;
+  letter-spacing: .15em;
+  color: #7f9ba9;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+.nav { padding: 0 12px; display: grid; gap: 4px; }
+.navbtn {
+  width: 100%;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  text-align: left;
+  padding: 12px 14px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 13px;
+  color: #b3c5cf;
+  font-weight: 650;
+  transition: .22s;
+}
+.navbtn:hover { background: #ffffff0c; color: white; }
+.navbtn.active {
+  background: #ffffff19;
+  border-color: #ffffff18;
+  color: #fff;
+}
+.navbtn.active svg { color: var(--yellow); }
+.navbtn span { flex: 1; }
+.count {
+  background: #ffffff17;
+  color: #a5bdc9;
+  border-radius: 8px;
+  padding: 1px 7px;
+  font-size: 11px;
+}
+.client {
+  margin: auto 13px 15px;
+  padding: 17px;
+  border: 1px solid #ffffff13;
+  border-radius: 19px;
+  background: #ffffff0b;
+}
+.client small {
+  display: block;
+  color: #8da7b5;
+  font-size: 10px;
+  letter-spacing: .12em;
+  font-weight: 750;
+  text-transform: uppercase;
+}
+.client strong {
+  display: block;
+  margin-top: 11px;
+  color: white;
+  font-size: 14px;
+}
+.client p {
+  font-size: 11px;
+  color: #9db4c0;
+  margin-top: 4px;
+}
+.client .dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  background: #7cdbb6;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+/* MAIN AREA */
+
+.main {
+  margin-left: 245px;
+  width: calc(100% - 245px);
+  min-width: 0;
+}
+.topbar {
+  height: 76px;
+  background: #ffffffc9;
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid #e8edf3;
+  display: flex;
+  align-items: center;
+  padding: 0 clamp(22px,4vw,57px);
+  gap: 13px;
+}
+.crumb {
+  font-size: 12px;
+  color: #96a3af;
+  font-weight: 650;
+}
+.crumb strong { color: #496071; }
+.account {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #5a7080;
+  font-size: 12px;
+  font-weight: 700;
+}
+.avatar {
+  background: linear-gradient(135deg,#26445a,#153044);
+  color: #fff;
+  width: 37px;
+  height: 37px;
+  border-radius: 13px;
+  display: grid;
+  place-items: center;
+  font-size: 11px;
+  font-weight: 850;
+}
+.menubtn {
+  display: none;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: white;
+  padding: 9px;
+}
+.page {
+  max-width: 1530px;
+  margin: auto;
+  padding: 43px clamp(22px,4vw,57px) 85px;
+  position: relative;
+}
+.page:before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  z-index: -1;
+  inset: 0 0 auto 0;
+  height: 440px;
+  background:
+    radial-gradient(ellipse at 90% 0%,
+      #d6eef15d,transparent 54%),
+    radial-gradient(ellipse at 4% 0%,
+      #f8e4a22b,transparent 42%);
+}
+.heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: end;
+  margin-bottom: 29px;
+}
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .17em;
+  color: #7894a2;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+.eyebrow:before {
+  content: "";
+  width: 19px;
+  height: 4px;
+  border-radius: 3px;
+  background: var(--yellow);
+}
+h1 {
+  font-size: clamp(30px,3.4vw,44px);
+  letter-spacing: -.055em;
+  line-height: 1.1;
+  font-weight: 820;
+}
+.lead {
+  margin-top: 9px;
+  color: #889aa8;
+  font-size: 13px;
+}
+.summary { display: flex; gap: 9px; flex-wrap: wrap; }
+.pill {
+  border: 1px solid #e4ebf0;
+  background: #ffffffd9;
+  border-radius: 999px;
+  padding: 8px 13px;
+  color: #7e909e;
+  font-size: 12px;
+  white-space: nowrap;
+}
+.pill b { font-weight: 850; color: #294050; }
+.pill.ready b { color: #237556; }
+.pill.ready:before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: #47ae86;
+  border-radius: 50%;
+  margin-right: 7px;
+}
+
+/* SEARCH AND FILTERS */
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.section-title h2 { font-size: 19px; letter-spacing: -.04em; }
+.section-title .num {
+  font-size: 11px;
+  font-weight: 800;
+  padding: 4px 9px;
+  background: #dfebed;
+  color: #557180;
+  border-radius: 9px;
+}
+.toolbar {
+  padding: 9px;
+  background: #fff;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  border-radius: 19px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 19px;
+}
+.search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 11px;
+  flex: 1;
+  color: #96a8b4;
+  min-width: 0;
+}
+.search input {
+  border: 0;
+  outline: 0;
+  background: none;
+  min-width: 0;
+  flex: 1;
+  height: 40px;
+  color: var(--ink);
+  font-size: 13px;
+}
+.search input::placeholder { color: #9dacb8; }
+.filters { display: flex; gap: 3px; }
+.filter {
+  border: 0;
+  background: transparent;
+  color: #82919e;
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-size: 12px;
+  font-weight: 750;
+  white-space: nowrap;
+}
+.filter:hover { background: #f2f6f8; }
+.filter.active {
+  color: #214b51;
+  background: #e6f4f1;
+}
+
+/* TRAVEL CARDS */
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  gap: 17px;
+}
+.card {
+  min-width: 0;
+  padding: 8px;
+  border: 1px solid #e4ebf1;
+  border-radius: 24px;
+  background: white;
+  box-shadow: var(--shadow);
+  transition:
+    transform .35s var(--ease),
+    box-shadow .35s var(--ease),
+    border-color .35s;
+}
+.card.live { cursor: pointer; }
+.card.live:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 24px 44px #1e3f551c;
+  border-color: #badfd5;
+}
+.photo {
+  height: clamp(125px,12.5vw,167px);
+  border-radius: 17px;
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(
+    125deg,#99b7be,#e4d9af 65%,#b3d3d7
+  );
+}
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .6s var(--ease);
+}
+.card:hover .photo img { transform: scale(1.055); }
+.card:not(.live) .photo img { filter: saturate(.8); }
+.status {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  font-size: 10px;
+  font-weight: 800;
+  border-radius: 999px;
+  background: #ffffffec;
+  padding: 7px 11px;
+  color: #738797;
+  backdrop-filter: blur(8px);
+}
+.status:before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #a4afb9;
+  margin-right: 6px;
+}
+.status.ok { color: #26775c; }
+.status.ok:before { background: #42af82; }
+.cardbody {
+  padding: 14px 11px 11px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.cardbody > div { flex: 1; min-width: 0; }
+.country {
+  color: #93a1ae;
+  font-size: 11px;
+  font-weight: 650;
+  margin-bottom: 4px;
+}
+.name {
+  font-size: 23px;
+  font-weight: 820;
+  letter-spacing: -.05em;
+  line-height: 1.16;
+  overflow-wrap: anywhere;
+}
+.arrow {
+  display: grid;
+  place-items: center;
+  width: 37px;
+  height: 37px;
+  border-radius: 12px;
+  background: #eef2f5;
+  color: #a6b2bc;
+  flex-shrink: 0;
+}
+.live .arrow {
+  background: #def5ee;
+  color: #1f725b;
+}
+.none {
+  margin-top: 18px;
+  border-radius: 22px;
+  background: #fff;
+  padding: 50px;
+  text-align: center;
+  color: #8596a5;
+  border: 1px dashed #cfdae3;
+}
+
+/* OTHER CONTINENTS */
+
+.continents {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid #dce5eb;
+}
+.regioncards {
+  display: grid;
+  grid-template-columns: repeat(4,minmax(0,1fr));
+  gap: 13px;
+}
+.regioncard {
+  display: flex;
+  gap: 13px;
+  align-items: center;
+  text-align: left;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 19px;
+  padding: 17px;
+  transition: .22s;
+}
+.regioncard:hover {
+  background: #f8fdfb;
+  transform: translateY(-3px);
+}
+.regionicon {
+  display: grid;
+  place-items: center;
+  width: 39px;
+  height: 39px;
+  border-radius: 12px;
+  background: #e7f3f2;
+  color: #547d84;
+}
+.regioncard strong { display: block; font-size: 13px; }
+.regioncard small { color: #a0acb7; font-size: 11px; }
+.coming {
+  background: linear-gradient(140deg,#fff,#f3faf9);
+  border: 1px solid #e0eced;
+  border-radius: 27px;
+  text-align: center;
+  padding: 75px 22px;
+  margin-top: 5px;
+}
+.coming .bubble {
+  display: grid;
+  place-items: center;
+  margin: 0 auto 16px;
+  width: 62px;
+  height: 62px;
+  border-radius: 20px;
+  background: #dff2eb;
+  color: #367967;
+}
+.coming h2 { font-size: 24px; letter-spacing: -.04em; }
+.coming p { color: #8a9da7; margin-top: 9px; }
+.ghosts {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 14px;
+  max-width: 850px;
+  margin: 35px auto 0;
+}
+.ghost {
+  height: 130px;
+  background: linear-gradient(135deg,#e7eeef,#f5f9f8);
+  border: 1px solid #e5edef;
+  border-radius: 16px;
+  opacity: .85;
+}
+
+/* ANALYSIS VIEWER */
+
+.detail {
+  height: calc(100dvh - 76px);
+  min-height: 620px;
+  padding: 20px clamp(19px,3vw,43px) 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.detail-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.detail-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.back {
+  border: 1px solid var(--line);
+  background: white;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 13px;
+}
+.detail-left h2 { font-size: 22px; letter-spacing: -.04em; }
+.detail-left p { font-size: 11px; color: #94a3af; }
+.actions { display: flex; gap: 7px; flex-wrap: wrap; }
+.action {
+  border: 1px solid #dce6ec;
+  background: #fff;
+  border-radius: 12px;
+  padding: 10px 13px;
+  color: #527080;
+  font-size: 12px;
+  font-weight: 750;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.action:hover { background: #f0f9f5; }
+.action.active {
+  background: #203b4a;
+  color: white;
+  border-color: #203b4a;
+}
+.action.primary {
+  background: #ffda69;
+  color: #192b3b;
+  border-color: #ffda69;
+}
+.analysis-layout {
+  display: grid;
+  grid-template-columns: 205px minmax(0,1fr);
+  gap: 14px;
+  flex: 1;
+  min-height: 0;
+}
+.minilist {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: white;
+  padding: 17px;
+  overflow-y: auto;
+}
+.minilist h3 {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: #91a1ad;
+  margin-bottom: 13px;
+}
+.mini {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+  font-size: 12px;
+  color: #94a1ab;
+  padding: 10px;
+  border-radius: 10px;
+}
+.mini:before {
+  content: "";
+  height: 6px;
+  width: 6px;
+  background: #c7d2d9;
+  border-radius: 50%;
+}
+.mini.current {
+  background: #e7f6f0;
+  color: #236b55;
+  font-weight: 800;
+}
+.mini.current:before { background: #44b486; }
+.viewer {
+  min-width: 0;
+  min-height: 0;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 21px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+}
+.viewerbar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 17px;
+  height: 43px;
+  flex-shrink: 0;
+  background: #f9fbfc;
+  border-bottom: 1px solid var(--line);
+  font-size: 11px;
+  color: #9aaab5;
+}
+.viewerbar i {
+  width: 7px;
+  height: 7px;
+  background: #cfdce2;
+  border-radius: 50%;
+}
+.viewerbar i:first-child { background: #ffcc4d; }
+.viewerbar span { margin-left: 8px; }
+.viewer iframe {
+  width: 100%;
+  border: 0;
+  flex: 1;
+  min-height: 0;
+}
+.report-error {
+  padding: 24px;
+  max-width: 500px;
+  margin: auto;
+  text-align: center;
+}
+.report-error h3 { font-size: 20px; }
+.report-error p {
+  color: #789;
+  line-height: 1.6;
+  margin-top: 10px;
+}
+.report-error code { word-break: break-all; }
+
+/* FULLSCREEN */
+
+.fullscreen .sidebar,
+.fullscreen .topbar { display: none; }
+.fullscreen .main { margin: 0; width: 100%; }
+.fullscreen .detail {
+  position: fixed;
+  inset: 0;
+  height: 100dvh;
+  z-index: 60;
+  padding: 10px;
+  background: #eaf1f4;
+  min-height: 0;
+}
+.fullscreen .analysis-layout {
+  grid-template-columns: minmax(0,1fr);
+}
+.fullscreen .minilist { display: none; }
+.fullscreen .viewer { border-radius: 13px; }
+.fullscreen .detail-head {
+  background: #fff;
+  padding: 10px;
+  border-radius: 14px;
+}
+.screenmask { display: none; }
+
+/* RESPONSIVE */
+
+@media(max-width:1200px) {
+  .cards {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+  }
+  .regioncards {
+    grid-template-columns: repeat(2,1fr);
+  }
+}
+@media(max-width:850px) {
+  .sidebar {
+    transform: translateX(-100%);
+    transition: transform .3s var(--ease);
+  }
+  .sidebar.show { transform: translateX(0); }
+  .screenmask.show {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 25;
+    background: #15283980;
+  }
+  .main { margin-left: 0; width: 100%; }
+  .menubtn { display: grid; place-items: center; }
+  .analysis-layout {
+    grid-template-columns: minmax(0,1fr);
+  }
+  .minilist { display: none; }
+}
+@media(max-width:580px) {
+  .topbar { height: 68px; padding: 0 16px; }
+  .account > span { display: none; }
+  .page { padding: 28px 15px 60px; }
+  .heading { display: block; }
+  .summary { margin-top: 18px; }
+  .toolbar { display: block; }
+  .search { height: 48px; }
+  .filters { display: flex; overflow-x: auto; }
+  .filter { flex: 1; }
+  .cards { grid-template-columns: 1fr; }
+  .photo { height: 154px; }
+  .regioncards { grid-template-columns: repeat(2,1fr); }
+  .regioncard { padding: 12px; gap: 8px; }
+  .regionicon { width: 33px; height: 33px; }
+  .detail {
+    height: calc(100dvh - 68px);
+    padding: 11px;
+  }
+  .actions { width: 100%; }
+  .action {
+    flex: 1;
+    justify-content: center;
+    padding: 10px 8px;
+  }
+  .ghosts { grid-template-columns: 1fr; }
+  .ghost:nth-child(n+2) { display: none; }
+}
+@media(prefers-reduced-motion:reduce) {
+  *, *:before, *:after {
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <svg style="display:none" xmlns="http://www.w3.org/2000/svg">
-    <symbol id="i-grid" viewBox="0 0 24 24">
-      <rect x="3" y="3" width="7" height="7" rx="2"/>
-      <rect x="14" y="3" width="7" height="7" rx="2"/>
-      <rect x="3" y="14" width="7" height="7" rx="2"/>
-      <rect x="14" y="14" width="7" height="7" rx="2"/>
-    </symbol>
+<!-- SVG ICONS -->
+<svg aria-hidden="true"
+     style="position:absolute;width:0;height:0;overflow:hidden">
+  <symbol id="globe" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="9"/>
+    <path d="M3 12h18M12 3c-5 5-5 13 0 18M12 3c5 5 5 13 0 18"/>
+  </symbol>
+  <symbol id="grid" viewBox="0 0 24 24">
+    <rect x="3" y="3" width="8" height="8" rx="2"/>
+    <rect x="13" y="3" width="8" height="8" rx="2"/>
+    <rect x="3" y="13" width="8" height="8" rx="2"/>
+    <rect x="13" y="13" width="8" height="8" rx="2"/>
+  </symbol>
+  <symbol id="search" viewBox="0 0 24 24">
+    <circle cx="10.5" cy="10.5" r="6.5"/>
+    <path d="m16 16 5 5"/>
+  </symbol>
+  <symbol id="arrow" viewBox="0 0 24 24">
+    <path d="M5 12h14m-6-6 6 6-6 6"/>
+  </symbol>
+  <symbol id="lock" viewBox="0 0 24 24">
+    <rect x="5" y="10" width="14" height="11" rx="2"/>
+    <path d="M8 10V7a4 4 4 0 0 1 8 0v3"/>
+  </symbol>
+  <symbol id="expand" viewBox="0 0 24 24">
+    <path d="M8 3H3v5M16 3h5v5M3 16v5h5M21 16v5h-5"/>
+  </symbol>
+  <symbol id="external" viewBox="0 0 24 24">
+    <path d="M13 5h6v6m0-6-9 9M19 14v5H5V5h5"/>
+  </symbol>
+  <symbol id="back" viewBox="0 0 24 24">
+    <path d="M19 12H5m6-6-6 6 6 6"/>
+  </symbol>
+  <symbol id="menu" viewBox="0 0 24 24">
+    <path d="M4 7h16M4 12h16M4 17h16"/>
+  </symbol>
+</svg>
 
-    <symbol id="i-globe" viewBox="0 0 24 24">
-      <circle cx="12" cy="12" r="9"/>
-      <path d="M3 12h18"/>
-      <path d="M12 3c-5 5-5 13 0 18"/>
-      <path d="M12 3c5 5 5 13 0 18"/>
-    </symbol>
+<div class="screenmask" id="mask"></div>
 
-    <symbol id="i-search" viewBox="0 0 24 24">
-      <circle cx="10.5" cy="10.5" r="6.5"/>
-      <path d="m16 16 5 5"/>
-    </symbol>
+<div class="layout">
 
-    <symbol id="i-arrow" viewBox="0 0 24 24">
-      <path d="M5 12h14"/>
-      <path d="m13 6 6 6-6 6"/>
-    </symbol>
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <a href="#/uebersicht" class="brand">
+      <span class="brandmark"></span>
+      TRIPGRADE
+    </a>
 
-    <symbol id="i-lock" viewBox="0 0 24 24">
-      <rect x="5" y="10" width="14" height="11" rx="2"/>
-      <path d="M8 10V7a4 4 0 0 1 8 0v3"/>
-    </symbol>
+    <div class="navlabel">Arbeitsbereich</div>
+    <nav class="nav">
+      <button class="navbtn" data-region="uebersicht">
+        <svg><use href="#grid"/></svg>
+        <span>Übersicht</span>
+      </button>
+    </nav>
 
-    <symbol id="i-back" viewBox="0 0 24 24">
-      <path d="M19 12H5"/>
-      <path d="m11 18-6-6 6-6"/>
-    </symbol>
+    <div class="navlabel">Kontinente</div>
+    <nav class="nav" id="nav"></nav>
 
-    <symbol id="i-expand" viewBox="0 0 24 24">
-      <path d="M8 3H3v5M16 3h5v5M3 16v5h5M21 16v5h-5"/>
-    </symbol>
+    <div class="client">
+      <small>Kundenbereich</small>
+      <strong>Chamäleon Reisen</strong>
+      <p>Reise- und Qualitätsmanagement</p>
+      <p style="margin-top:13px">
+        <span class="dot"></span>
+        Interner Arbeitsbereich
+      </p>
+    </div>
+  </aside>
 
-    <symbol id="i-panels" viewBox="0 0 24 24">
-      <rect x="3" y="3" width="18" height="18" rx="3"/>
-      <path d="M10 3v18"/>
-    </symbol>
+  <!-- MAIN -->
+  <main class="main">
 
-    <symbol id="i-external" viewBox="0 0 24 24">
-      <path d="M13 5h6v6"/>
-      <path d="m19 5-9 9"/>
-      <path d="M19 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h4"/>
-    </symbol>
+    <header class="topbar">
+      <button class="menubtn" id="menu" aria-label="Menü öffnen">
+        <svg><use href="#menu"/></svg>
+      </button>
 
-    <symbol id="i-menu" viewBox="0 0 24 24">
-      <path d="M4 7h16M4 12h16M4 17h16"/>
-    </symbol>
-  </svg>
+      <span class="crumb" id="crumb">
+        Arbeitsbereich / <strong>Reisebibliothek</strong>
+      </span>
 
-  <div class="mobile-overlay" id="mobileOverlay"></div>
+      <span class="account">
+        <span>Chamäleon Reisen</span>
+        <b class="avatar">CR</b>
+      </span>
+    </header>
 
-  <div class="app">
+    <!-- REISEBIBLIOTHEK -->
+    <section class="page" id="library">
 
-    <!-- SIDEBAR -->
+      <div class="heading">
+        <div>
+          <div class="eyebrow">TRIPGRADE / Analyseplattform</div>
+          <h1 id="title">Reisebibliothek</h1>
+          <p class="lead" id="lead">
+            Alle Reiseanalysen an einem Ort.
+          </p>
+        </div>
 
-    <aside class="sidebar" id="sidebar">
-
-      <a class="brand" href="#/uebersicht">
-        <div class="brand-symbol"><span></span></div>
-        <span class="brand-name">TRIPGRADE</span>
-      </a>
-
-      <div class="sidebar-label">Arbeitsbereich</div>
-
-      <nav class="navigation" id="navigation">
-
-        <button class="nav-item active"
-                data-region="uebersicht">
-          <span class="nav-icon">
-            <svg class="icon"><use href="#i-grid"/></svg>
-          </span>
-          <span class="nav-title">Übersicht</span>
-        </button>
-
-      </nav>
-
-      <div class="sidebar-label">Kontinente</div>
-
-      <nav class="navigation" id="continentNavigation"></nav>
-
-      <div class="sidebar-footer">
-        <div class="client-card">
-          <div class="client-overline">Kundenbereich</div>
-          <div class="client-name">Chamäleon Reisen</div>
-          <div class="client-type">Reise- & Qualitätsmanagement</div>
-          <div class="client-status">
-            Interner Arbeitsbereich
-          </div>
+        <div class="summary" id="summary">
+          <span class="pill"><b>14</b> Reisen</span>
+          <span class="pill ready"><b>1</b> verfügbar</span>
+          <span class="pill"><b>13</b> demnächst</span>
         </div>
       </div>
 
-    </aside>
-
-    <!-- MAIN -->
-
-    <main class="main">
-
-      <header class="topbar">
-        <button class="menu-button" id="menuButton"
-                aria-label="Menü öffnen">
-          <svg class="icon"><use href="#i-menu"/></svg>
-        </button>
-
-        <div class="breadcrumb" id="breadcrumb">
-          Arbeitsbereich / <strong>Reisebibliothek</strong>
+      <section id="europe">
+        <div class="section-title">
+          <h2>Europa</h2>
+          <span class="num" id="count">14</span>
         </div>
 
-        <div class="topbar-right">
-          <span class="workspace-name">Chamäleon Reisen</span>
-          <div class="avatar">CR</div>
+        <div class="toolbar">
+          <label class="search">
+            <svg><use href="#search"/></svg>
+            <input
+              id="query"
+              placeholder="Reise oder Land suchen ..."
+              type="search"
+              autocomplete="off"
+              aria-label="Reisen suchen">
+          </label>
+
+          <div class="filters">
+            <button class="filter active"
+                    data-filter="alle">Alle</button>
+            <button class="filter"
+                    data-filter="fertig">Verfügbar</button>
+            <button class="filter"
+                    data-filter="bald">Demnächst</button>
+          </div>
         </div>
-      </header>
 
-      <!-- LIBRARY -->
+        <div class="cards" id="cards"></div>
 
-      <section class="page" id="library">
+        <div class="none" id="none" hidden>
+          Keine passende Reise gefunden.
+        </div>
+      </section>
 
-        <div class="page-heading">
+      <!-- ANDERE KONTINENTE -->
+      <section class="continents" id="other">
+        <div class="section-title">
+          <h2>Weitere Kontinente</h2>
+        </div>
+        <div class="regioncards" id="regions"></div>
+      </section>
+
+      <section class="coming" id="coming" hidden>
+        <span class="bubble">
+          <svg><use href="#globe"/></svg>
+        </span>
+        <h2>Noch keine Reiseanalysen</h2>
+        <p>Hier werden zukünftige Analysen angezeigt.</p>
+
+        <div class="ghosts">
+          <div class="ghost"></div>
+          <div class="ghost"></div>
+          <div class="ghost"></div>
+        </div>
+      </section>
+
+    </section>
+
+    <!-- DETAILANSICHT -->
+    <section class="detail" id="detail" hidden>
+
+      <div class="detail-head">
+        <div class="detail-left">
+          <button class="back" id="back" title="Zurück">
+            <svg><use href="#back"/></svg>
+          </button>
           <div>
-            <div class="eyebrow">Analyseplattform</div>
-            <h1 id="pageTitle">Reisebibliothek</h1>
-            <p class="page-description" id="pageDescription">
-              Alle Reiseanalysen an einem Ort.
-            </p>
-          </div>
-
-          <div class="stats" id="stats">
-            <span class="stat"><b>14</b> Reisen</span>
-            <span class="stat ready">
-              <span class="stat-dot"></span>
-              <b>1</b> Verfügbar
-            </span>
-            <span class="stat"><b>13</b> In Vorbereitung</span>
+            <h2>Sizilien</h2>
+            <p>DeepAudit · Chamäleon Reisen</p>
           </div>
         </div>
 
-        <!-- EUROPE -->
-
-        <div id="europeSection">
-
-          <div class="section-heading">
-            <div class="section-title-group">
-              <h2>Europa</h2>
-              <span class="number-pill" id="resultCount">14</span>
-            </div>
-          </div>
-
-          <div class="toolbar">
-            <div class="search">
-              <svg class="icon">
-                <use href="#i-search"/>
-              </svg>
-
-              <input
-                id="searchInput"
-                type="search"
-                placeholder="Reise, Land oder Region suchen ..."
-                aria-label="Reise suchen"
-                autocomplete="off"
-              >
-            </div>
-
-            <div class="toolbar-divider"></div>
-
-            <div class="filters" id="filters">
-              <button class="filter-button"
-                      data-filter="all"
-                      aria-pressed="true">Alle</button>
-              <button class="filter-button"
-                      data-filter="ready"
-                      aria-pressed="false">Verfügbar</button>
-              <button class="filter-button"
-                      data-filter="pending"
-                      aria-pressed="false">Demnächst</button>
-            </div>
-          </div>
-
-          <div class="travel-grid" id="travelGrid"></div>
-
-          <div class="empty-results" id="emptyResults" hidden>
-            <h3>Keine Reisen gefunden</h3>
-            <p>Versuche einen anderen Suchbegriff.</p>
-          </div>
-        </div>
-
-        <!-- OTHER REGIONS -->
-
-        <section class="continents" id="continents">
-          <div class="section-heading">
-            <div class="section-title-group">
-              <h2>Weitere Kontinente</h2>
-            </div>
-          </div>
-
-          <div class="continent-grid" id="continentGrid"></div>
-        </section>
-
-        <!-- UPCOMING CONTINENT -->
-
-        <section class="coming-area" id="comingArea" hidden>
-          <div class="coming-icon">
-            <svg class="icon" style="width:26px;height:26px">
-              <use href="#i-globe"/>
-            </svg>
-          </div>
-
-          <h2>Noch keine Analysen</h2>
-          <p>Neue Reiseanalysen erscheinen hier in Zukunft.</p>
-
-          <div class="ghost-grid">
-            <div class="ghost-card">
-              <div class="ghost-photo"></div>
-              <div class="ghost-lines">
-                <div class="ghost-line"></div>
-                <div class="ghost-line"></div>
-              </div>
-            </div>
-
-            <div class="ghost-card">
-              <div class="ghost-photo"></div>
-              <div class="ghost-lines">
-                <div class="ghost-line"></div>
-                <div class="ghost-line"></div>
-              </div>
-            </div>
-
-            <div class="ghost-card">
-              <div class="ghost-photo"></div>
-              <div class="ghost-lines">
-                <div class="ghost-line"></div>
-                <div class="ghost-line"></div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <details class="credits" id="credits">
-          <summary>Bildnachweise</summary>
-          <div class="credits-content" id="creditsContent"></div>
-          <p>
-            Fotografen, Lizenzen und Nutzungsbedingungen
-            sind auf den verlinkten Wikimedia-Commons-Seiten
-            dokumentiert. Vor Veröffentlichung bitte prüfen.
-          </p>
-        </details>
-
-      </section>
-
-      <!-- ANALYSIS WORKSPACE -->
-
-      <section class="detail" id="detail" hidden>
-
-        <div class="detail-top">
-
-          <div class="detail-left-actions">
-            <button class="back-button" id="backButton"
-                    aria-label="Zurück zur Reisebibliothek">
-              <svg class="icon">
-                <use href="#i-back"/>
-              </svg>
-            </button>
-
-            <div class="detail-title">
-              <h2>Sizilien</h2>
-              <p>DeepAudit · Chamäleon Reisen</p>
-            </div>
-          </div>
-
-          <div class="detail-buttons">
-
-            <button class="view-button active"
-                    id="compactButton"
-                    type="button">
-              <svg class="icon small">
-                <use href="#i-panels"/>
-              </svg>
-              Kompakt
-            </button>
-
-            <button class="view-button"
-                    id="fullButton"
-                    type="button">
-              <svg class="icon small">
-                <use href="#i-expand"/>
-              </svg>
-              Vollbild
-            </button>
-
-            <a class="view-button primary"
-               id="newTabButton"
-               target="_blank"
-               rel="noopener">
-              <svg class="icon small">
-                <use href="#i-external"/>
-              </svg>
-              Neuer Tab
-            </a>
-
-          </div>
-        </div>
-
-        <div class="detail-layout">
-
-          <aside class="detail-sidebar">
-            <div class="detail-sidebar-title">
-              Reisebibliothek
-            </div>
-            <div class="detail-travel-list"
-                 id="detailTravelList"></div>
-          </aside>
-
-          <div class="detail-view">
-
-            <div class="browser-bar">
-              <span class="browser-dot"></span>
-              <span class="browser-dot"></span>
-              <span class="browser-dot"></span>
-
-              <span class="browser-label">
-                TRIPGRADE / DeepAudit / Sizilien
-              </span>
-            </div>
-
-            <iframe
-              id="reportFrame"
-              class="report-frame"
-              title="TRIPGRADE DeepAudit Sizilien"
-              loading="lazy">
-            </iframe>
-
-          </div>
-
-        </div>
-
-      </section>
-
-    </main>
-  </div>
-
-  <script>
-    "use strict";
-
-    /*
-      KONFIGURATION
-
-      Trage hier später deine echten HTML-Dateien ein.
-      Sizilien ist bereits als verfügbar markiert.
-
-      Die Fotos nutzen Wikimedia Commons als externe Quelle.
-      Für den produktiven Betrieb empfiehlt sich, die Bilder
-      nach Lizenzprüfung selbst zu hosten.
-    */
-
-    const REPORT_FILE =
-      "./TRIPGRADE_Sizilien_DeepAudit-10(1).html";
-
-    const CONTINENTS = [
-      { id: "europa", name: "Europa", count: 14 },
-      { id: "afrika", name: "Afrika", count: 0 },
-      { id: "amerika", name: "Amerika", count: 0 },
-      { id: "asien", name: "Asien", count: 0 },
-      { id: "ozeanien", name: "Ozeanien", count: 0 }
-    ];
-
-    const TRAVELS = [
-      {
-        name: "Sizilien",
-        country: "Italien",
-        code: "ITSIZ",
-        ready: true,
-        image: "Taormina and Mt Etna.jpg"
-      },
-      {
-        name: "Balkan",
-        country: "Albanien · Montenegro",
-        code: "ALBAL",
-        ready: false,
-        image: "Bay of Kotor Panorama.jpg"
-      },
-      {
-        name: "Dalmatien",
-        country: "Kroatien",
-        code: "HRDAL",
-        ready: false,
-        image:
-          "Luftbild der Altstadt von Dubrovnik in Kroatien (48613138127).jpg"
-      },
-      {
-        name: "Azoren",
-        country: "Portugal",
-        code: "",
-        ready: false,
-        image: "Sete Cidades (panorama).JPG"
-      },
-      {
-        name: "Schottland",
-        country: "Vereinigtes Königreich",
-        code: "",
-        ready: false,
-        image: "Edinburgh Edinburgh Castle Panorama 01.jpg"
-      },
-      {
-        name: "Gjirokaster",
-        country: "Albanien",
-        code: "ALGJI",
-        ready: false,
-        image: "Gjirokastër, Albania.jpg"
-      },
-      {
-        name: "Siebenbürgen",
-        country: "Rumänien",
-        code: "ROSIE",
-        ready: false,
-        image: "Bran Castle (28330883750).jpg"
-      },
-      {
-        name: "Bretagne",
-        country: "Frankreich",
-        code: "",
-        ready: false,
-        image: "Cap Frehel Lighthouse.jpg"
-      },
-      {
-        name: "Toskana",
-        country: "Italien",
-        code: "ITTOS",
-        ready: false,
-        image: "Tuscany - Cypress Trees (5698663059).jpg"
-      },
-      {
-        name: "Highlands",
-        country: "Schottland",
-        code: "",
-        ready: false,
-        image: "Glen Coe.jpg"
-      },
-      {
-        name: "Provence",
-        country: "Frankreich",
-        code: "",
-        ready: false,
-        image: "Lavender field in Valensole.jpg"
-      },
-      {
-        name: "Eire",
-        country: "Irland",
-        code: "",
-        ready: false,
-        image: "Cliffs of Moher jpg.jpg"
-      },
-      {
-        name: "Apulien",
-        country: "Italien",
-        code: "ITAPU",
-        ready: false,
-        image: "Polignano A Mare.jpg"
-      },
-      {
-        name: "Jökulsarlon",
-        country: "Island",
-        code: "",
-        ready: false,
-        image:
-          "Icebergs in the Jökulsárlón Glacier Lagoon, Iceland.jpg"
-      }
-    ];
-
-    const $ = id => document.getElementById(id);
-
-    const icon = name =>
-      '<svg class="icon"><use href="#i-' +
-      name + '"/></svg>';
-
-    function escapeHTML(value) {
-      return String(value).replace(/[&<>"']/g, c => ({
-        "&": "&amp;",
-        "<": "&lt;",
-        ">": "&gt;",
-        '"': "&quot;",
-        "'": "&#39;"
-      })[c]);
-    }
-
-    function normalize(value) {
-      return String(value)
-        .toLocaleLowerCase("de")
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
-        .replace(/ß/g, "ss");
-    }
-
-    function imageURL(filename) {
-      return (
-        "https://commons.wikimedia.org/wiki/Special:FilePath/" +
-        encodeURIComponent(filename) +
-        "?width=900"
-      );
-    }
-
-    function imageCreditURL(filename) {
-      return (
-        "https://commons.wikimedia.org/wiki/File:" +
-        encodeURIComponent(filename)
-      );
-    }
-
-    let currentRegion = "uebersicht";
-    let lastRegion = "uebersicht";
-    let currentFilter = "all";
-    let searchQuery = "";
-    let reportLoaded = false;
-    let currentView = "library";
-
-    /* NAVIGATION */
-
-    function buildNavigation() {
-      $("continentNavigation").innerHTML =
-        CONTINENTS.map(c => `
-          <button class="nav-item"
-                  data-region="${c.id}">
-            <span class="nav-icon">
-              ${icon("globe")}
-            </span>
-            <span class="nav-title">${c.name}</span>
-            <span class="nav-count">${c.count}</span>
+        <div class="actions">
+          <button id="compact" class="action active">
+            Kompakt
           </button>
-        `).join("");
-
-      $("continentGrid").innerHTML =
-        CONTINENTS.filter(c => c.id !== "europa").map(c => `
-          <button class="continent-card"
-                  data-open-region="${c.id}">
-            <span class="continent-icon">
-              ${icon("globe")}
-            </span>
-            <span>
-              <span class="continent-name"
-                    style="display:block">
-                ${c.name}
-              </span>
-              <span class="continent-sub"
-                    style="display:block">
-                Demnächst
-              </span>
-            </span>
+          <button id="full" class="action">
+            <svg><use href="#expand"/></svg>
+            Vollbild
           </button>
-        `).join("");
-    }
-
-    function closeMobileMenu() {
-      document.body.classList.remove("menu-open");
-    }
-
-    function navigate(region) {
-      location.hash = "#/" + region;
-    }
-
-    function showRegion(region) {
-      const valid = [
-        "uebersicht",
-        ...CONTINENTS.map(c => c.id)
-      ];
-
-      if (!valid.includes(region)) {
-        region = "uebersicht";
-      }
-
-      currentRegion = region;
-      lastRegion = region;
-      currentView = "library";
-
-      document.body.classList.remove("fullscreen");
-      closeMobileMenu();
-
-      $("detail").hidden = true;
-      $("library").hidden = false;
-
-      const europe =
-        region === "uebersicht" || region === "europa";
-
-      const regionName =
-        CONTINENTS.find(c => c.id === region)?.name
-        || "Reisebibliothek";
-
-      $("pageTitle").textContent = regionName;
-
-      $("pageDescription").textContent = europe
-        ? "Alle Reiseanalysen an einem Ort."
-        : "Weitere Analysen folgen.";
-
-      $("breadcrumb").innerHTML =
-        'Arbeitsbereich / <strong>' +
-        escapeHTML(regionName) + '</strong>';
-
-      $("europeSection").hidden = !europe;
-      $("continents").hidden = region !== "uebersicht";
-      $("comingArea").hidden = europe;
-      $("stats").hidden = !europe;
-      $("credits").hidden = !europe;
-
-      document.querySelectorAll("[data-region]")
-        .forEach(button => {
-          const active = button.dataset.region === region;
-          button.classList.toggle("active", active);
-
-          if (active) {
-            button.setAttribute("aria-current", "page");
-          } else {
-            button.removeAttribute("aria-current");
-          }
-        });
-
-      document.title = regionName + " · TRIPGRADE";
-
-      if (europe) renderTravels();
-
-      window.scrollTo(0, 0);
-    }
-
-    /* TRAVEL CARDS */
-
-    function travelCard(travel) {
-      const available = travel.ready;
-
-      const photo = `
-        <div class="travel-image">
-          <img
-            src="${imageURL(travel.image)}"
-            alt="${escapeHTML(travel.name)}"
-            loading="lazy"
-            decoding="async"
-            onerror="this.style.display='none'"
-          >
-
-          <span class="status ${available ? "live" : ""}">
-            ${available ? "Verfügbar" : "Demnächst"}
-          </span>
-        </div>
-      `;
-
-      const information = `
-        <div class="travel-info">
-          <div class="travel-info-main">
-            <div class="travel-country">
-              ${escapeHTML(travel.country)}
-            </div>
-
-            <h3 class="travel-name">
-              ${escapeHTML(travel.name)}
-            </h3>
-          </div>
-
-          <span class="travel-action">
-            ${icon(available ? "arrow" : "lock")}
-          </span>
-        </div>
-      `;
-
-      if (available) {
-        return `
-          <a class="travel-card available"
-             href="#/analyse/sizilien"
-             aria-label="Sizilien Analyse öffnen">
-            ${photo}
-            ${information}
+          <a id="newtab"
+             class="action primary"
+             target="_blank"
+             rel="noopener">
+            <svg><use href="#external"/></svg>
+            Neuer Tab
           </a>
-        `;
-      }
+        </div>
+      </div>
 
-      return `
-        <article class="travel-card pending"
-                 aria-label="${escapeHTML(travel.name)} – Demnächst">
-          ${photo}
-          ${information}
-        </article>
-      `;
-    }
+      <div class="analysis-layout">
+        <aside class="minilist" id="minilist">
+          <h3>Reisebibliothek</h3>
+        </aside>
 
-    function renderTravels() {
-      const filtered = TRAVELS.filter(travel => {
-        const statusMatch =
-          currentFilter === "all" ||
-          (currentFilter === "ready" && travel.ready) ||
-          (currentFilter === "pending" && !travel.ready);
+        <div class="viewer">
+          <div class="viewerbar">
+            <i></i><i></i><i></i>
+            <span>TRIPGRADE / DeepAudit / Sizilien</span>
+          </div>
 
-        const text = normalize([
-          travel.name,
-          travel.country,
-          travel.code
-        ].join(" "));
+          <iframe
+            id="report"
+            title="Sizilien DeepAudit"
+            loading="eager">
+          </iframe>
 
-        return statusMatch &&
-          text.includes(normalize(searchQuery));
+          <div class="report-error" id="reportError" hidden>
+            <h3>Analyse-Datei fehlt</h3>
+            <p>
+              Bitte lade die originale HTML-Datei der
+              Sizilien-Analyse in denselben GitHub-Ordner
+              wie die index.html hoch. Der Dateiname muss
+              exakt stimmen.
+            </p>
+            <p id="requiredFile"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script>
+'use strict';
+
+/*
+  SIZILIEN-ANALYSE
+
+  Diese Datei muss neben index.html liegen.
+  Die restlichen 13 Analysen sind noch nicht verfügbar.
+*/
+
+const REPORT = './TRIPGRADE_Sizilien_DeepAudit-10(1).html';
+
+const regions = [
+  'Europa',
+  'Afrika',
+  'Amerika',
+  'Asien',
+  'Ozeanien'
+];
+
+/*
+  REISEN
+
+  Bildverweise nutzen Wikimedia Commons.
+  Bei Bedarf gegen eigene Bilder austauschen.
+*/
+
+const trips = [
+  [
+    'Sizilien',
+    'Italien',
+    'ITSIZ',
+    'Taormina and Mt Etna.jpg',
+    true
+  ],
+  [
+    'Balkan',
+    'Albanien · Montenegro',
+    'ALBAL',
+    'Bay of Kotor Panorama.jpg',
+    false
+  ],
+  [
+    'Dalmatien',
+    'Kroatien',
+    'HRDAL',
+    'Luftbild der Altstadt von Dubrovnik in Kroatien (48613138127).jpg',
+    false
+  ],
+  [
+    'Azoren',
+    'Portugal',
+    '',
+    'Sete Cidades (panorama).JPG',
+    false
+  ],
+  [
+    'Schottland',
+    'Vereinigtes Königreich',
+    '',
+    'Edinburgh Edinburgh Castle Panorama 01.jpg',
+    false
+  ],
+  [
+    'Gjirokaster',
+    'Albanien',
+    'ALGJI',
+    'Gjirokastër, Albania.jpg',
+    false
+  ],
+  [
+    'Siebenbürgen',
+    'Rumänien',
+    'ROSIE',
+    'Bran Castle (28330883750).jpg',
+    false
+  ],
+  [
+    'Bretagne',
+    'Frankreich',
+    '',
+    'Cap Frehel Lighthouse.jpg',
+    false
+  ],
+  [
+    'Toskana',
+    'Italien',
+    'ITTOS',
+    'Tuscany - Cypress Trees (5698663059).jpg',
+    false
+  ],
+  [
+    'Highlands',
+    'Schottland',
+    '',
+    'Glen Coe.jpg',
+    false
+  ],
+  [
+    'Provence',
+    'Frankreich',
+    '',
+    'Lavender field in Valensole.jpg',
+    false
+  ],
+  [
+    'Eire',
+    'Irland',
+    '',
+    'Cliffs of Moher jpg.jpg',
+    false
+  ],
+  [
+    'Apulien',
+    'Italien',
+    'ITAPU',
+    'Polignano A Mare.jpg',
+    false
+  ],
+  [
+    'Jökulsarlon',
+    'Island',
+    '',
+    'Icebergs in the Jökulsárlón Glacier Lagoon, Iceland.jpg',
+    false
+  ]
+];
+
+/* HELPERS */
+
+const $ = id => document.getElementById(id);
+
+const esc = s => String(s).replace(
+  /[&<>"']/g,
+  c => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;'
+  })[c]
+);
+
+const norm = s => String(s)
+  .toLocaleLowerCase('de')
+  .normalize('NFD')
+  .replace(/[\u0300-\u036f]/g,'')
+  .replace(/ß/g,'ss');
+
+const photo = filename =>
+  'https://commons.wikimedia.org/wiki/Special:FilePath/' +
+  encodeURIComponent(filename) +
+  '?width=850';
+
+let area = 'uebersicht';
+let filter = 'alle';
+let search = '';
+let reportReady = false;
+
+/* INITIALISIERUNG */
+
+function setup() {
+  $('nav').innerHTML = regions.map((r,i) => `
+    <button class="navbtn" data-region="${norm(r)}">
+      <svg><use href="#globe"/></svg>
+      <span>${r}</span>
+      <b class="count">${i === 0 ? 14 : 0}</b>
+    </button>
+  `).join('');
+
+  $('regions').innerHTML = regions.slice(1).map(r => `
+    <button class="regioncard" data-region="${norm(r)}">
+      <span class="regionicon">
+        <svg><use href="#globe"/></svg>
+      </span>
+      <span>
+        <strong>${r}</strong>
+        <small>Demnächst</small>
+      </span>
+    </button>
+  `).join('');
+
+  $('minilist').insertAdjacentHTML(
+    'beforeend',
+    trips.map(t => `
+      <div class="mini ${t[4] ? 'current' : ''}">
+        ${esc(t[0])}
+      </div>
+    `).join('')
+  );
+
+  $('newtab').href = REPORT;
+  $('requiredFile').textContent = REPORT.slice(2);
+
+  renderCards();
+}
+
+/* REISEKACHELN */
+
+function renderCards() {
+  const list = trips.filter(t =>
+    (
+      filter === 'alle' ||
+      (filter === 'fertig' && t[4]) ||
+      (filter === 'bald' && !t[4])
+    ) &&
+    norm(t.slice(0,3).join(' ')).includes(norm(search))
+  );
+
+  $('count').textContent = list.length;
+  $('none').hidden = !!list.length;
+
+  $('cards').innerHTML = list.map(t => {
+    const img = `
+      <div class="photo">
+        <img
+          src="${photo(t[3])}"
+          alt="${esc(t[0])}"
+          loading="lazy"
+          onerror="this.style.display='none'">
+
+        <span class="status ${t[4] ? 'ok' : ''}">
+          ${t[4] ? 'Verfügbar' : 'Demnächst'}
+        </span>
+      </div>
+    `;
+
+    const body = `
+      <div class="cardbody">
+        <div>
+          <p class="country">${esc(t[1])}</p>
+          <h3 class="name">${esc(t[0])}</h3>
+        </div>
+        <span class="arrow">
+          <svg>
+            <use href="#${t[4] ? 'arrow' : 'lock'}"/>
+          </svg>
+        </span>
+      </div>
+    `;
+
+    return t[4]
+      ? `<a class="card live"
+             href="#/analyse/sizilien">
+           ${img}${body}
+         </a>`
+      : `<article class="card">
+           ${img}${body}
+         </article>`;
+  }).join('');
+}
+
+/* SEITENNAVIGATION */
+
+function closeMenu() {
+  $('sidebar').classList.remove('show');
+  $('mask').classList.remove('show');
+}
+
+function navigate(region) {
+  area = region;
+  closeMenu();
+
+  document.body.classList.remove('fullscreen');
+  $('detail').hidden = true;
+  $('library').hidden = false;
+
+  const europe =
+    region === 'europa' ||
+    region === 'uebersicht';
+
+  $('europe').hidden = !europe;
+  $('other').hidden = region !== 'uebersicht';
+  $('coming').hidden = europe;
+  $('summary').hidden = !europe;
+
+  const label = region === 'uebersicht'
+    ? 'Reisebibliothek'
+    : regions.find(r => norm(r) === region)
+      || 'Reisebibliothek';
+
+  $('title').textContent = label;
+
+  $('lead').textContent = europe
+    ? 'Alle Reiseanalysen an einem Ort.'
+    : 'Weitere Analysen folgen.';
+
+  $('crumb').innerHTML =
+    'Arbeitsbereich / <strong>' +
+    esc(label) +
+    '</strong>';
+
+  document.querySelectorAll('[data-region]')
+    .forEach(b => {
+      b.classList.toggle(
+        'active',
+        b.dataset.region === region
+      );
+    });
+
+  window.scrollTo(0,0);
+}
+
+/* ORIGINALANALYSE LADEN */
+
+async function loadReport() {
+  if (reportReady) return;
+
+  reportReady = true;
+
+  // Auf GitHub wird zuerst geprüft, ob die Datei existiert.
+  if (location.protocol.startsWith('http')) {
+    try {
+      const response = await fetch(REPORT, {
+        cache: 'no-store'
       });
 
-      $("travelGrid").innerHTML =
-        filtered.map(travelCard).join("");
-
-      $("resultCount").textContent = filtered.length;
-      $("emptyResults").hidden = filtered.length > 0;
-    }
-
-    /* IMAGE CREDITS */
-
-    function buildCredits() {
-      $("creditsContent").innerHTML =
-        TRAVELS.map(t => `
-          <a href="${imageCreditURL(t.image)}"
-             target="_blank"
-             rel="noopener noreferrer">
-            ${escapeHTML(t.name)}
-          </a>
-        `).join("");
-    }
-
-    /* DETAIL VIEW */
-
-    function buildDetailList() {
-      $("detailTravelList").innerHTML =
-        TRAVELS.map(t => `
-          <div class="detail-travel-item
-                      ${t.ready ? "current" : ""}">
-            <span class="mini-dot"></span>
-            <span>${escapeHTML(t.name)}</span>
-            <span class="mini-label">
-              ${t.ready ? "Aktiv" : "Bald"}
-            </span>
-          </div>
-        `).join("");
-    }
-
-    function ensureReportLoaded() {
-      if (reportLoaded) return;
-
-      $("reportFrame").src = REPORT_FILE;
-      $("newTabButton").href = REPORT_FILE;
-
-      reportLoaded = true;
-    }
-
-    function setFullscreen(enabled) {
-      document.body.classList.toggle(
-        "fullscreen", enabled
-      );
-
-      $("compactButton").classList.toggle(
-        "active", !enabled
-      );
-
-      $("fullButton").classList.toggle(
-        "active", enabled
-      );
-
-      $("compactButton").setAttribute(
-        "aria-pressed", String(!enabled)
-      );
-
-      $("fullButton").setAttribute(
-        "aria-pressed", String(enabled)
-      );
-    }
-
-    function openAnalysis() {
-      currentView = "analysis";
-      closeMobileMenu();
-
-      $("library").hidden = true;
-      $("detail").hidden = false;
-
-      $("breadcrumb").innerHTML =
-        'Reisebibliothek / <strong>Sizilien</strong>';
-
-      ensureReportLoaded();
-      setFullscreen(false);
-
-      document.title = "Sizilien · TRIPGRADE";
-
-      window.scrollTo(0, 0);
-    }
-
-    function closeAnalysis() {
-      document.body.classList.remove("fullscreen");
-
-      $("detail").hidden = true;
-      $("library").hidden = false;
-
-      currentView = "library";
-
-      if (location.hash === "#/analyse/sizilien") {
-        navigate(lastRegion);
-      } else {
-        showRegion(lastRegion);
+      if (!response.ok) {
+        throw Error('HTTP ' + response.status);
       }
+
+      $('report').src = REPORT;
+      return;
+    } catch(e) {
+      console.warn('Report fehlt:', e);
+      $('report').hidden = true;
+      $('reportError').hidden = false;
+      return;
     }
+  }
 
-    /* ROUTING */
+  // Lokal funktioniert die Dateiverknüpfung direkt.
+  $('report').src = REPORT;
+}
 
-    function handleRoute() {
-      const route = decodeURIComponent(
-        location.hash.replace(/^#\/?/, "")
-      );
+function showReport() {
+  closeMenu();
 
-      if (route === "analyse/sizilien") {
-        openAnalysis();
-      } else {
-        showRegion(route || "uebersicht");
-      }
-    }
+  $('library').hidden = true;
+  $('detail').hidden = false;
 
-    /* EVENTS */
+  $('crumb').innerHTML =
+    'Reisebibliothek / <strong>Sizilien</strong>';
 
-    $("navigation").addEventListener("click", event => {
-      const button = event.target.closest("[data-region]");
-      if (button) navigate(button.dataset.region);
-    });
+  setFull(false);
+  loadReport();
 
-    $("continentNavigation").addEventListener(
-      "click", event => {
-        const button =
-          event.target.closest("[data-region]");
+  window.scrollTo(0,0);
+}
 
-        if (button) navigate(button.dataset.region);
-      }
+/* KOMPAKT / VOLLBILD */
+
+function setFull(on) {
+  document.body.classList.toggle('fullscreen', on);
+  $('full').classList.toggle('active', on);
+  $('compact').classList.toggle('active', !on);
+}
+
+/* ROUTING */
+
+function route() {
+  const value = decodeURIComponent(
+    location.hash.replace(/^#\/?/, '')
+  );
+
+  if (value === 'analyse/sizilien') {
+    showReport();
+  } else {
+    navigate(
+      ['uebersicht', ...regions.map(norm)].includes(value)
+        ? value
+        : 'uebersicht'
     );
+  }
+}
 
-    $("continentGrid").addEventListener("click", event => {
-      const button =
-        event.target.closest("[data-open-region]");
+/* INTERAKTIONEN */
 
-      if (button) {
-        navigate(button.dataset.openRegion);
-      }
-    });
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-region]');
 
-    $("searchInput").addEventListener("input", event => {
-      searchQuery = event.target.value;
-      renderTravels();
-    });
+  if (b) {
+    location.hash = '#/' + b.dataset.region;
+  }
+});
 
-    $("filters").addEventListener("click", event => {
-      const button =
-        event.target.closest("[data-filter]");
+$('query').addEventListener('input', e => {
+  search = e.target.value;
+  renderCards();
+});
 
-      if (!button) return;
+document.querySelectorAll('[data-filter]')
+  .forEach(b => b.addEventListener('click', () => {
+    filter = b.dataset.filter;
 
-      currentFilter = button.dataset.filter;
+    document.querySelectorAll('[data-filter]')
+      .forEach(x => {
+        x.classList.toggle('active', x === b);
+      });
 
-      document.querySelectorAll("[data-filter]")
-        .forEach(item => {
-          item.setAttribute(
-            "aria-pressed",
-            String(item.dataset.filter === currentFilter)
-          );
-        });
+    renderCards();
+  }));
 
-      renderTravels();
-    });
+$('back').addEventListener('click', () => {
+  location.hash = '#/' + area;
+});
 
-    $("backButton").addEventListener(
-      "click", closeAnalysis
-    );
+$('full').addEventListener('click', () => {
+  setFull(true);
+});
 
-    $("compactButton").addEventListener(
-      "click", () => setFullscreen(false)
-    );
+$('compact').addEventListener('click', () => {
+  setFull(false);
+});
 
-    $("fullButton").addEventListener(
-      "click", () => setFullscreen(true)
-    );
+$('menu').addEventListener('click', () => {
+  $('sidebar').classList.toggle('show');
+  $('mask').classList.toggle('show');
+});
 
-    $("menuButton").addEventListener("click", () => {
-      document.body.classList.toggle("menu-open");
-    });
+$('mask').addEventListener('click', closeMenu);
 
-    $("mobileOverlay").addEventListener(
-      "click", closeMobileMenu
-    );
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    if (document.body.classList.contains('fullscreen')) {
+      setFull(false);
+    } else {
+      closeMenu();
+    }
+  }
 
-    document.addEventListener("keydown", event => {
-      if (event.key === "Escape") {
-        if (document.body.classList.contains("menu-open")) {
-          closeMobileMenu();
-        } else if (
-          document.body.classList.contains("fullscreen")
-        ) {
-          setFullscreen(false);
-        } else if (currentView === "analysis") {
-          closeAnalysis();
-        }
-      }
+  if (
+    (e.metaKey || e.ctrlKey) &&
+    e.key.toLowerCase() === 'k'
+  ) {
+    if (!$('library').hidden) {
+      e.preventDefault();
+      $('query').focus();
+    }
+  }
+});
 
-      if (
-        event.key === "/" &&
-        currentView === "library" &&
-        !["INPUT", "TEXTAREA"].includes(
-          document.activeElement?.tagName
-        )
-      ) {
-        event.preventDefault();
+window.addEventListener('hashchange', route);
 
-        if (
-          currentRegion !== "uebersicht" &&
-          currentRegion !== "europa"
-        ) {
-          navigate("europa");
-        }
+setup();
+route();
 
-        requestAnimationFrame(() => {
-          $("searchInput").focus();
-        });
-      }
-    });
-
-    window.addEventListener("hashchange", handleRoute);
-
-    /* INITIALIZE */
-
-    buildNavigation();
-    buildDetailList();
-    buildCredits();
-
-    $("newTabButton").href = REPORT_FILE;
-
-    handleRoute();
-  </script>
-
+</script>
 </body>
 </html>
-
-```
