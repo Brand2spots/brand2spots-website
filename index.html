@@ -23,9 +23,14 @@
   .ico{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
   .app{min-height:100dvh;display:flex}
   .sidebar{width:246px;position:fixed;inset:0 auto 0 0;background:var(--side);border-right:1px solid var(--line);display:flex;flex-direction:column;z-index:30}
-  .logo{height:94px;display:flex;align-items:center;gap:11px;padding:0 26px;font-weight:850;letter-spacing:.15em;font-size:14px}
-  .logo-mark{width:35px;height:35px;border-radius:12px;background:var(--yellow);display:grid;place-items:center}
-  .logo-mark:after{content:"";width:12px;height:12px;background:#2d4138;border-radius:3px;transform:rotate(45deg)}
+  .logo{height:94px;display:flex;align-items:center;gap:13px;padding:0 24px;color:var(--ink);text-decoration:none}
+  .logo-mark{position:relative;width:42px;height:42px;border-radius:15px;display:grid;place-items:center;background:radial-gradient(circle at 28% 28%,#fff6cb 0%,#f8d66b 34%,#d4c15a 65%,#2e5849 100%);box-shadow:inset 0 1px 0 #ffffffa8,0 10px 24px #2e58491e}
+  .logo-mark:before{content:"";position:absolute;inset:4px;border-radius:12px;border:1px solid #ffffff80}
+  .logo-core{width:16px;height:16px;background:#18352b;border-radius:5px;transform:rotate(45deg);box-shadow:0 0 0 3px #fffbdf}
+  .logo-orbit{position:absolute;width:28px;height:28px;border-radius:10px;border:1.6px solid #ffffffa8;transform:rotate(45deg)}
+  .logo-type{display:flex;flex-direction:column;min-width:0;line-height:1}
+  .logo-type strong{font-size:14px;font-weight:860;letter-spacing:.18em}
+  .logo-type small{margin-top:5px;font-size:9px;font-weight:780;letter-spacing:.18em;color:#8a968f;white-space:nowrap}
   .nav-label{padding:28px 26px 11px;text-transform:uppercase;letter-spacing:.14em;font-size:10px;color:#a0aaa3;font-weight:800}
   .nav{display:grid;gap:3px;padding:0 13px}
   .nav button{width:100%;border:0;background:transparent;color:#77877e;text-align:left;padding:13px 14px;border-radius:13px;display:flex;gap:12px;align-items:center;font-weight:650;transition:background .2s,color .2s}
@@ -137,14 +142,14 @@
 #returnWorkspace:hover{background:#f0f5ef}
 #legacyOverviewNav{padding:0 13px}
 #legacyOverviewNav button{width:100%}
-.sidebar .logo{cursor:pointer}
+.sidebar .logo{cursor:pointer;transition:transform .2s ease,opacity .2s ease}.sidebar .logo:hover{transform:translateY(-1px);opacity:.98}
 .shell-page{max-width:1500px;margin:0 auto;padding:clamp(30px,4vw,53px) clamp(22px,4vw,55px) 96px}
 .welcome-hero{background:#fff;border:1px solid var(--line);border-radius:26px;padding:clamp(28px,5vw,54px);position:relative;overflow:hidden;min-height:250px;box-shadow:var(--shadow)}
 .welcome-hero:after{content:"";position:absolute;right:-85px;bottom:-140px;width:380px;height:380px;border:67px solid #f2f6f0;border-radius:50%;pointer-events:none}
 .welcome-hero:before{content:"";position:absolute;right:102px;top:33px;width:13px;height:13px;border-radius:4px;background:var(--yellow);transform:rotate(45deg)}
-.welcome-hero h1{max-width:650px;font-size:clamp(33px,3.9vw,51px);letter-spacing:-.061em;line-height:1.12}
-.welcome-hero .welcome-desc{max-width:510px;color:#819188;font-size:14px;line-height:1.7;margin-top:17px}
-.welcome-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:27px;position:relative;z-index:2}
+.welcome-hero h1{max-width:760px;font-size:clamp(40px,5.1vw,68px);letter-spacing:-.072em;line-height:1.03}
+.welcome-hero .welcome-desc{max-width:530px;color:#819188;font-size:14px;line-height:1.7;margin-top:15px}
+.welcome-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;position:relative;z-index:2}
 .ui-button{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:43px;padding:11px 16px;font-size:12px;font-weight:770;border:1px solid #e5ebe5;border-radius:12px;background:#fff;color:#455c50;text-decoration:none;cursor:pointer;transition:transform .2s,background .2s,border-color .2s}
 .ui-button .ico{width:16px;height:16px}
 .ui-button:hover{transform:translateY(-1px);background:#f5f9f5;border-color:#d4e0d5}
@@ -152,12 +157,12 @@
 .ui-button.primary:hover{background:#274d3e}
 .ui-button.yellow{background:var(--yellow);border-color:var(--yellow);color:#283023}
 .ui-button.compact{padding:8px 12px;min-height:34px}
-.welcome-meta{margin-top:20px;color:#98a49b;font-size:11px}
+.welcome-meta{margin-top:18px;color:#98a49b;font-size:11px}
 .block-title{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:35px 0 15px}
 .block-title h2{font-size:19px;letter-spacing:-.035em}
 .block-title p{font-size:12px;color:#97a398}
-.recent-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
-.recent-card{display:flex;align-items:center;gap:18px;border:1px solid var(--line);background:#fff;border-radius:18px;padding:10px 17px 10px 10px;min-width:0;box-shadow:0 5px 20px #2b453408;transition:transform .2s,border-color .2s}
+.recent-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+.recent-card{display:flex;align-items:center;gap:18px;border:1px solid var(--line);background:#fff;border-radius:18px;padding:10px 17px 10px 10px;min-width:0;box-shadow:0 5px 20px #2b453408;transition:transform .2s,border-color .2s}.glance-card{padding:18px 18px 16px;gap:12px;align-items:flex-start;flex-direction:column}.glance-head{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%}.glance-icon{width:38px;height:38px;border-radius:12px;background:#eef4ef;color:#355f4e;display:grid;place-items:center;flex-shrink:0}.glance-copy strong{display:block;font-size:17px;letter-spacing:-.03em}.glance-copy small{display:block;color:#94a097;font-size:11px;margin-bottom:4px}.glance-copy p{margin-top:8px;font-size:12px;color:#708078;line-height:1.55}.glance-pill{display:inline-flex;align-items:center;padding:6px 9px;border-radius:999px;background:#f5f8f5;border:1px solid #e3ebe4;color:#607367;font-size:10px;font-weight:760;letter-spacing:.03em;text-transform:uppercase}
 .recent-card:hover{transform:translateY(-2px);border-color:#bdcfbf}
 .recent-photo{width:120px;height:78px;object-fit:cover;border-radius:12px;flex-shrink:0}
 .recent-copy{min-width:0;flex:1}.recent-copy small{display:block;color:#91a097;font-size:11px;margin-bottom:5px}.recent-copy strong{display:block;font-size:16px;letter-spacing:-.025em}.recent-copy em{font-size:11px;font-style:normal;color:#658774}
@@ -236,7 +241,7 @@
 .chat-send{border:0;border-radius:11px;background:#376b50;color:#fff;padding:10px;display:grid;place-items:center;height:39px;width:39px;flex:none}
 .chat-foot{font-size:10px;color:#a0ada2;text-align:center;padding:0 15px 10px}
 body.full .chat-panel,body.full .chat-fab{z-index:85}
-@media(max-width:1090px){.product-content-grid{grid-template-columns:1fr}.product-aside{grid-template-columns:repeat(2,minmax(0,1fr))}.recent-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:1090px){.product-content-grid{grid-template-columns:1fr}.product-aside{grid-template-columns:repeat(2,minmax(0,1fr))}.recent-grid{grid-template-columns:1fr}}
 @media(max-width:790px){#productNavigation .nav button{font-size:13px}}
 @media(max-width:640px){.shell-page{padding:27px 16px 65px}.welcome-hero{padding:29px 24px;min-height:0}.welcome-hero:after{opacity:.32}.welcome-hero h1{font-size:34px}.recent-grid{grid-template-columns:1fr}.product-heading{display:block}.product-heading>.ui-button{margin-top:15px}.product-aside{grid-template-columns:1fr}.chat-panel{right:10px;bottom:75px;width:calc(100vw - 20px);height:min(600px,calc(100dvh - 95px))}.chat-panel.expanded{right:10px;width:calc(100vw - 20px);height:calc(100dvh - 90px)}.chat-fab{right:12px;bottom:12px}.product-content-grid{gap:11px}.recent-photo{width:100px;height:67px}}
 
@@ -274,7 +279,7 @@ body.full .chat-panel,body.full .chat-fab{z-index:85}
 <div class="overlay" id="overlay"></div>
 <div class="app">
   <aside class="sidebar" id="sidebar">
-    <a href="#/start" class="logo" id="logoLink"><span class="logo-mark"></span>TRIPGRADE</a>
+    <a href="#/start" class="logo" id="logoLink" aria-label="TRIPGRADE Startseite"><span class="logo-mark" aria-hidden="true"><span class="logo-core"></span><span class="logo-orbit"></span></span><span class="logo-type"><strong>TRIPGRADE</strong><small>TRAVEL INTELLIGENCE</small></span></a>
     <div id="legacyNavigation">
       <div class="nav-label">Arbeitsbereich</div>
       <nav class="nav" id="legacyOverviewNav"><button type="button" data-region="uebersicht"><svg class="ico"><use href="#i-grid"/></svg><span>Übersicht</span></button></nav>
@@ -299,17 +304,16 @@ body.full .chat-panel,body.full .chat-fab{z-index:85}
 <section class="shell-page" id="homeScreen" hidden>
   <div class="welcome-hero">
     <div class="eyebrow">IHR TRIPGRADE-ARBEITSBEREICH</div>
-    <h1>Willkommen bei TRIPGRADE.</h1>
+    <h1>Willkommen bei TRIPGRADE</h1>
     <p class="welcome-desc">Ihre Reisequalität im Blick. Analysen, Erkenntnisse und konkrete Verbesserungsvorschläge – übersichtlich an einem Ort.</p>
     <div class="welcome-actions">
-      <a class="ui-button primary" href="#/produkt/reiseanalysen">Reiseanalysen öffnen <svg class="ico"><use href="#i-arrow"/></svg></a>
-      <a class="ui-button" href="#/produkt/prelaunch">Unsere Produkte entdecken</a>
+      <a class="ui-button primary" href="#/produkt/prelaunch">Unsere Produkte entdecken <svg class="ico"><use href="#i-arrow"/></svg></a>
     </div>
-    <p class="welcome-meta">Arbeitsbereich für Chamäleon Reisen · Bereitgestellt von TRIPGRADE</p>
+    <p class="welcome-meta">Arbeitsbereich für Chamäleon Reisen · Qualitäts-, Produkt- und Markensteuerung in einem Bereich</p>
   </div>
-  <div class="block-title"><h2>Zuletzt bereitgestellt</h2><p>Ihre verfügbaren Analysen</p></div>
+  <div class="block-title"><h2>Auf einen Blick</h2><p>Zentrale Bereiche Ihres Arbeitsbereichs</p></div>
   <div class="recent-grid" id="recentGrid"></div>
-  <div class="simple-note"><svg class="ico"><use href="#i-grid"/></svg> Weitere Analysen und Services finden Sie links unter „Produkte“.</div>
+  <div class="simple-note"><svg class="ico"><use href="#i-grid"/></svg> Links bleiben Startseite, Reiseanalysen und alle weiteren Produkte jederzeit erreichbar.</div>
 </section>
 <!-- Product workspace: the six products have their own screens, previews and inquiries. -->
 <section class="shell-page" id="productScreen" hidden>
@@ -538,36 +542,36 @@ const PRODUCTS = [
   description:'Detaillierte Qualitätsanalyse bestehender Reisen auf Basis von Reiseverlauf, Gästebewertungen und belastbaren Quellen.',
   features:['Reisetage und Reiseabläufe untersuchen','Erwartungen mit der tatsächlichen Gästeerfahrung vergleichen','Unterkünfte, Aktivitäten und Reiseleitung bewerten','Priorisierte, belegte Optimierungsvorschläge liefern'],
   sources:'Reiseprogramm, interne Gästebewertungen, ausgewertete Rückmeldungen und verfügbare Reisedaten.',process:'Reisebezogene Daten werden strukturiert ausgewertet und mit dem Reiseprogramm abgeglichen. Das Ergebnis enthält konkrete Handlungsprioritäten.'},
- {id:'prelaunch',name:'PreLaunch',icon:'i-route',tag:'Vor Verkaufsstart',short:'Neue Reisen prüfen, bevor sie in den Verkauf gehen.',
-  description:'Prüfung einer geplanten Reise vor dem Verkaufsstart – inklusive Marktvergleich mit ähnlichen Reiseangeboten anderer Veranstalter.',
-  features:['Routen, Tagesabläufe und Umstiege auf Plausibilität prüfen','Zeitprobleme, Belastungen und Logistikrisiken erkennen','Hotels, Aktivitäten und Alternativen recherchieren','Zielgruppenfit und Erwartungsmanagement bewerten','Reisepreis, Dauer, Gruppengröße und Leistungen mit dem Wettbewerb vergleichen'],
-  sources:'Geplantes Reiseprogramm, öffentlich zugängliche Reiseangebote, Unterkunfts- und Aktivitätsinformationen sowie verfügbare Erfahrungswerte.',process:'Der Entwurf wird tageweise analysiert und mit vergleichbaren Angeboten abgeglichen. Zum Schluss entsteht eine priorisierte Empfehlung vor dem Launch.',
-  demo:{title:'Neue Erlebnisreise · 11 Tage · Mittelmeer',intro:'Fiktive Vorabprüfung einer neuen Rundreise. Die Angaben dienen ausschließlich dazu, das Analyseformat zu demonstrieren.',items:[['Tagesplanung','Zwei längere Besichtigungen und ein Transfer am selben Tag könnten den Zeitrahmen überlasten.'],['Unterkünfte','Bei einem Hotel ist die Lage für den nächsten Programmtag weniger günstig.'],['Marktvergleich','Vergleichbare Angebote unterscheiden sich bei Gruppengröße und eingeschlossenen Aktivitäten. Diese Merkmale sollten transparent kommuniziert werden.']],next:'Transferzeiten nachrechnen, Hotelalternativen prüfen und die Positionierung gegenüber vergleichbaren Reisen schärfen.',tags:['Reiseverlauf','Logistik','Wettbewerb']},
-  prompts:['Welche Risiken prüft PreLaunch?','Wie funktioniert der Marktvergleich?']},
  {id:'recheck',name:'ReCheck',icon:'i-refresh',tag:'Nach Verbesserungen',short:'Prüfen, ob Änderungen wirklich gewirkt haben.',
   description:'Vorher-Nachher-Bewertung einer bereits analysierten und anschließend überarbeiteten Reise.',
   features:['Gästebewertungen vor und nach Änderungen vergleichen','Qualitätskategorien im Zeitverlauf verfolgen','Umgesetzte Maßnahmen auf Wirkung überprüfen','Bestehende und neue Probleme erkennen','Weitere Handlungsempfehlungen priorisieren'],
   sources:'Frühere Analyse, dokumentierte Maßnahmen, neue Gästebewertungen und vergleichbare Reisezeiträume.',process:'TRIPGRADE ordnet neue Daten den ursprünglichen Problempunkten zu, bewertet Veränderungen und zeigt offene Maßnahmen auf.',
   demo:{title:'Beispielreise · Maßnahmenkontrolle',intro:'Rein illustrativer Vorher-Nachher-Vergleich, keine echten Kundendaten.',items:[['Hotelwechsel','Nach dem Austausch einer Unterkunft würden gezielt Zimmerqualität und Gästerückmeldungen überprüft.'],['Tagesablauf','Eine entzerrte Route würde anhand neuer Rückmeldungen auf Belastung und Pünktlichkeit geprüft.'],['Offene Punkte','Beschwerden, die trotz Anpassung wiederkehren, würden erneut priorisiert.']],next:'Änderungen vollständig dokumentieren und Bewertungen nach Reisezeitraum sowie Qualitätskategorie auswerten.',tags:['Vorher / Nachher','Maßnahmen','Qualität']},
   prompts:['Was ist der Unterschied zur Reiseanalyse?','Welche Daten braucht ReCheck?']},
- {id:'aussenwirkung',name:'Außenwirkungs-Check',icon:'i-eye',tag:'Marketing & Marktposition',short:'Klar erkennen, was die Konkurrenz besser macht.',
-  description:'Analyse der Außenwirkung eines Reiseveranstalters: Markenauftritt, Website, Marketing, Sichtbarkeit, Vertrauen und Wettbewerbsposition.',
-  features:['Branding, Bildsprache und Wiedererkennung bewerten','Website, Reisepräsentation und Buchungsanreize untersuchen','Marketing, Social Media und Zielgruppenansprache prüfen','Wettbewerber und Positionierung vergleichen','Reputation, Bewertungen und Google-Sichtbarkeit bewerten','Maßnahmen zur besseren Kundenansprache priorisieren'],
-  sources:'Öffentliche Websites, Suchergebnisse, Social-Media-Profile, Werbeanzeigen und Kundenbewertungen.',process:'Die öffentliche Wahrnehmung wird mit relevanten Wettbewerbern verglichen. Das Ergebnis beantwortet, wo der Veranstalter zurückliegt und was sich konkret verbessern lässt.',
-  demo:{title:'Anonymisierte Beispielmarke · Außenwirkung',intro:'Illustratives Muster ohne reale Markenbewertung oder erhobene Kennzahlen.',items:[['Website','Der Buchungseinstieg könnte auffälliger sein und Reisemehrwerte stärker hervorheben.'],['Social Media','Bildsprache und Botschaften könnten einheitlicher auf eine klar definierte Zielgruppe ausgerichtet werden.'],['Wettbewerb','Ein anderer Anbieter könnte die Vorteile kleiner Reisegruppen sichtbarer erklären.']],next:'Drei Maßnahmen priorisieren: Reise-USPs präzisieren, Buchungsweg vereinfachen und Zielgruppenbotschaften schärfen.',tags:['Branding','Conversion','Konkurrenz']},
-  prompts:['Was prüft ihr an der Website?','Welche Quellen nutzt ihr?']},
- {id:'reiseredesign',name:'ReiseRedesign',icon:'i-wand',tag:'Konkrete Neugestaltung',short:'Aus Erkenntnissen wird ein neuer Reiseverlauf.',
-  description:'Auf Basis einer bestehenden Reiseanalyse entwickelt TRIPGRADE ein konkretes alternatives Reiseprogramm – nicht nur einzelne Empfehlungen.',
-  features:['Einzelne Reisetage sinnvoll umgestalten','Routen, Reihenfolge und Transfers neu planen','Alternative Unterkünfte und Aktivitäten vorschlagen','Änderungen zum bisherigen Programm klar darstellen','Machbarkeit mit lokalen Partnern zur Prüfung vorbereiten'],
-  sources:'Bestehendes Reiseprogramm, DeepAudit-Ergebnisse, Zielgruppe und recherchierbare Anbieterinformationen.',process:'Aus priorisierten Schwachstellen entsteht ein alternativer Tagesablauf. Verfügbarkeiten und Durchführbarkeit werden anschließend mit DMCs und Partnern validiert.',
-  demo:{title:'Beispielroute · Überarbeiteter Tagesverlauf',intro:'Fiktiver Umgestaltungsvorschlag. Transportzeiten und Anbieter müssten real verifiziert werden.',items:[['Bisheriger Ablauf','An einem Reisetag sind mehrere Programmpunkte in entgegengesetzten Richtungen geplant.'],['Alternative','Attraktionen werden geografisch gebündelt und eine längere Mittagspause berücksichtigt.'],['Änderungen','Weniger Umwege, klarere Tagesdramaturgie und mehr Erholung im Reiseverlauf.']],next:'Fahrstrecken und Öffnungszeiten prüfen, Partner um Verfügbarkeit bitten und erst danach die Route festlegen.',tags:['Neuer Reiseverlauf','Alternativen','DMC-Abstimmung']},
-  prompts:['Wie unterscheidet sich das von DeepAudit?','Wie wird die neue Route geprüft?']},
  {id:'dmc',name:'DMC-Check',icon:'i-building',tag:'Leistungspartner',short:'Hotels, Guides und lokale Partner gezielt überprüfen.',
   description:'Vertiefte, auch reiseübergreifende Bewertung einzelner Leistungspartner wie Unterkünfte, Aktivitäten, Reiseleitungen und DMCs.',
   features:['Wiederkehrende Beschwerden nach Partner bündeln','Leistungspartner über mehrere Reisen vergleichen','Alternative Hotels und Anbieter recherchieren','Austausch- und Verbesserungsoptionen priorisieren','Risiken und offene Punkte für DMC-Gespräche strukturieren'],
   sources:'Bereitgestellte Gästeerfahrungen, Reiseprogramme, Partnerinformationen und öffentlich recherchierbare Alternativen.',process:'TRIPGRADE bündelt partnerbezogene Befunde über betroffene Reisen hinweg, stellt mögliche Alternativen gegenüber und bereitet konkrete Rückfragen vor.',
   demo:{title:'Hotelpartner · Qualitätsprüfung',intro:'Fiktives Muster für eine vertiefte Partnerbewertung; keine Bewertung eines realen Hotels.',items:[['Wiederkehrende Themen','Mehrere Hinweise auf Zimmerzustand und Frühstücksablauf würden nach Reisezeitraum ausgewertet.'],['Reiseübergreifend','Es wird geprüft, ob dieselben Themen in unterschiedlichen Reiseprodukten auftreten.'],['Alternativen','Vergleichbare Häuser werden nach Lage, Konzept und Leistungsniveau gegenübergestellt.']],next:'Befunde mit dem DMC klären, Leistungen verbindlich dokumentieren und mögliche Ersatzpartner prüfen.',tags:['Unterkünfte','Partnervergleich','Alternativen']},
-  prompts:['Was prüft der DMC-Check genau?','Worin unterscheidet er sich von DeepAudit?']}
+  prompts:['Was prüft der DMC-Check genau?','Worin unterscheidet er sich von DeepAudit?']},
+ {id:'prelaunch',name:'PreLaunch',icon:'i-route',tag:'Vor Verkaufsstart',short:'Neue Reisen prüfen, bevor sie in den Verkauf gehen.',
+  description:'Prüfung einer geplanten Reise vor dem Verkaufsstart – inklusive Marktvergleich mit ähnlichen Reiseangeboten anderer Veranstalter.',
+  features:['Routen, Tagesabläufe und Umstiege auf Plausibilität prüfen','Zeitprobleme, Belastungen und Logistikrisiken erkennen','Hotels, Aktivitäten und Alternativen recherchieren','Zielgruppenfit und Erwartungsmanagement bewerten','Reisepreis, Dauer, Gruppengröße und Leistungen mit dem Wettbewerb vergleichen'],
+  sources:'Geplantes Reiseprogramm, öffentlich zugängliche Reiseangebote, Unterkunfts- und Aktivitätsinformationen sowie verfügbare Erfahrungswerte.',process:'Der Entwurf wird tageweise analysiert und mit vergleichbaren Angeboten abgeglichen. Zum Schluss entsteht eine priorisierte Empfehlung vor dem Launch.',
+  demo:{title:'Neue Erlebnisreise · 11 Tage · Mittelmeer',intro:'Fiktive Vorabprüfung einer neuen Rundreise. Die Angaben dienen ausschließlich dazu, das Analyseformat zu demonstrieren.',items:[['Tagesplanung','Zwei längere Besichtigungen und ein Transfer am selben Tag könnten den Zeitrahmen überlasten.'],['Unterkünfte','Bei einem Hotel ist die Lage für den nächsten Programmtag weniger günstig.'],['Marktvergleich','Vergleichbare Angebote unterscheiden sich bei Gruppengröße und eingeschlossenen Aktivitäten. Diese Merkmale sollten transparent kommuniziert werden.']],next:'Transferzeiten nachrechnen, Hotelalternativen prüfen und die Positionierung gegenüber vergleichbaren Reisen schärfen.',tags:['Reiseverlauf','Logistik','Wettbewerb']},
+  prompts:['Welche Risiken prüft PreLaunch?','Wie funktioniert der Marktvergleich?']},
+ {id:'aussenwirkung',name:'Marken- & Marketinganalyse',icon:'i-eye',tag:'Marke, Marketing & Marktposition',short:'Klar erkennen, was die Konkurrenz besser macht.',
+  description:'Analyse der Außenwirkung eines Reiseveranstalters: Markenauftritt, Website, Marketing, Sichtbarkeit, Vertrauen und Wettbewerbsposition.',
+  features:['Branding, Bildsprache und Wiedererkennung bewerten','Website, Reisepräsentation und Buchungsanreize untersuchen','Marketing, Social Media und Zielgruppenansprache prüfen','Wettbewerber und Positionierung vergleichen','Reputation, Bewertungen und Google-Sichtbarkeit bewerten','Maßnahmen zur besseren Kundenansprache priorisieren'],
+  sources:'Öffentliche Websites, Suchergebnisse, Social-Media-Profile, Werbeanzeigen und Kundenbewertungen.',process:'Die öffentliche Wahrnehmung wird mit relevanten Wettbewerbern verglichen. Das Ergebnis beantwortet, wo der Veranstalter zurückliegt und was sich konkret verbessern lässt.',
+  demo:{title:'Anonymisierte Beispielmarke · Marken- & Marketinganalyse',intro:'Illustratives Muster ohne reale Markenbewertung oder erhobene Kennzahlen.',items:[['Website','Der Buchungseinstieg könnte auffälliger sein und Reisemehrwerte stärker hervorheben.'],['Social Media','Bildsprache und Botschaften könnten einheitlicher auf eine klar definierte Zielgruppe ausgerichtet werden.'],['Wettbewerb','Ein anderer Anbieter könnte die Vorteile kleiner Reisegruppen sichtbarer erklären.']],next:'Drei Maßnahmen priorisieren: Reise-USPs präzisieren, Buchungsweg vereinfachen und Zielgruppenbotschaften schärfen.',tags:['Branding','Conversion','Konkurrenz']},
+  prompts:['Was prüft ihr an der Website?','Welche Quellen nutzt ihr?']},
+ {id:'reiseredesign',name:'Reiseoptimierung',icon:'i-wand',tag:'Konkrete Reiseoptimierung',short:'Aus Erkenntnissen wird ein neuer Reiseverlauf.',
+  description:'Auf Basis einer bestehenden Reiseanalyse entwickelt TRIPGRADE ein konkretes alternatives Reiseprogramm – nicht nur einzelne Empfehlungen.',
+  features:['Einzelne Reisetage sinnvoll umgestalten','Routen, Reihenfolge und Transfers neu planen','Alternative Unterkünfte und Aktivitäten vorschlagen','Änderungen zum bisherigen Programm klar darstellen','Machbarkeit mit lokalen Partnern zur Prüfung vorbereiten'],
+  sources:'Bestehendes Reiseprogramm, DeepAudit-Ergebnisse, Zielgruppe und recherchierbare Anbieterinformationen.',process:'Aus priorisierten Schwachstellen entsteht ein alternativer Tagesablauf. Verfügbarkeiten und Durchführbarkeit werden anschließend mit DMCs und Partnern validiert.',
+  demo:{title:'Beispielroute · Überarbeiteter Tagesverlauf',intro:'Fiktiver Umgestaltungsvorschlag. Transportzeiten und Anbieter müssten real verifiziert werden.',items:[['Bisheriger Ablauf','An einem Reisetag sind mehrere Programmpunkte in entgegengesetzten Richtungen geplant.'],['Alternative','Attraktionen werden geografisch gebündelt und eine längere Mittagspause berücksichtigt.'],['Änderungen','Weniger Umwege, klarere Tagesdramaturgie und mehr Erholung im Reiseverlauf.']],next:'Fahrstrecken und Öffnungszeiten prüfen, Partner um Verfügbarkeit bitten und erst danach die Route festlegen.',tags:['Neuer Reiseverlauf','Alternativen','DMC-Abstimmung']},
+  prompts:['Wie unterscheidet sich das von DeepAudit?','Wie wird die neue Route geprüft?']}
 ];
 const PRODUCT_MAP=Object.fromEntries(PRODUCTS.map(p=>[p.id,p]));
 const CHAT_BACKEND_ENDPOINT=''; // Optional: serverseitige, authentifizierte KI-API. Niemals einen API-Schlüssel im HTML speichern.
@@ -576,17 +580,22 @@ const chatHistory=new Map(),reportDataCache={},productChatSelections={};
 let chatIsOpen=false;
 function currentProduct(){return PRODUCT_MAP[activeProduct]||PRODUCT_MAP.prelaunch}
 function sideMode(reports){
- $('productNavigation').hidden=reports;
+ $('productNavigation').hidden=false;
  $('legacyNavigation').hidden=!reports;
  document.body.classList.toggle('report-shell',reports);
- document.querySelectorAll('#productNav [data-product]').forEach(b=>b.classList.toggle('active',!reports&&$('homeScreen').hidden&&b.dataset.product===activeProduct));
- $('homeNavigationBtn').classList.toggle('active',!reports&&$('homeScreen').hidden===false);
+ document.querySelectorAll('#productNav [data-product]').forEach(b=>b.classList.toggle('active',(reports&&b.dataset.product==='reiseanalysen')||(!reports&&$('homeScreen').hidden&&b.dataset.product===activeProduct)));
+ $('homeNavigationBtn').classList.toggle('active',$('homeScreen').hidden===false);
 }
 function hideScreens(){for(const id of ['homeScreen','productScreen','demoScreen','library','detail'])$(id).hidden=true;setFull(false);closeMenu()}
 function updateBreadcrumb(text){$('crumb').innerHTML='<span>Arbeitsbereich / </span><b>'+escapeHTML(text)+'</b>'}
 function buildProductNav(){
  $('productNav').innerHTML=PRODUCTS.map(p=>`<button type="button" data-product="${p.id}" aria-label="${escapeHTML(p.name)} öffnen">${ico(p.icon.replace(/^i-/,''))}<span>${escapeHTML(p.name)}</span>${p.id==='reiseanalysen'?'<b class="nav-count">2</b>':''}</button>`).join('');
- $('recentGrid').innerHTML=trips.filter(t=>t.ready).map(t=>{const image=tripImageData[trips.indexOf(t)];return `<a class="recent-card" href="#/analyse/${t.slug}"><img class="recent-photo" src="${image}" alt="${escapeHTML(t.name)}"><span class="recent-copy"><small>${escapeHTML(t.country)} · ${t.days} Tage</small><strong>${escapeHTML(t.name)}</strong><em>DeepAudit · Verfügbar</em></span>${ico('arrow')}</a>`}).join('');
+ const glanceCards=[
+  {icon:'grid',eyebrow:'Arbeitsbereich',title:'2 Reiseanalysen verfügbar',text:'Sizilien und Toskana sind bereits vollständig hinterlegt und direkt aufrufbar.',pill:'Verfügbar'},
+  {icon:'wand',eyebrow:'Produkte',title:'6 Leistungen zentral gebündelt',text:'Von Reiseanalysen bis Marken- & Marketinganalyse bleibt jeder Bereich links direkt erreichbar.',pill:'Produkte'},
+  {icon:'chat',eyebrow:'Assistent',title:'Fragen direkt im Kontext stellen',text:'Der Analyse-Assistent richtet sich nach dem jeweils geöffneten Produkt oder Bericht.',pill:'Assistent'}
+ ];
+ $('recentGrid').innerHTML=glanceCards.map(card=>`<div class="recent-card glance-card"><div class="glance-head"><span class="glance-icon">${ico(card.icon)}</span><span class="glance-pill">${escapeHTML(card.pill)}</span></div><div class="glance-copy"><small>${escapeHTML(card.eyebrow)}</small><strong>${escapeHTML(card.title)}</strong><p>${escapeHTML(card.text)}</p></div></div>`).join('');
 }
 function showHome(){
  activeReport=null;activeDemo=false;hideScreens();$('homeScreen').hidden=false;sideMode(false);
