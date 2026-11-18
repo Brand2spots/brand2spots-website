@@ -161,7 +161,7 @@
 .block-title{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:35px 0 15px}
 .block-title h2{font-size:19px;letter-spacing:-.035em}
 .block-title p{font-size:12px;color:#97a398}
-.recent-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+.recent-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
 .recent-card{display:flex;align-items:center;gap:18px;border:1px solid var(--line);background:#fff;border-radius:18px;padding:10px 17px 10px 10px;min-width:0;box-shadow:0 5px 20px #2b453408;transition:transform .2s,border-color .2s}.glance-card{padding:18px 18px 16px;gap:12px;align-items:flex-start;flex-direction:column}.glance-head{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%}.glance-icon{width:38px;height:38px;border-radius:12px;background:#eef4ef;color:#355f4e;display:grid;place-items:center;flex-shrink:0}.glance-copy strong{display:block;font-size:17px;letter-spacing:-.03em}.glance-copy small{display:block;color:#94a097;font-size:11px;margin-bottom:4px}.glance-copy p{margin-top:8px;font-size:12px;color:#708078;line-height:1.55}.glance-pill{display:inline-flex;align-items:center;padding:6px 9px;border-radius:999px;background:#f5f8f5;border:1px solid #e3ebe4;color:#607367;font-size:10px;font-weight:760;letter-spacing:.03em;text-transform:uppercase}
 .recent-card:hover{transform:translateY(-2px);border-color:#bdcfbf}
 .recent-photo{width:120px;height:78px;object-fit:cover;border-radius:12px;flex-shrink:0}
@@ -214,43 +214,16 @@
 .request-dialog textarea{resize:vertical;min-height:85px}
 .request-dialog menu{display:flex;justify-content:flex-end;gap:8px;padding:0;margin:17px 0 0;flex-wrap:wrap}
 .request-message{font-size:12px;color:#3e7552;margin-top:12px;min-height:16px}
-/* Conversation panel: context-sensitive, docked, no third party transmission by default */
-.chat-fab{position:fixed;z-index:80;right:24px;bottom:24px;border:1px solid #2e674a;background:#2d654c;color:#fff;border-radius:999px;display:flex;align-items:center;justify-content:center;gap:9px;padding:14px 18px;box-shadow:0 12px 32px #24473536;font-weight:730;font-size:12px;transition:transform .2s,box-shadow .2s}
-.chat-fab:hover{transform:translateY(-2px);box-shadow:0 17px 34px #24473545}
-.chat-fab .ico{width:19px;height:19px}
-.chat-panel{position:fixed;right:24px;bottom:83px;z-index:81;width:min(440px,calc(100vw - 28px));height:min(665px,calc(100dvh - 117px));border-radius:22px;border:1px solid #dee9dd;background:#fff;box-shadow:0 22px 67px #243c2c2c;display:flex;flex-direction:column;overflow:hidden}
-.chat-panel.expanded{width:min(740px,calc(100vw - 28px));height:min(770px,calc(100dvh - 108px))}
-.chat-head{padding:16px 17px;display:flex;align-items:center;gap:11px;background:#fcfefb;border-bottom:1px solid #ecf0eb}
-.chat-mark{height:35px;width:35px;display:grid;place-items:center;border-radius:12px;background:#e9f2e8;color:#3e7659}
-.chat-head .head-copy{min-width:0;flex:1}.chat-head strong{display:block;font-size:13px}.chat-head small{display:block;font-size:11px;color:#92a095;margin-top:1px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.chat-head .head-button{border:0;background:transparent;color:#7e8e82;display:grid;place-items:center;padding:7px;border-radius:9px}.chat-head .head-button:hover{background:#eef4ed}
-.chat-context{background:#f6f9f5;padding:10px 16px;color:#69836d;font-size:11px;line-height:1.5;border-bottom:1px solid #edf1eb}
-.chat-messages{flex:1;overflow:auto;padding:17px 15px 15px;display:flex;flex-direction:column;gap:12px;scroll-behavior:smooth}
-.chat-msg{max-width:93%;border-radius:16px;padding:13px 14px;font-size:13px;line-height:1.65;white-space:pre-wrap;overflow-wrap:anywhere}
-.chat-msg.bot{background:#f2f7f2;color:#304b3c;align-self:flex-start;border-bottom-left-radius:6px}
-.chat-msg.user{background:#366a51;color:#fff;align-self:flex-end;border-bottom-right-radius:6px}
-.chat-sources{align-self:flex-start;display:flex;gap:7px;margin-top:-5px;flex-wrap:wrap}
-.chat-sources button{color:#377154;border:1px solid #dce8da;background:#fff;border-radius:999px;font-size:11px;padding:6px 10px;cursor:pointer}
-.chat-sources button:hover{background:#eaf3ed}
-.chat-suggestions{display:flex;gap:7px;overflow-x:auto;padding:0 15px 11px}
-.chat-suggestions button{white-space:nowrap;background:#fff;border:1px solid #dfe9df;border-radius:999px;color:#607e6b;font-size:11px;padding:7px 11px;flex:none}
-.chat-suggestions button:hover{background:#eff6ef}
-.chat-entry{display:flex;gap:8px;align-items:end;border-top:1px solid #ebf0ea;padding:11px 13px;background:#fff}
-.chat-entry textarea{resize:none;width:100%;max-height:97px;border:1px solid #dce6dd;border-radius:12px;padding:10px 11px;font-size:12.5px;line-height:1.5;color:#273a2c;outline:0;background:#fcfdfc}
-.chat-entry textarea:focus{border-color:#9bbb9e}
-.chat-send{border:0;border-radius:11px;background:#376b50;color:#fff;padding:10px;display:grid;place-items:center;height:39px;width:39px;flex:none}
-.chat-foot{font-size:10px;color:#899d90;text-align:center;padding:0 15px 10px}.chat-thinking{opacity:.65;animation:chatPulse 1.2s ease-in-out infinite}@keyframes chatPulse{0%,100%{opacity:.55}50%{opacity:1}}
-body.full .chat-panel,body.full .chat-fab{z-index:85}
 @media(max-width:1090px){.product-content-grid{grid-template-columns:1fr}.product-aside{grid-template-columns:repeat(2,minmax(0,1fr))}.recent-grid{grid-template-columns:1fr}}
 @media(max-width:790px){#productNavigation .nav button{font-size:13px}}
-@media(max-width:640px){.shell-page{padding:27px 16px 65px}.welcome-hero{padding:29px 24px;min-height:0}.welcome-hero:after{opacity:.32}.welcome-hero h1{font-size:34px}.recent-grid{grid-template-columns:1fr}.product-heading{display:block}.product-heading>.ui-button{margin-top:15px}.product-aside{grid-template-columns:1fr}.chat-panel{right:10px;bottom:75px;width:calc(100vw - 20px);height:min(600px,calc(100dvh - 95px))}.chat-panel.expanded{right:10px;width:calc(100vw - 20px);height:calc(100dvh - 90px)}.chat-fab{right:12px;bottom:12px}.product-content-grid{gap:11px}.recent-photo{width:100px;height:67px}}
+@media(max-width:640px){.shell-page{padding:27px 16px 65px}.welcome-hero{padding:29px 24px;min-height:0}.welcome-hero:after{opacity:.32}.welcome-hero h1{font-size:34px}.recent-grid{grid-template-columns:1fr}.product-heading{display:block}.product-heading>.ui-button{margin-top:15px}.product-aside{grid-template-columns:1fr}.product-content-grid{gap:11px}.recent-photo{width:100px;height:67px}}
 
 #productScreen > .product-footer{display:none}
 @media(max-width:640px){
  .welcome-hero:before{display:none}
- .chat-fab{right:12px;bottom:12px;width:47px;height:47px;border-radius:50%;padding:0;font-size:0;gap:0}
- .chat-fab .ico{width:20px;height:20px}
- .shell-page{padding-bottom:116px}
+
+
+
 }
 
 </style>
@@ -266,9 +239,6 @@ body.full .chat-panel,body.full .chat-fab{z-index:85}
   <symbol id="i-expand" viewBox="0 0 24 24"><path d="M8 3H3v5M16 3h5v5M3 16v5h5M21 16v5h-5"/></symbol>
   <symbol id="i-external" viewBox="0 0 24 24"><path d="M13 5h6v6m0-6-9 9M19 14v5H5V5h5"/></symbol>
   <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
-
-  <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="m12 3 1.9 6.1L20 11l-6.1 1.9L12 19l-1.9-6.1L4 11l6.1-1.9L12 3Z"/><path d="m19 18 .6 1.4L21 20l-1.4.6L19 22l-.6-1.4L17 20l1.4-.6L19 18Z"/></symbol>
-  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
   <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
   <symbol id="i-route" viewBox="0 0 24 24"><circle cx="6" cy="17" r="2"/><circle cx="18" cy="6" r="2"/><path d="M8 17h4a4 4 0 0 0 0-8h-1m3-3h2"/></symbol>
   <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M5 9a8 8 0 0 1 14-2l1 5M4 12l1 5a8 8 0 0 0 14-2"/></symbol>
@@ -350,18 +320,7 @@ body.full .chat-panel,body.full .chat-fab{z-index:85}
   <menu><button class="ui-button" id="requestCancel" type="button">Schließen</button><button class="ui-button primary" type="submit">Anfragetext kopieren</button></menu>
  </form>
 </dialog>
-<!-- The knowledge assistant stays inside this document, only searches the currently selected product/report by default. -->
-<button class="chat-fab" id="chatToggle" type="button" aria-controls="chatPanel" aria-expanded="false"><svg class="ico"><use href="#i-sparkle"/></svg> TRIPGRADE Assistant</button>
-<aside class="chat-panel" id="chatPanel" aria-label="TRIPGRADE Assistant" hidden>
- <header class="chat-head"><div class="chat-mark"><svg class="ico"><use href="#i-sparkle"/></svg></div><div class="head-copy"><strong>TRIPGRADE Assistant</strong><small id="chatContextTitle">Ihr Arbeitsbereich</small></div><button class="head-button" id="chatExpand" type="button" aria-label="Chatgröße ändern" title="Chatgröße ändern"><svg class="ico"><use href="#i-expand"/></svg></button><button class="head-button" id="chatClose" type="button" aria-label="Chat schließen" title="Schließen"><svg class="ico"><use href="#i-x"/></svg></button></header>
- <div class="chat-context" id="chatContextNote">Fragen zu Ihren TRIPGRADE-Produkten.</div>
- <div class="chat-messages" id="chatMessages" role="log" aria-live="polite" aria-relevant="additions"></div>
- <div class="chat-suggestions" id="chatSuggestions"></div>
- <form class="chat-entry" id="chatForm"><textarea id="chatInput" rows="2" maxlength="1200" placeholder="Was möchten Sie zur Analyse wissen?" aria-label="Nachricht eingeben"></textarea><button class="chat-send" id="chatSend" type="submit" aria-label="Frage senden"><svg class="ico"><use href="#i-arrow"/></svg></button></form>
- <div class="chat-foot" id="chatFootnote">Berichtsbasiert · ohne generatives KI-Backend</div>
-</aside>
-
-    <section class="content" id="library">
+<section class="content" id="library">
       <div class="heading">
         <div><div class="eyebrow">TRIPGRADE · Analysen</div><h1 id="heading">Reisebibliothek</h1><p class="sub" id="sub">Alle Reiseanalysen an einem Ort.</p></div>
         <div class="metrics" id="metrics"><span class="metric"><b>14</b> Reisen</span><span class="metric live"><b>2</b> Verfügbar</span><span class="metric"><b>12</b> Demnächst</span></div>
@@ -536,7 +495,7 @@ window.addEventListener('beforeunload',()=>{for(const url of Object.values(repor
 makeNavigation();render();
 </script>
 <script>
-/* === TRIPGRADE workspace & per-analysis, grounded assistant === */
+/* === TRIPGRADE Kundenplattform === */
 const PRODUCTS = [
  {id:'reiseanalysen',name:'Reiseanalysen',icon:'i-grid',tag:'DeepAudit',short:'Bestehende Reisen verstehen und gezielt verbessern.',
   description:'Detaillierte Qualitätsanalyse bestehender Reisen auf Basis von Reiseverlauf, Gästebewertungen und belastbaren Quellen.',
@@ -546,38 +505,30 @@ const PRODUCTS = [
   description:'Vorher-Nachher-Bewertung einer bereits analysierten und anschließend überarbeiteten Reise.',
   features:['Gästebewertungen vor und nach Änderungen vergleichen','Qualitätskategorien im Zeitverlauf verfolgen','Umgesetzte Maßnahmen auf Wirkung überprüfen','Bestehende und neue Probleme erkennen','Weitere Handlungsempfehlungen priorisieren'],
   sources:'Frühere Analyse, dokumentierte Maßnahmen, neue Gästebewertungen und vergleichbare Reisezeiträume.',process:'TRIPGRADE ordnet neue Daten den ursprünglichen Problempunkten zu, bewertet Veränderungen und zeigt offene Maßnahmen auf.',
-  demo:{title:'Beispielreise · Maßnahmenkontrolle',intro:'Rein illustrativer Vorher-Nachher-Vergleich, keine echten Kundendaten.',items:[['Hotelwechsel','Nach dem Austausch einer Unterkunft würden gezielt Zimmerqualität und Gästerückmeldungen überprüft.'],['Tagesablauf','Eine entzerrte Route würde anhand neuer Rückmeldungen auf Belastung und Pünktlichkeit geprüft.'],['Offene Punkte','Beschwerden, die trotz Anpassung wiederkehren, würden erneut priorisiert.']],next:'Änderungen vollständig dokumentieren und Bewertungen nach Reisezeitraum sowie Qualitätskategorie auswerten.',tags:['Vorher / Nachher','Maßnahmen','Qualität']},
-  prompts:['Was ist der Unterschied zur Reiseanalyse?','Welche Daten braucht ReCheck?']},
+  demo:{title:'Beispielreise · Maßnahmenkontrolle',intro:'Rein illustrativer Vorher-Nachher-Vergleich, keine echten Kundendaten.',items:[['Hotelwechsel','Nach dem Austausch einer Unterkunft würden gezielt Zimmerqualität und Gästerückmeldungen überprüft.'],['Tagesablauf','Eine entzerrte Route würde anhand neuer Rückmeldungen auf Belastung und Pünktlichkeit geprüft.'],['Offene Punkte','Beschwerden, die trotz Anpassung wiederkehren, würden erneut priorisiert.']],next:'Änderungen vollständig dokumentieren und Bewertungen nach Reisezeitraum sowie Qualitätskategorie auswerten.',tags:['Vorher / Nachher','Maßnahmen','Qualität']}},
  {id:'dmc',name:'DMC-Check',icon:'i-building',tag:'Leistungspartner',short:'Hotels, Guides und lokale Partner gezielt überprüfen.',
   description:'Vertiefte, auch reiseübergreifende Bewertung einzelner Leistungspartner wie Unterkünfte, Aktivitäten, Reiseleitungen und DMCs.',
   features:['Wiederkehrende Beschwerden nach Partner bündeln','Leistungspartner über mehrere Reisen vergleichen','Alternative Hotels und Anbieter recherchieren','Austausch- und Verbesserungsoptionen priorisieren','Risiken und offene Punkte für DMC-Gespräche strukturieren'],
   sources:'Bereitgestellte Gästeerfahrungen, Reiseprogramme, Partnerinformationen und öffentlich recherchierbare Alternativen.',process:'TRIPGRADE bündelt partnerbezogene Befunde über betroffene Reisen hinweg, stellt mögliche Alternativen gegenüber und bereitet konkrete Rückfragen vor.',
-  demo:{title:'Hotelpartner · Qualitätsprüfung',intro:'Fiktives Muster für eine vertiefte Partnerbewertung; keine Bewertung eines realen Hotels.',items:[['Wiederkehrende Themen','Mehrere Hinweise auf Zimmerzustand und Frühstücksablauf würden nach Reisezeitraum ausgewertet.'],['Reiseübergreifend','Es wird geprüft, ob dieselben Themen in unterschiedlichen Reiseprodukten auftreten.'],['Alternativen','Vergleichbare Häuser werden nach Lage, Konzept und Leistungsniveau gegenübergestellt.']],next:'Befunde mit dem DMC klären, Leistungen verbindlich dokumentieren und mögliche Ersatzpartner prüfen.',tags:['Unterkünfte','Partnervergleich','Alternativen']},
-  prompts:['Was prüft der DMC-Check genau?','Worin unterscheidet er sich von DeepAudit?']},
+  demo:{title:'Hotelpartner · Qualitätsprüfung',intro:'Fiktives Muster für eine vertiefte Partnerbewertung; keine Bewertung eines realen Hotels.',items:[['Wiederkehrende Themen','Mehrere Hinweise auf Zimmerzustand und Frühstücksablauf würden nach Reisezeitraum ausgewertet.'],['Reiseübergreifend','Es wird geprüft, ob dieselben Themen in unterschiedlichen Reiseprodukten auftreten.'],['Alternativen','Vergleichbare Häuser werden nach Lage, Konzept und Leistungsniveau gegenübergestellt.']],next:'Befunde mit dem DMC klären, Leistungen verbindlich dokumentieren und mögliche Ersatzpartner prüfen.',tags:['Unterkünfte','Partnervergleich','Alternativen']}},
  {id:'prelaunch',name:'PreLaunch',icon:'i-route',tag:'Vor Verkaufsstart',short:'Neue Reisen prüfen, bevor sie in den Verkauf gehen.',
   description:'Prüfung einer geplanten Reise vor dem Verkaufsstart – inklusive Marktvergleich mit ähnlichen Reiseangeboten anderer Veranstalter.',
   features:['Routen, Tagesabläufe und Umstiege auf Plausibilität prüfen','Zeitprobleme, Belastungen und Logistikrisiken erkennen','Hotels, Aktivitäten und Alternativen recherchieren','Zielgruppenfit und Erwartungsmanagement bewerten','Reisepreis, Dauer, Gruppengröße und Leistungen mit dem Wettbewerb vergleichen'],
   sources:'Geplantes Reiseprogramm, öffentlich zugängliche Reiseangebote, Unterkunfts- und Aktivitätsinformationen sowie verfügbare Erfahrungswerte.',process:'Der Entwurf wird tageweise analysiert und mit vergleichbaren Angeboten abgeglichen. Zum Schluss entsteht eine priorisierte Empfehlung vor dem Launch.',
-  demo:{title:'Neue Erlebnisreise · 11 Tage · Mittelmeer',intro:'Fiktive Vorabprüfung einer neuen Rundreise. Die Angaben dienen ausschließlich dazu, das Analyseformat zu demonstrieren.',items:[['Tagesplanung','Zwei längere Besichtigungen und ein Transfer am selben Tag könnten den Zeitrahmen überlasten.'],['Unterkünfte','Bei einem Hotel ist die Lage für den nächsten Programmtag weniger günstig.'],['Marktvergleich','Vergleichbare Angebote unterscheiden sich bei Gruppengröße und eingeschlossenen Aktivitäten. Diese Merkmale sollten transparent kommuniziert werden.']],next:'Transferzeiten nachrechnen, Hotelalternativen prüfen und die Positionierung gegenüber vergleichbaren Reisen schärfen.',tags:['Reiseverlauf','Logistik','Wettbewerb']},
-  prompts:['Welche Risiken prüft PreLaunch?','Wie funktioniert der Marktvergleich?']},
+  demo:{title:'Neue Erlebnisreise · 11 Tage · Mittelmeer',intro:'Fiktive Vorabprüfung einer neuen Rundreise. Die Angaben dienen ausschließlich dazu, das Analyseformat zu demonstrieren.',items:[['Tagesplanung','Zwei längere Besichtigungen und ein Transfer am selben Tag könnten den Zeitrahmen überlasten.'],['Unterkünfte','Bei einem Hotel ist die Lage für den nächsten Programmtag weniger günstig.'],['Marktvergleich','Vergleichbare Angebote unterscheiden sich bei Gruppengröße und eingeschlossenen Aktivitäten. Diese Merkmale sollten transparent kommuniziert werden.']],next:'Transferzeiten nachrechnen, Hotelalternativen prüfen und die Positionierung gegenüber vergleichbaren Reisen schärfen.',tags:['Reiseverlauf','Logistik','Wettbewerb']}},
  {id:'aussenwirkung',name:'Marken- & Marketinganalyse',icon:'i-eye',tag:'Marke, Marketing & Marktposition',short:'Klar erkennen, was die Konkurrenz besser macht.',
   description:'Analyse der Außenwirkung eines Reiseveranstalters: Markenauftritt, Website, Marketing, Sichtbarkeit, Vertrauen und Wettbewerbsposition.',
   features:['Branding, Bildsprache und Wiedererkennung bewerten','Website, Reisepräsentation und Buchungsanreize untersuchen','Marketing, Social Media und Zielgruppenansprache prüfen','Wettbewerber und Positionierung vergleichen','Reputation, Bewertungen und Google-Sichtbarkeit bewerten','Maßnahmen zur besseren Kundenansprache priorisieren'],
   sources:'Öffentliche Websites, Suchergebnisse, Social-Media-Profile, Werbeanzeigen und Kundenbewertungen.',process:'Die öffentliche Wahrnehmung wird mit relevanten Wettbewerbern verglichen. Das Ergebnis beantwortet, wo der Veranstalter zurückliegt und was sich konkret verbessern lässt.',
-  demo:{title:'Anonymisierte Beispielmarke · Marken- & Marketinganalyse',intro:'Illustratives Muster ohne reale Markenbewertung oder erhobene Kennzahlen.',items:[['Website','Der Buchungseinstieg könnte auffälliger sein und Reisemehrwerte stärker hervorheben.'],['Social Media','Bildsprache und Botschaften könnten einheitlicher auf eine klar definierte Zielgruppe ausgerichtet werden.'],['Wettbewerb','Ein anderer Anbieter könnte die Vorteile kleiner Reisegruppen sichtbarer erklären.']],next:'Drei Maßnahmen priorisieren: Reise-USPs präzisieren, Buchungsweg vereinfachen und Zielgruppenbotschaften schärfen.',tags:['Branding','Conversion','Konkurrenz']},
-  prompts:['Was prüft ihr an der Website?','Welche Quellen nutzt ihr?']},
+  demo:{title:'Anonymisierte Beispielmarke · Marken- & Marketinganalyse',intro:'Illustratives Muster ohne reale Markenbewertung oder erhobene Kennzahlen.',items:[['Website','Der Buchungseinstieg könnte auffälliger sein und Reisemehrwerte stärker hervorheben.'],['Social Media','Bildsprache und Botschaften könnten einheitlicher auf eine klar definierte Zielgruppe ausgerichtet werden.'],['Wettbewerb','Ein anderer Anbieter könnte die Vorteile kleiner Reisegruppen sichtbarer erklären.']],next:'Drei Maßnahmen priorisieren: Reise-USPs präzisieren, Buchungsweg vereinfachen und Zielgruppenbotschaften schärfen.',tags:['Branding','Conversion','Konkurrenz']}},
  {id:'reiseredesign',name:'Reiseoptimierung',icon:'i-wand',tag:'Konkrete Reiseoptimierung',short:'Aus Erkenntnissen wird ein neuer Reiseverlauf.',
   description:'Auf Basis einer bestehenden Reiseanalyse entwickelt TRIPGRADE ein konkretes alternatives Reiseprogramm – nicht nur einzelne Empfehlungen.',
   features:['Einzelne Reisetage sinnvoll umgestalten','Routen, Reihenfolge und Transfers neu planen','Alternative Unterkünfte und Aktivitäten vorschlagen','Änderungen zum bisherigen Programm klar darstellen','Machbarkeit mit lokalen Partnern zur Prüfung vorbereiten'],
   sources:'Bestehendes Reiseprogramm, DeepAudit-Ergebnisse, Zielgruppe und recherchierbare Anbieterinformationen.',process:'Aus priorisierten Schwachstellen entsteht ein alternativer Tagesablauf. Verfügbarkeiten und Durchführbarkeit werden anschließend mit DMCs und Partnern validiert.',
-  demo:{title:'Beispielroute · Überarbeiteter Tagesverlauf',intro:'Fiktiver Umgestaltungsvorschlag. Transportzeiten und Anbieter müssten real verifiziert werden.',items:[['Bisheriger Ablauf','An einem Reisetag sind mehrere Programmpunkte in entgegengesetzten Richtungen geplant.'],['Alternative','Attraktionen werden geografisch gebündelt und eine längere Mittagspause berücksichtigt.'],['Änderungen','Weniger Umwege, klarere Tagesdramaturgie und mehr Erholung im Reiseverlauf.']],next:'Fahrstrecken und Öffnungszeiten prüfen, Partner um Verfügbarkeit bitten und erst danach die Route festlegen.',tags:['Neuer Reiseverlauf','Alternativen','DMC-Abstimmung']},
-  prompts:['Wie unterscheidet sich das von DeepAudit?','Wie wird die neue Route geprüft?']}
+  demo:{title:'Beispielroute · Überarbeiteter Tagesverlauf',intro:'Fiktiver Umgestaltungsvorschlag. Transportzeiten und Anbieter müssten real verifiziert werden.',items:[['Bisheriger Ablauf','An einem Reisetag sind mehrere Programmpunkte in entgegengesetzten Richtungen geplant.'],['Alternative','Attraktionen werden geografisch gebündelt und eine längere Mittagspause berücksichtigt.'],['Änderungen','Weniger Umwege, klarere Tagesdramaturgie und mehr Erholung im Reiseverlauf.']],next:'Fahrstrecken und Öffnungszeiten prüfen, Partner um Verfügbarkeit bitten und erst danach die Route festlegen.',tags:['Neuer Reiseverlauf','Alternativen','DMC-Abstimmung']}}
 ];
 const PRODUCT_MAP=Object.fromEntries(PRODUCTS.map(p=>[p.id,p]));
-const CHAT_BACKEND_ENDPOINT=''; // Optional: serverseitige, authentifizierte KI-API. Niemals einen API-Schlüssel im HTML speichern.
-let activeProduct='prelaunch',activeDemo=false,activeChatContext='home';
-const chatHistory=new Map(),reportDataCache={},productChatSelections={};
-let chatIsOpen=false;
+let activeProduct='prelaunch',activeDemo=false;
 function currentProduct(){return PRODUCT_MAP[activeProduct]||PRODUCT_MAP.prelaunch}
 function sideMode(reports){
  $('productNavigation').hidden=false;
@@ -593,13 +544,12 @@ function buildProductNav(){
  const glanceCards=[
   {icon:'grid',eyebrow:'Arbeitsbereich',title:'2 Reiseanalysen verfügbar',text:'Sizilien und Toskana sind bereits vollständig hinterlegt und direkt aufrufbar.',pill:'Verfügbar'},
   {icon:'wand',eyebrow:'Produkte',title:'6 Leistungen zentral gebündelt',text:'Von Reiseanalysen bis Marken- & Marketinganalyse bleibt jeder Bereich links direkt erreichbar.',pill:'Produkte'},
-  {icon:'chat',eyebrow:'Assistent',title:'Fragen direkt im Kontext stellen',text:'Der Analyse-Assistent richtet sich nach dem jeweils geöffneten Produkt oder Bericht.',pill:'Assistent'}
  ];
  $('recentGrid').innerHTML=glanceCards.map(card=>`<div class="recent-card glance-card"><div class="glance-head"><span class="glance-icon">${ico(card.icon)}</span><span class="glance-pill">${escapeHTML(card.pill)}</span></div><div class="glance-copy"><small>${escapeHTML(card.eyebrow)}</small><strong>${escapeHTML(card.title)}</strong><p>${escapeHTML(card.text)}</p></div></div>`).join('');
 }
 function showHome(){
  activeReport=null;activeDemo=false;hideScreens();$('homeScreen').hidden=false;sideMode(false);
- activeChatContext='home';updateBreadcrumb('Startseite');document.title='Startseite · TRIPGRADE';refreshChatContext();window.scrollTo(0,0);
+ updateBreadcrumb('Startseite');document.title='Startseite · TRIPGRADE';window.scrollTo(0,0);
 }
 function renderProductTab(tab='meine'){
  document.querySelectorAll('[data-product-tab]').forEach(b=>b.classList.toggle('active',b.dataset.productTab===tab));
@@ -620,7 +570,7 @@ function showProduct(id){
  $('prodOverline').textContent='TRIPGRADE · '+p.tag.toUpperCase();
  $('productFeatures').innerHTML=p.features.map(x=>`<li>${ico('check')}<span>${escapeHTML(x)}</span></li>`).join('');
  $('productSources').textContent=p.sources;$('productProcess').textContent=p.process;
- renderProductTab('meine');activeChatContext='product:'+id;refreshChatContext();updateBreadcrumb(p.name);
+ renderProductTab('meine');updateBreadcrumb(p.name);
  document.title=p.name+' · TRIPGRADE';window.scrollTo(0,0);
 }
 function showDemo(id){
@@ -629,11 +579,11 @@ function showDemo(id){
  const d=p.demo;$('demoName').textContent=p.name;$('demoTitle').textContent=d.title;$('demoIntro').textContent=d.intro;
  $('demoBullets').innerHTML=d.items.map(([title,desc])=>`<div class="demo-item"><strong>${escapeHTML(title)}</strong><p>${escapeHTML(desc)}</p></div>`).join('');
  $('demoNext').textContent=d.next;
- activeChatContext='demo:'+id;updateBreadcrumb(p.name+' / Musteranalyse');refreshChatContext();document.title=p.name+' – Musteranalyse · TRIPGRADE';window.scrollTo(0,0);
+ updateBreadcrumb(p.name+' / Musteranalyse');document.title=p.name+' – Musteranalyse · TRIPGRADE';window.scrollTo(0,0);
 }
 function showReports(regionName='uebersicht'){
  hideScreens();sideMode(true);activeReport=null;showRegion(regionName);
- activeChatContext='library';refreshChatContext();
+ 
 }
 function appRoute(){
  let value='';try{value=decodeURIComponent(location.hash.replace(/^#\/?/,''))}catch{value='start'}
@@ -645,7 +595,7 @@ function appRoute(){
   showProduct(parts[1]);return;
  }
  if(parts[0]==='analyse'&&(parts[1]==='sizilien'||parts[1]==='toskana')){
-  hideScreens();sideMode(true);activeChatContext='report:'+parts[1];refreshChatContext();openReport(parts[1]);return;
+  hideScreens();sideMode(true);openReport(parts[1]);return;
  }
  if(['uebersicht',...continents.map(normalize)].includes(value)){showReports(value);return}
  showHome();
@@ -657,238 +607,6 @@ function openRequest(){
 }
 function closeRequest(){$('requestDialog').close?.();$('requestDialog').removeAttribute('open')}
 function makeRequestText(){return ['TRIPGRADE – Anfrage',`Produkt: ${$('requestProduct').value}`,`Reise/Veranstalter: ${$('requestTrip').value.trim()||'Noch offen'}`,`Anforderungen: ${$('requestNotes').value.trim()||'Bitte um Rückmeldung'}`].join('\n')}
-// DOCUMENT-GROUNDED INFORMATION RETRIEVAL (no fabricated claims, no client-side API keys)
-function reportJSON(slug){
- if(!reportDataCache[slug]){
-  const id=slug==='sizilien'?'embedded-sizilien':'embedded-toskana-complete';
-  const html=decodeEmbeddedReport(id);
-  const dom=new DOMParser().parseFromString(html,'text/html');
-  const el=dom.getElementById('data');if(!el)throw Error('Analysedaten fehlen');
-  reportDataCache[slug]=JSON.parse(el.textContent);
- }
- return reportDataCache[slug];
-}
-/* TRIPGRADE Assistant – belegbasierte, kontextbezogene Analyse-Auskunft.
-   Diese lokale Engine nutzt ausschließlich Daten der geöffneten HTML-Analyse.
-   Echte generative KI wird optional über einen authentifizierten Backend-Endpunkt ergänzt. */
-const assistantStop=new Set(('ich mir mich mein meine wir uns unser unsere du dir dein deine sie ihnen ihr ihre der die das den dem des ein eine einer einen einem und oder aber sowie auch von vom mit auf zu zum zur im in am an nach aus über unter bei durch was wie welche welcher welchen welches wo wer warum wieso weshalb hier dort noch bitte mal kann können könnt sollte sollten würde würden ist sind war waren geht gib gibt zeigen zeig zeige erkläre erzählen erklart erklär mir kurz bitte genauer wirklich denn diese dieser diesem für innerhalb gegenüber einfach dazu dazu dabei denn etwas vieles dinge alles').split(' '));
-const assistantGroups=[
- ['hotel','hotels','unterkunft','unterkünfte','zimmer','resort','pension','übernachtung','bad','dusche'],
- ['essen','abendessen','frühstück','mittagessen','kulinarik','restaurant','gastronomie','verpflegung','kantine'],
- ['route','transfer','fahrt','bus','gepäck','transport','logistik','zug','strecke','tagesplanung'],
- ['kritik','probleme','mängel','schwachstellen','risiken','verbesserung','optimierung','beschwerden','handlungsbedarf'],
- ['guide','reiseleitung','reiseführer','betreuung','reiseleiter'],
- ['qualität','score','punkte','bewertung','noten','kategorien'],
- ['keramik','werkstatt','töpfer','sciacca'],
- ['etna','ätna','vulkan','krater'],
- ['gepäck','koffer','bahnfahrt','bus','siena'],
- ['marketing','marke','branding','website','socialmedia']
-];
-function asNorm(v){return normalize(String(v||'')).replace(/ß/g,'ss')}
-function cleanTerms(s){return asNorm(s).split(/[^a-z0-9]+/).filter(x=>x.length>2&&!assistantStop.has(x)).map(x=>x.replace(/(ungen|keiten|lichkeit|ungen|ische|ichen|endes|chen|en|es|er|e|n|s)$/,'')).filter(x=>x.length>=3)}
-function expandTerms(q){const primary=cleanTerms(q),out=new Set(primary);const qn=asNorm(q);for(const g of assistantGroups){if(g.some(x=>qn.includes(asNorm(x))))for(const t of g)out.add(cleanTerms(t)[0]||asNorm(t));}return [...out]}
-function brief(s,max=170){const val=String(s||'').replace(/<[^>]+>/g,'').replace(/\s+/g,' ').trim();if(val.length<=max)return val;const cut=val.slice(0,max);return cut.slice(0,Math.max(75,cut.lastIndexOf(' ')))+' …'}
-function source(label,section='optimierungen'){return {label,section}}
-function response(text,sources=[],next=[]){return {text,sources:sources.slice(0,4),followups:next.slice(0,3)}}
-function reportSources(findings=[],section='optimierungen'){const seen=new Set();return findings.map(f=>source(`Befund ${f.id} · P${f.prio}`,section)).filter(s=>!seen.has(s.label)&&seen.add(s.label))}
-function priorityFindings(d){return [...(d.findings||[])].sort((a,b)=>(a.prio||9)-(b.prio||9))}
-function sourceReferences(d,f,limit=2){const refs=[];for(const key of f.claims||[]){const c=d.claims?.[key];if(!c)continue;for(const [reviewId,quotes] of Object.entries(c.b||{})){const r=d.reviews?.[reviewId];if(!r)continue;refs.push({reference:r.ref||reviewId,origin:r.srcLabel||r.src||'Gästerückmeldung',excerpt:brief(Array.isArray(quotes)?quotes[0]:quotes,120)});if(refs.length>=limit)return refs;}}return refs}
-function findingRank(d,q,day){const terms=expandTerms(q),raw=asNorm(q);return (d.findings||[]).map(f=>{const title=asNorm(`${f.title||''} ${f.short||''}`),cat=asNorm(f.bereich||''),text=asNorm([f.insight,f.folgen,f.trend,f.next,JSON.stringify(f.dmc||[])].join(' '));let score=0;for(const t of terms){if(t.length<3)continue;if(title.includes(t))score+=7;if(cat.includes(t))score+=5;if(text.includes(t))score+=1.2;}if(day&&f.days?.includes(day))score+=12;if(/hochste|wichtigst|dringend|priorit/.test(raw))score+=Math.max(0,4-(f.prio||3))*1.5;return {finding:f,score}}).sort((a,b)=>b.score-a.score||a.finding.prio-b.finding.prio)}
-function answerForReport(slug,question){
- const d=reportJSON(slug),raw=asNorm(question).trim(),meta=d.meta||{},ordered=priorityFindings(d),score=d.scores?.alle||{},q=question;
- const travel=slug==='sizilien'?'Sizilien':'Toskana',years=['2025','2026'];
- const qYear=raw.match(/\b202[56]\b/)?.[0];
- const year=qYear&&d.scores?.[qYear]?qYear:'alle';
- const sc=d.scores?.[year]||score;
- const scoreLabel=x=>x?.totalLabel||'–';
- const nextSteps=arr=>arr.map((f,i)=>`${i+1}. ${brief(String(f.next||f.dmc?.[0]?.a||f.short).replace(/^PM:\s*/,''),160)}`).join('\n');
- const miniSummary=(arr,n=3)=>arr.slice(0,n).map((f,i)=>`• ${f.short||f.title} (P${f.prio})`).join('\n');
- const shortTrip=travel+'-Reise';
- const actionText=f=>brief(String(f||'').replace(/^PM:\s*/,'').trim(),175);
- const firstStrong=d.strengths?.[0];
- // Contextual reply to a standalone follow-up (e.g. "Und was sollte man dagegen tun?").
- const history=(chatHistory.get(activeChatContext)||[]).filter(m=>m.role==='user');
- const previous=history.length>1?history[history.length-2]?.text||'':'';
- const followup=/^(und|warum|wieso|weshalb|welche massnahmen|was tun|wie verbessern|was genau|konkret|mehr dazu|wie oft|was sagt|wie viele)/.test(raw)||(/^(das|diese|dort|dazu|dagegen)/.test(raw)&&cleanTerms(q).length<5);
- const contextual=(followup&&previous)?previous+' '+q:q;
- const contextualNorm=asNorm(contextual);
- const dayNumber=Number((contextualNorm.match(/\btag\s*(\d{1,2})\b/)||[])[1]||0);
- const matching=findingRank(d,contextual,dayNumber),relevant=matching.filter(x=>x.score>=3).map(x=>x.finding);
- const isGeneric=/(kern|zusammenfass|kurzfazit|fazit|uberblick|wichtigsten erkenntnis|hauptproblem|hauptkritik|top\s*3|was fallt|gesamte analyse)/.test(raw);
- const wantsAction=/(empfehl|empfiehl|vorschlag|schlag vor|ratest|raten|maßnahm|massnahm|verbess|ändern|andern|geandert|andert|verander|zuerst|optimier|austausch|ersetzen|wechseln|was tun|prioris|nächste schritte|nachste schritte)/.test(raw);
- const asksEvidence=/(beleg|nachweis|beweis|kundenbewertung|kritik.*quelle|woran erkenn|wie oft|wie viele beschwerden|gast.*gesagt)/.test(raw);
- const asksWhy=/(warum|wieso|weshalb|grund|hintergrund)/.test(raw);
- // Basic conversation and report explanation.
- if(/^(hallo|hi|hey|guten tag|moin|servus|danke|vielen dank)[!?.\s]*$/.test(raw))return response(`Gerne! Ich bin der TRIPGRADE Assistant. Sie können mich zu konkreten Befunden, einzelnen Hotels, Maßnahmen oder dem Aufbau dieser ${shortTrip} fragen.`,[],['Was sind die Kern-Erkenntnisse?','Welche Maßnahmen sind am wichtigsten?']);
- if(/(wie.*(aufgebaut|gegliedert|strukturiert)|was.*(beinhalt|enthalt|abschnitt)|aufbau.*analyse)/.test(raw)){
-  return response(`Der DeepAudit zur ${shortTrip} besteht aus vier Teilen:\n1. Überblick: Gesamtscore und wichtigste Befunde.\n2. Reiseverlauf: alle ${d.days?.length||'–'} Tage mit Hotels und Aktivitäten.\n3. Optimierungen: konkrete Probleme, Gästebelege und Maßnahmen nach Priorität P1–P3.\n4. Methodik: Quellen, Bewertungssystem und Grenzen der Aussagekraft.\n\nZeitraum: ${meta.period||'nicht angegeben'}.`,[source('Überblick','ueberblick'),source('Methodik','methodik')],['Was sind die Kern-Erkenntnisse?','Welche Quellen wurden genutzt?']);
- }
- if(/(vergleich.*(sizilien|toskana)|sizilien.*toskana|toskana.*sizilien|welche.*reise.*besser)/.test(raw)){
-  const si=reportJSON('sizilien'),to=reportJSON('toskana');const a=si.scores.alle.total,b=to.scores.alle.total;
-  return response(`Im TRIPGRADE-Gesamtscore erreicht Sizilien ${si.scores.alle.totalLabel}/100 und Toskana ${to.scores.alle.totalLabel}/100 – Toskana liegt damit ${String(Math.abs(b-a).toFixed(2)).replace('.',',')} Punkte vorn.\nDas ist nur ein Scorevergleich; die Datenlage und die Art der Kritik unterscheiden sich.`,[source('Score der geöffneten Analyse','ueberblick'),source('Methodik','methodik')],['Welche Probleme hat Toskana?','Welche Probleme hat Sizilien?']);
- }
- if(/(kern|zusammenfass|kurzfazit|fazit|uberblick|wichtigst|hauptproblem|großt.*problem|großt.*schwach|was fallt|gesamte analyse|hauptprobleme)/.test(raw)&&!/(hotel|unterkunft|zimmer|sciacca|etna|ätna|tag \d)/.test(raw)){
-  const top=ordered.slice(0,3);
-  return response(`Kurzfazit zur ${shortTrip}: ${scoreLabel(score)} von 100 Punkten.\n\nDie wichtigsten Handlungsfelder:\n${miniSummary(top)}\n\nStärke: ${brief(firstStrong?.short||firstStrong?.title||'im Bericht beschrieben',135)}\n\nPriorität: ${actionText(top[0]?.next)}`,
-    [source('Gesamtscore','ueberblick'),...reportSources(top)],['Welche Maßnahme zuerst?','Welche Hotels fallen negativ auf?','Wie wurde der Score berechnet?']);
- }
- if(/(quelle|quellen|method|datenbasis|datengrundlage|welche daten|aussagekraft|stichprobe|wie verlass|zuverlass)/.test(raw)&&!asksEvidence){
-  const meth=d.methText||{},files=(meth.quellen||[]).filter(x=>x?.f&&!/Logo|Stilreferenz|Ausgangsbasis/.test(x.f));
-  const list=files.slice(0,4).map(x=>'• '+x.f).join('\n');const caveats=(meth.grenzen||[]).slice(0,2).map(x=>'• '+brief(x,165)).join('\n');
-  return response(`Die ${shortTrip} wurde mit Reiseprogramm, anonymisierten Gästerückmeldungen und Buchungs-/Bewertungsdaten ausgewertet.\n${list}\n\nWichtig zur Einordnung:\n${caveats||'Der Bericht erläutert Datenlücken und Auswahlregeln im Methodikteil.'}`,[source('Datenbasis und Grenzen','methodik')],['Wie wird der Score berechnet?','Wie viele Gästerückmeldungen wurden berücksichtigt?']);
- }
- if(/(wie viele gast|anzahl gast|buchungszahlen|wie viele bewertet|datensatze|bewertungen ausgewertet|gaste insgesamt)/.test(raw)){
-  const n=meta.guests||{};return response(`Für die ${shortTrip} nennt der Bericht ${n.alle||'–'} Gäste (${n['2025']||'–'} im Jahr 2025 und ${n['2026']||'–'} im Jahr 2026). Nach Bereinigung flossen ${score.valid||'–'} gültige Bewertungseinträge in die Auswertung ein.\nGästezahl und Anzahl der Rückmeldungen sind nicht identisch.`,[source('Datenbasis','methodik'),source('Scoreberechnung','ueberblick')],['Welche Grenzen hat die Datenlage?']);
- }
- if(/(wie.*(score|punkte|wertung).*berechn|score.*(berechn|ermitt|entsteh|zustand)|punkte.*berechn|berechn.*score|bewertungsmethodik)/.test(raw)){
-  const rules=(d.methText?.regeln||[]).slice(0,4).map(x=>'• '+brief(x,165)).join('\n');
-  const weights=(d.cats||[]).map(c=>`${c.name} ${c.max} Punkte`).join(', ');
-  return response(`Der TRIPGRADE-Gesamtscore hat vier gewichtete Bereiche: ${weights}.\n\nWichtigste Regeln laut Bericht:\n${rules}\n\nSo entsteht die Gesamtnote ${score.totalLabel}/100.`,[source('Score-Aufschlüsselung','ueberblick'),source('Berechnung & Datenbasis','methodik')],['Welche Probleme senken den Score?','Wie groß ist die Datenbasis?']);
- }
- if(/(score|punkte|punktzahl|gesamtwertung|gesamtscore|qualitatswert|kategorie|wie gut bewertet|bewertung 2025|bewertung 2026|vergleich.*jahr|entwicklung.*jahr)/.test(raw)){
-  const cats=(d.cats||[]).map(c=>{const v=sc.cats?.[String(c.id)];return `${c.name}: ${v?.ptsLabel??'–'}/${c.max}`;});
-  const scoresYears=years.map(y=>`${y}: ${scoreLabel(d.scores?.[y])}/100`).join(' · ');
-  const focused=d.cats?.find(c=>asNorm(q).includes(asNorm(c.name).slice(0,8)));
-  if(focused){const catSc=sc.cats?.[String(focused.id)];return response(`${focused.name}: ${catSc?.ptsLabel??'–'} von ${focused.max} Punkten (${year==='alle'?'Gesamtzeitraum':year}).\nDer Kategorie-Score fasst mehrere Teilkriterien zusammen; einzelne Probleme können die Bewertung senken.`,[source('Kategorie-Score','ueberblick'),source('Bewertungsmethodik','methodik')],['Welche Befunde beeinflussen diesen Bereich?']);}
-  return response(`Gesamtscore ${year==='alle'?'':year+': '}${scoreLabel(sc)}/100.\n${cats.map(x=>'• '+x).join('\n')}\n\nJahreswerte: ${scoresYears}.`,[source('Score & Kategorien','ueberblick'),source('Berechnungsregeln','methodik')],['Was sind die wichtigsten Probleme?']);
- }
- if(/(starke|stärken|positiv|gelobt|highlight|gut gelauf|beibehalten|besonders gut)/.test(raw)){
-  const items=(d.strengths||[]).slice(0,3);return response(`Das sind die drei wichtigsten Stärken der ${shortTrip}:\n${items.map(x=>'• '+x.title+': '+brief(x.why,120)).join('\n')}`,[source('Stärken der Reise','optimierungen')],['Was sollte beibehalten werden?','Was sollte verbessert werden?']);
- }
- const listHotels=/(alle hotel|welche hotel|hotel liste|alle unterkunfte|alle unterkünfte|wo ubernachten|welche unterkunfte)/.test(raw)&&!wantsAction;
- if(listHotels&&!/(kritik|kritis|problem|schwach|negativ)/.test(raw)){
-  const hotels=[];
-  for(const day of d.days||[]){
-   const original=String(day.hotel||'').replace(/\s*\([0-9]+\. Nacht\)/ig,'').trim();
-   if(!original||/^(?:-|–|—)$/u.test(original)||/nicht ausgewiesen|nicht angegeben/i.test(original))continue;
-   const key=asNorm(original.split(',')[0].replace(/\s*\([^)]*\)/g,'')).replace(/hotel\s+/g,'').trim();
-   if(!hotels.some(x=>x.key===key))hotels.push({key,display:original});
-  }
-  return response(`Im Reiseverlauf sind diese Unterkünfte aufgeführt:\n${hotels.slice(0,9).map(h=>'• '+h.display).join('\n')}${hotels.length>9?'\nWeitere finden Sie im Tagesprogramm.':''}`,[source('Unterkünfte im Reiseverlauf','reiseverlauf')],['Welche Hotels werden kritisiert?']);
- }
- if(/(reiseverlauf|ablauf|welche orte|tagesplanung|route|strecke|reiseroute)/.test(raw)&&!relevant.length&&!dayNumber){const a=(d.days||[]);return response(`Die ${shortTrip} umfasst ${a.length} Reisetage. Ein kurzer Auszug:\n${a.slice(0,5).map(x=>`Tag ${x.d}: ${brief(x.route||x.title,95)}`).join('\n')}${a.length>5?'\nWeitere Tage sind im Reiseverlauf hinterlegt.':''}`,[source('Kompletter Reiseverlauf','reiseverlauf')],['Was passiert an Tag 4?','Welche Hotels sind vorgesehen?']);}
- if(dayNumber&&!/(kritik|problem|schwach|risiko|maßnahmen|massnahmen)/.test(raw)&&!relevant.some(x=>x.score>=22)){
-  const day=d.days?.find(x=>Number(x.d)===dayNumber);if(day)return response(`Tag ${day.d} – ${day.title}\nRoute: ${day.route||'nicht angegeben'}\nProgramm: ${brief((day.act||[]).join('; '),230)}\nHotel: ${day.hotel||'nicht angegeben'}${day.note?'\nHinweis: '+brief(day.note,140):''}`,[source(`Reiseverlauf · Tag ${day.d}`,'reiseverlauf')],[`Welche Probleme gibt es an Tag ${day.d}?`]);
- }
- if(slug==='sizilien'&&/(hotel royal|bolsena|siena|montaperti)/.test(raw)&&!/(vergleich|vergleichen|unterschied)/.test(raw)){
-   return response('Das Hotel bzw. Reiseziel gehört zur Toskana-Analyse, nicht zum aktuell geöffneten Sizilien-DeepAudit. Wechseln Sie bitte zu Toskana, damit ich die passenden Befunde erläutern kann.',[],['Welche Hotels werden auf Sizilien kritisiert?']);
- }
- if(/(warum|weshalb).*?(p1|erste massnahme|erste maßnahme|maßnahme 1|massnahme 1)/.test(raw)){
-   const f=ordered[0];return response(`${f.short||f.title} ist als Priorität P${f.prio} eingestuft.\n\nGrund: ${brief(f.folgen,240)}\n\nEmpfehlung: ${actionText(f.next)}`,reportSources([f]),['Welche Gästebelege gibt es dazu?']);
- }
- if(relevant.length&&/(entwicklung|2025.*2026|2026.*2025|seit 2025|im jahresvergleich)/.test(raw)){
-   const f=relevant[0];return response(`Zum zeitlichen Verlauf von „${f.short||f.title}“ steht im Bericht:\n${brief(f.trend||'Keine belastbare zeitliche Entwicklung ausgewiesen.',320)}`,reportSources([f]),['Was empfiehlt TRIPGRADE dazu?']);
- }
- const hotelTopic=/(hotel|unterkunft|zimmer|resort)/.test(raw);
- const namedTarget=/(royal|bolsena|atelier|montaperti|sciacca|scala dei turchi|poggio|faraglioni|etna|ätna|bus|gepäck|koffer|siena|tag\s*\d+)/.test(raw);
- if(hotelTopic&&!namedTarget&&/(welche|kritik|kritis|negativ|problem|schwach|auswechseln|ersetzen|auffall)/.test(raw)){
-   const hotelFindings=ordered.filter(f=>/(unterkunft|hotel|zimmer|resort|ausweich|abendessen)/.test(asNorm((f.title||'')+' '+(f.bereich||''))));
-   return response(hotelFindings.length?`Die wichtigsten Unterkunfts-Themen sind:\n${miniSummary(hotelFindings.slice(0,4),4)}\n\nWenn Sie mir ein Hotel nennen, erläutere ich auch die passenden Gästebelege und Empfehlungen.`:'Im DeepAudit gibt es dazu keinen eigenständigen priorisierten Hotelbefund.',reportSources(hotelFindings.slice(0,4)),['Was sollte am auffälligsten Hotel verbessert werden?']);
- }
- if(wantsAction&&!namedTarget&&/(zuerst|wichtigst|prioris|welche|was soll|maßnahm|massnahm|nächste schritte|nachste schritte)/.test(raw)){
-   const top=ordered.slice(0,3);
-   return response(`Das würde ich aus den priorisierten Befunden ableiten:\n${nextSteps(top)}\n\nDiese Reihenfolge folgt den Prioritäten des DeepAudit, nicht einer zusätzlich durchgeführten Wirtschaftlichkeitsrechnung.`,reportSources(top),['Warum hat der erste Schritt Priorität?','Welche Gästebelege gibt es?']);
- }
- const focusSpecific=cleanTerms(q).filter(t=>!['verbess','optimier','kritis','probleme','hotel','unterkunft','reise','bewert','massnahm','welche','wichtigst'].some(g=>t===g));
- if(relevant.length && (focusSpecific.length || dayNumber)){
-  const f=relevant[0];
-  if(asksEvidence){const refs=sourceReferences(d,f,3);const evidence=refs.map(e=>`• ${e.origin} (${e.reference}): „${e.excerpt}“`).join('\n');return response(`Zum Befund „${f.short||f.title}“ sind unter anderem diese Rückmeldungen hinterlegt:\n${evidence||'Die genaue Belegliste steht im Optimierungsbericht.'}\n\nEinordnung: ${brief(f.insight,145)}`,[source(`Befund ${f.id}`,'optimierungen'),source('Gästebelege','ev')],[`Welche Maßnahme empfiehlt TRIPGRADE dazu?`]);}
-  if(wantsAction){return response(`Für „${f.short||f.title}“ empfiehlt TRIPGRADE:\n${brief(String(f.next||f.dmc?.[0]?.a||'').replace(/^PM:\s*/,''),260)}${f.dmc?.[0]?.a?'\n\nKonkret mit dem DMC: '+brief(f.dmc[0].a,205):''}\n\nPriorität: P${f.prio}.`,reportSources([f]),['Warum ist das ein Problem?','Welche Gästebelege gibt es?']);}
-  if(asksWhy){return response(`${f.insight}\n\nWarum das wichtig ist: ${brief(f.folgen,285)}`,reportSources([f]),['Was empfiehlt TRIPGRADE konkret?','Welche Belege gibt es?']);}
-  const extra=/(mehrere|alle|weitere|welche)/.test(raw)?relevant.slice(1,3).filter(x=>x.prio<=f.prio&&matching.find(m=>m.finding.id===x.id)?.score>=matching[0].score*0.8):[];
-  return response(`${f.insight}\n\nAuswirkung: ${brief(f.folgen,195)}\n\nEmpfehlung: ${actionText(f.next)}${extra.length?'\n\nWeitere betroffene Punkte: '+extra.map(x=>x.short).join('; ')+'.':''}`,
-    reportSources([f,...extra]),['Welche konkreten Maßnahmen?','Welche Belege gibt es?']);
- }
- if(wantsAction){const a=ordered.slice(0,3);return response(`Die wichtigsten nächsten Schritte für die ${shortTrip}:\n${nextSteps(a)}`,[...reportSources(a)],['Warum hat Maßnahme 1 Priorität?','Welche Hotels sollten geprüft werden?']);}
- if(/(hotel|unterkunft|zimmer|uberna|überna)/.test(raw)){
-  const hotels=ordered.filter(f=>/hotel|unterkunft|zimmer|resort|ausweich/.test(asNorm(f.title+' '+f.bereich)));
-  return response(hotels.length?`Die Hotelthemen im DeepAudit:\n${hotels.slice(0,3).map(x=>`• ${x.short} (P${x.prio})`).join('\n')}\n\nBei Bedarf kann ich die konkreten Maßnahmen zu einem Hotel nennen.`:'Die vorhandene Analyse nennt keine eigenständigen priorisierten Hotelbefunde.',reportSources(hotels),['Was sollte am Hotel geändert werden?']);
- }
- if(/(kritik|probleme|schwach|befunde|prioritat|dringend)/.test(raw)){
-  const top=ordered.slice(0,4);return response(`Diese Punkte haben laut DeepAudit Vorrang:\n${miniSummary(top,4)}`,
-    reportSources(top),['Was sollte zuerst umgesetzt werden?','Welche Bewertungen belegen das?']);
- }
- // Neither invent nor pad: if the question is outside the available report, say so.
- if(relevant.length&&matching[0].score>=6){const f=relevant[0];return response(`${f.insight}\n\nEmpfehlung: ${brief(f.next,160)}`,reportSources([f]),['Warum ist das relevant?','Welche Gästebelege gibt es?']);}
- return response(`Zu diesem Punkt finde ich in der geöffneten ${shortTrip} keinen eindeutig belegten Befund. Gern prüfe ich eine konkrete Unterkunft, einen Reisetag oder eine Qualitätskategorie.`,[],['Was sind die Kern-Erkenntnisse?','Welche Hotels werden kritisiert?','Wie ist der Bericht aufgebaut?']);
-}
-
-function answerForProduct(id,q,demo=false){
- const p=PRODUCT_MAP[id];if(!p)return response('Dazu liegt derzeit kein Produkt vor.');
- const t=asNorm(q);
- if(demo||/beispiel|muster|demo/.test(t))return response(`Das ist ein fiktives Muster für ${p.name}, keine Kundenanalyse.\n${p.demo.items.slice(0,3).map(([n,v])=>`• ${n}: ${brief(v,135)}`).join('\n')}\n\nNächster Schritt: ${brief(p.demo.next,160)}`,[],['Welche Daten braucht ihr?','Welche Ergebnisse bekomme ich?']);
- if(/(quelle|daten|benotig|grundlage|material)/.test(t))return response(`Für ${p.name} nutzen wir ${p.sources}\n\nAblauf: ${brief(p.process,230)}`,[],['Was bekomme ich als Ergebnis?']);
- if(/(unterschied|abgrenz)/.test(t))return response(`${p.name} konzentriert sich auf Folgendes: ${p.description}\n\nDas unterscheidet es von DeepAudit, das bestehende Reisen anhand von Gästedaten und Reiseprogramm bewertet.`,[],['Welche Daten braucht ihr?','Beispiel ansehen']);
- if(/(ergebnis|liefer|bericht|bekomm|auswertung)/.test(t))return response(`Sie erhalten eine nachvollziehbare Analyse mit konkreten Empfehlungen.\n${p.features.slice(0,3).map(f=>'• '+f).join('\n')}\n\n${brief(p.process,180)}`,[],['Welche Quellen nutzt ihr?','Beispiel ansehen']);
- if(/(preis|kosten|bezahl|kauf|bestell)/.test(t))return response(`Einen verbindlichen Preis für ${p.name} kann ich hier nicht nennen, da in der Plattform keine Preisliste hinterlegt ist. Über „Analyse anfragen“ können Sie den gewünschten Umfang angeben.`,[],['Welche Informationen braucht ihr?']);
- return response(`Gern! ${p.description}\n\nDie wichtigsten Leistungen:\n${p.features.slice(0,3).map(f=>'• '+f).join('\n')}`,[],['Welche Daten benötigt ihr?','Wie sieht ein Muster aus?']);
-}
-function answerForLibrary(q){
- const t=asNorm(q),mentioned=trips.find(x=>t.includes(asNorm(x.name)));
- if(mentioned){return response(`${fullName(mentioned)} ist ${mentioned.ready?'als DeepAudit verfügbar':'derzeit noch nicht freigeschaltet'}. ${mentioned.ready?'Öffnen Sie den Bericht über die Reisebibliothek; dort kann ich Detailfragen direkt anhand der Befunde beantworten.':'Neue Analysen werden hier sichtbar, sobald sie hinterlegt sind.'}`,[],mentioned.ready?[`Was sind die Kern-Erkenntnisse der ${mentioned.name}?`]:[]);}
- if(/(verfug|fertig|welche reisen|wie viele)/.test(t))return response('In Ihrer Bibliothek sind 14 Europareisen angelegt. Die beiden vollständigen DeepAudits zu Sizilien und Toskana sind verfügbar; 12 Reisen folgen.',[],['Wie unterscheiden sich Sizilien und Toskana?']);
- if(/(vergleich|unterschied|punkt)/.test(t)){const s=reportJSON('sizilien').scores.alle,tos=reportJSON('toskana').scores.alle;return response(`Aktuell erreicht Sizilien ${s.totalLabel}/100 und Toskana ${tos.totalLabel}/100 Punkten. Die Berichte haben unterschiedliche Gästedaten und Befundschwerpunkte.`,[],['Was sind die Kern-Erkenntnisse der Toskana?']);}
- return response('Gern! Hier finden Sie aktuell zwei freigegebene DeepAudits: Sizilien und Toskana. Öffnen Sie eine Reise, damit ich Ihre Frage konkret anhand der Befunde beantworten kann.',[],['Welche Reisen sind verfügbar?']);
-}
-function answerForHome(q){
- const t=asNorm(q);
- if(/(produkt|angebot|leistung|was bietet)/.test(t))return response('TRIPGRADE bündelt sechs Leistungen: Reiseanalysen, ReCheck, DMC-Check, PreLaunch inklusive Marktvergleich, Marken- & Marketinganalyse und Reiseoptimierung. Im Menü links können Sie jedes Produkt öffnen und ein Beispiel ansehen.',[],['Welche Daten braucht PreLaunch?','Was macht ReCheck?']);
- return answerForLibrary(q);
-}
-function answerLocal(q){
- const [kind,id]=activeChatContext.split(':');
- if(kind==='report')return answerForReport(id,q);
- if(kind==='product')return answerForProduct(id,q,false);
- if(kind==='demo')return answerForProduct(id,q,true);
- if(kind==='library')return answerForLibrary(q);
- return answerForHome(q);
-}
-function getContextDetails(){
- const [kind,id]=activeChatContext.split(':');
- if(kind==='report'){const name=(trips.find(t=>t.slug===id)?.name||id);return {name:name+' · DeepAudit',note:'Ihre Fragen beantworte ich anhand der Befunde und Quellen dieser Reise.',prompts:['Was sind die Kern-Erkenntnisse?','Welche Hotels werden kritisiert?','Was sollte zuerst verbessert werden?','Wie ist die Analyse aufgebaut?']};}
- if(kind==='product'||kind==='demo'){const p=PRODUCT_MAP[id];return {name:p.name+(kind==='demo'?' · Muster':''),note:kind==='demo'?'Sie sehen ein gekennzeichnetes Muster ohne reale Kundendaten.':'Ich erläutere Ihnen gern Nutzen, Ablauf und benötigte Daten.',prompts:p.prompts||['Was wird untersucht?','Welche Daten braucht ihr?']};}
- if(kind==='library')return {name:'Reisebibliothek',note:'Ich unterstütze Sie bei der Orientierung. In einer geöffneten Analyse beantworte ich auch konkrete Fragen.',prompts:['Welche Reisen sind verfügbar?','Wie unterscheiden sich Sizilien und Toskana?']};
- return {name:'Ihr Arbeitsbereich',note:'Ich helfe Ihnen bei TRIPGRADE-Produkten und Ihren freigegebenen Analysen.',prompts:['Welche Produkte bietet TRIPGRADE?','Welche Analysen sind verfügbar?']};
-}
-function messageElement(role,text){const el=document.createElement('div');el.className='chat-msg '+role;el.textContent=text;return el}
-function renderChatHistory(){
- const box=$('chatMessages');box.replaceChildren();
- const history=chatHistory.get(activeChatContext)||[];
- if(!history.length){const [kind,id]=activeChatContext.split(':');const friendly=kind==='report'?`Guten Tag! Ich habe die Analyse zu ${trips.find(t=>t.slug===id)?.name||id} vorliegen. Ich fasse die Befunde gern zusammen oder gehe mit Ihnen ein konkretes Problem durch.`:kind==='library'?'Willkommen! Ich helfe Ihnen, die passende Analyse zu finden. Sobald Sie eine Reise öffnen, kann ich auch zu einzelnen Ergebnissen Auskunft geben.':'Guten Tag! Schön, dass Sie da sind. Ich bin der TRIPGRADE Assistant. Was möchten Sie zu unseren Analysen oder Produkten wissen?';box.append(messageElement('bot',friendly));}
- else for(const m of history){box.append(messageElement(m.role,m.text));if(m.sources?.length){const src=document.createElement('div');src.className='chat-sources';const used=new Set();for(const item of m.sources){if(!item?.section||used.has(item.label+'|'+item.section))continue;used.add(item.label+'|'+item.section);const b=document.createElement('button');b.type='button';b.textContent='↗ '+item.label;b.dataset.sourceSection=item.section;src.append(b);}box.append(src);}}
- box.scrollTop=box.scrollHeight;
-}
-function setSuggestions(items){const box=$('chatSuggestions');box.replaceChildren();for(const item of items.slice(0,4)){const btn=document.createElement('button');btn.type='button';btn.textContent=item;btn.dataset.chatPrompt=item;box.append(btn)}}
-function refreshChatContext(){
- const d=getContextDetails();$('chatContextTitle').textContent=d.name;$('chatContextNote').textContent=d.note;
- const history=chatHistory.get(activeChatContext)||[];setSuggestions(history.length?history[history.length-1].followups||d.prompts:d.prompts);
- $('chatFootnote').textContent=CHAT_BACKEND_ENDPOINT?'KI-Backend (wenn verfügbar) · Berichtsbasiert':'Berichtsbasiert · ohne generatives KI-Backend';
- renderChatHistory();
-}
-function showChat(on){chatIsOpen=on;$('chatPanel').hidden=!on;$('chatToggle').hidden=on;$('chatToggle').setAttribute('aria-expanded',String(on));$('chatToggle').innerHTML=on?ico('x')+' Chat schließen':ico('sparkle')+' TRIPGRADE Assistant';if(on){refreshChatContext();$('chatInput').focus()}}
-async function sendChat(question){
- const q=String(question||'').trim();if(!q)return;
- const context=activeChatContext,history=chatHistory.get(context)||[];
- history.push({role:'user',text:q});chatHistory.set(context,history);$('chatInput').value='';renderChatHistory();
- $('chatSend').disabled=true;$('chatInput').disabled=true;
- const load=document.createElement('div');load.className='chat-msg bot chat-thinking';load.textContent='Ich prüfe die passenden Stellen in der Analyse …';$('chatMessages').append(load);$('chatMessages').scrollTop=$('chatMessages').scrollHeight;
- let answer;
- try{
-  if(CHAT_BACKEND_ENDPOINT){
-   // Nur für einen autorisierten Server: dort Nutzer & Analysezugriff prüfen.
-   // Niemals einen API-Key in diesem HTML speichern.
-   const ctrl=new AbortController(),timeout=setTimeout(()=>ctrl.abort(),14000);
-   try{
-    const r=await fetch(CHAT_BACKEND_ENDPOINT,{method:'POST',credentials:'include',headers:{'Content-Type':'application/json'},body:JSON.stringify({context,question:q,history:history.slice(-6).map(m=>({role:m.role==='bot'?'assistant':'user',content:m.text}))}),signal:ctrl.signal});
-    if(!r.ok)throw Error('Dienst zurzeit nicht erreichbar');const data=await r.json();
-    if(!data?.answer)throw Error('Keine Antwort vom KI-Dienst');answer=response(String(data.answer),Array.isArray(data.sources)?data.sources:[],Array.isArray(data.followups)?data.followups:[]);
-   }finally{clearTimeout(timeout)}
-  }else{answer=answerLocal(q)}
- }catch(err){try{answer=answerLocal(q);answer.text+='\n\nHinweis: Die erweiterte KI-Auskunft ist gerade nicht erreichbar. Diese Antwort stammt direkt aus dem hinterlegten Bericht.'}catch(_){answer=response('Die Antwort konnte gerade nicht erstellt werden. Bitte versuchen Sie es erneut.')}}
- $('chatSend').disabled=false;$('chatInput').disabled=false;
- history.push({role:'bot',text:answer.text,sources:answer.sources||[],followups:answer.followups||[]});
- if(activeChatContext===context){renderChatHistory();setSuggestions(answer.followups?.length?answer.followups:getContextDetails().prompts);$('chatInput').focus();}
-}
 // Wiring and routing: existing travel library markup remains 1:1.
 $('logoLink').setAttribute('href','#/start');
 $('homeNavigationBtn').addEventListener('click',()=>location.hash='#/start');
@@ -899,12 +617,6 @@ for(const id of ['productInquireTop','productInquireBottom','demoInquire'])$(id)
 $('demoBack').addEventListener('click',()=>location.hash='#/produkt/'+activeProduct);
 $('requestCancel').addEventListener('click',closeRequest);
 $('requestForm').addEventListener('submit',async ev=>{ev.preventDefault();try{await navigator.clipboard.writeText(makeRequestText());$('requestMessage').textContent='Anfragetext kopiert. Sie können ihn an TRIPGRADE senden.'}catch{const text=makeRequestText();$('requestNotes').value=text;$('requestNotes').select();$('requestMessage').textContent='Bitte den markierten Text manuell kopieren.'}});
-$('chatToggle').addEventListener('click',()=>showChat(!chatIsOpen));$('chatClose').addEventListener('click',()=>showChat(false));$('chatExpand').addEventListener('click',()=>$('chatPanel').classList.toggle('expanded'));
-$('chatForm').addEventListener('submit',ev=>{ev.preventDefault();sendChat($('chatInput').value)});
-$('chatInput').addEventListener('keydown',ev=>{if(ev.key==='Enter'&&!ev.shiftKey){ev.preventDefault();sendChat($('chatInput').value)}});
-$('chatSuggestions').addEventListener('click',ev=>{const prompt=ev.target.closest('[data-chat-prompt]');if(prompt)sendChat(prompt.dataset.chatPrompt)});
-$('chatMessages').addEventListener('click',ev=>{const b=ev.target.closest('[data-source-section]');if(!b)return;const frame=$('report');try{const inner=frame.contentDocument?.getElementById(b.dataset.sourceSection);if(inner){inner.scrollIntoView({behavior:'smooth',block:'start'});return}}catch(e){}$('chatContextNote').textContent='Quelle: '+b.dataset.sourceSection+' · im geöffneten Analysebericht';});
-document.addEventListener('keydown',ev=>{if(ev.key==='Escape'&&chatIsOpen){showChat(false)}});
 // The source HTML intentionally excludes massive PDF attachments; hide obsolete PDF download buttons.
 $('report').addEventListener('load',()=>{try{const doc=$('report').contentDocument;const data=doc?.getElementById('pdfData');if(data&&!data.textContent.trim()){const button=doc.getElementById('pdfBtn');if(button)button.hidden=true}}catch(e){}});
 window.addEventListener('hashchange',appRoute);
